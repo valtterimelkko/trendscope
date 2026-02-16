@@ -270,7 +270,689 @@ Standard ◄──────────────────────�
 
 ---
 
-## 08 Imagery & Iconography
+---
+
+## 08 Comprehensive Voice Guidelines
+
+### 8.1 Voice Attributes with Definitions & Examples
+
+Trendscope's voice is the consistent personality that comes through in every piece of communication. It's who we are regardless of context.
+
+#### Attribute 1: Sharp
+**Definition:** Precise, incisive, no wasted words. We cut through noise because that's what our product does.
+
+| Do (✓) | Don't (✗) |
+|--------|-----------|
+| "Trend detected in #beauty" | "Hey there! We noticed something really interesting happening in the beauty category that we think you might want to check out..." |
+| "3 alerts waiting" | "You have some notifications that are currently pending your review" |
+| "Saturation: 87%" | "The trend is getting pretty close to being fully saturated at this point" |
+
+**Writing Tip:** Read your copy aloud. If you run out of breath, it's too long. Cut adverbs and filler phrases ("we think," "you might," "really").
+
+---
+
+#### Attribute 2: Reliable
+**Definition:** Consistent, trustworthy, always-on. We sound like a system that never sleeps because we don't.
+
+| Do (✓) | Don't (✗) |
+|--------|-----------|
+| "Monitoring 24/7" | "We try to check for trends as often as we can" |
+| "Alert delivered" | "Your alert should have gone through" |
+| "System operational" | "Things seem to be working okay right now" |
+| "Updated 2 minutes ago" | "Recently updated" |
+
+**Writing Tip:** Use active voice. Avoid qualifiers ("try," "should," "seems"). Be specific with numbers and timestamps.
+
+---
+
+#### Attribute 3: Fast
+**Definition:** Quick to communicate, immediate value. Our words have velocity too.
+
+| Do (✓) | Don't (✗) |
+|--------|-----------|
+| "Alert sent" | "Your notification has been scheduled for delivery" |
+| "Trend rising" | "We're observing an upward trajectory in this trend's performance" |
+| "Act now" | "When you have a moment, you may want to consider taking action" |
+| "2 hours left" | "Limited time remaining" |
+
+**Writing Tip:** Lead with the most important information. Use short sentences. Prefer present tense.
+
+---
+
+#### Attribute 4: Professional
+**Definition:** Expert but approachable. We know our stuff without being condescending.
+
+| Do (✓) | Don't (✗) |
+|--------|-----------|
+| "Your weekly digest is ready" | "Yo fam, check this out! 🔥" |
+| "Saturation threshold reached" | "This trend is, like, totally blown up now" |
+| "Configure your preferences" | "Mess with your settings however you want" |
+
+**Writing Tip:** Write to a colleague, not a customer. Respect their intelligence. Avoid slang, excessive emoji, or overly casual language.
+
+---
+
+#### Attribute 5: Action-Oriented
+**Definition:** Focused on what the user can do next. Every message should enable action.
+
+| Do (✓) | Don't (✗) |
+|--------|-----------|
+| "Create video now" | "Trend information is available for your review" |
+| "Add niche to monitor" | "You don't have any niches selected" |
+| "Connect Slack →" | "Slack integration option exists" |
+
+**Writing Tip:** Frame everything around the user's next step. Use verbs. Include CTAs even in small messages.
+
+---
+
+### 8.2 Tone Variations by Context
+
+Tone adapts to the situation while maintaining our core voice. Here's how to modulate:
+
+#### Alert Notifications (Urgent, Factual)
+**Tone Priority:** Speed > Everything else
+
+| Element | Guideline | Example |
+|---------|-----------|---------|
+| **Headline** | Icon + trend type + location | "🔥 Trend Alert: Sound surging in #beauty" |
+| **Growth Data** | Percentage + timeframe | "+340% in 3 hours" |
+| **Action Window** | Specific timeframe | "Window: 6-8 hours" |
+| **CTA** | Single verb + urgency | "Create now" / "View details" |
+
+**Before/After Examples:**
+
+❌ *"We wanted to let you know that we've detected an interesting trend in the beauty category. The sound 'Soft Glam' seems to be gaining some traction. You might want to consider using it in your next video."*
+
+✓ *"🔥 TREND ALERT: Sound 'soft glam' surging 340% in #beauty. 847 → 2,891 videos in 3 hours. Window: 6 hours. [Create now →]"*
+
+---
+
+#### Error Messages (Helpful, Clear)
+**Tone Priority:** Solution > Blame
+
+| Severity | Tone | Example |
+|----------|------|---------|
+| **Low** (validation) | Neutral, guiding | "Enter a valid email address" |
+| **Medium** (connection) | Helpful, specific | "Couldn't connect to Slack. Check your webhook URL." |
+| **High** (system) | Direct, apologetic | "Service temporarily unavailable. Retrying in 30 seconds." |
+
+**Before/After Examples:**
+
+❌ *"Oops! Something went wrong with your request. Please try again later or contact support if the problem persists."*
+
+✓ *"Slack connection failed. Check webhook URL in Settings → Integrations."*
+
+---
+
+#### Success Messages (Confirming, Encouraging)
+**Tone Priority:** Validation > Celebration
+
+| Context | Tone | Example |
+|---------|------|---------|
+| **Action complete** | Factual confirmation | "Alert configured" |
+| **Milestone reached** | Measured celebration | "10 trends detected this week" |
+| **Onboarding complete** | Forward-looking | "You're all set. First alert coming soon." |
+
+**Before/After Examples:**
+
+❌ *"Congratulations! You have successfully completed the setup process for your Trendscope account. Great job!"*
+
+✓ *"Setup complete. Monitoring 5 niches. First alert within 24 hours."*
+
+---
+
+#### Empty States (Encouraging, Guiding)
+**Tone Priority:** Possibility > Lack
+
+| Context | Tone | Example |
+|---------|------|---------|
+| **No alerts yet** | Patient, informative | "No trends detected yet. Add more niches to expand coverage." |
+| **No niches selected** | Directive | "Select niches to start monitoring" |
+| **No data** | Reassuring | "Data collecting. Check back in 1 hour." |
+
+---
+
+#### Onboarding (Welcoming, Guiding)
+**Tone Priority:** Progress > Perfection
+
+| Stage | Tone | Example |
+|-------|------|---------|
+| **Welcome** | Warm, direct | "Welcome to Trendscope. Let's set up your first alert." |
+| **Setup** | Step-by-step | "Step 2 of 3: Select your niches" |
+| **First value** | Anticipatory | "First alert coming within 24 hours." |
+
+---
+
+### 8.3 Word Choice Guidelines
+
+#### Do's and Don'ts Dictionary
+
+| Use This (✓) | Not This (✗) | Why |
+|--------------|--------------|-----|
+| **Alert** | Notification | "Alert" implies urgency and importance |
+| **Detected** | Found / Discovered | More precise, technical |
+| **Saturation** | Popularity / Full | Industry term, more specific |
+| **Velocity** | Speed / Growth rate | Bloomberg Terminal language |
+| **Niche** | Category / Topic | Creator economy terminology |
+| **Window** | Opportunity / Time | Implies urgency and limits |
+| **Monitor** | Watch / Track | Active, continuous action |
+| **Configure** | Set up / Change | Professional, precise |
+| **Trending** | Popular / Viral | Specific to our domain |
+
+#### Words We Avoid
+
+| Word/Phrase | Replace With | Reason |
+|-------------|--------------|--------|
+| "Just" | Delete entirely | Weakens statement |
+| "Really" | Delete or use data | "Really fast" → "+400%" |
+| "Very" | Delete or be specific | "Very popular" → "10K videos" |
+| "Things" | Be specific | "Several things" → "3 trends" |
+| "Stuff" | Never use | Unprofessional |
+| "Kind of" | Delete | Hedging language |
+| "Sort of" | Delete | Hedging language |
+| "Basically" | Delete | Condescending |
+| "Obviously" | Delete | Assumes too much |
+| "Simply" | Delete | Can feel patronizing |
+| "Hey" / "Hi there" | Use name or skip | Too casual |
+| "Thanks!" | "Thank you" | Exclamation overuse |
+| "Oops!" | State the issue | Too playful |
+| "Ouch!" | Never use | Unprofessional |
+
+#### Numbers and Data Language
+
+| Guideline | Do (✓) | Don't (✗) |
+|-----------|--------|-----------|
+| Use numerals | "3 alerts" | "Three alerts" |
+| Be specific | "Updated 2 minutes ago" | "Recently updated" |
+| Use percentages | "+340% growth" | "Growing fast" |
+| Abbreviate large numbers | "2.3M views" | "2,300,000 views" |
+| Use ranges sparingly | "6-8 hours" | "About 6 to 8 hours" |
+
+---
+
+### 8.4 Sentence Structure Preferences
+
+#### Length Guidelines
+
+| Context | Target Length | Example |
+|---------|---------------|---------|
+| **Headlines** | 3-6 words | "Trend Detected in #Beauty" |
+| **Alert body** | 1-2 sentences | "Sound surging 340% in 3 hours. Window: 6 hours." |
+| **Button labels** | 1-3 words | "Create now" / "View details" |
+| **Error messages** | 1 sentence + solution | "Connection failed. Check URL." |
+| **Body copy** | Under 25 words per sentence | — |
+
+#### Structure Patterns
+
+**1. Front-Load Important Information**
+
+❌ *"We wanted to let you know that a new trend has been detected in your monitored niches."*
+
+✓ *"Trend detected: #beauty"*
+
+**2. Use Active Voice**
+
+❌ *"The alert was sent by our system."*
+
+✓ *"Alert sent."*
+
+**3. Prefer Present Tense**
+
+❌ *"Your report will be ready soon."*
+
+✓ *"Report generating. Check back in 5 minutes."*
+
+**4. Omit Unnecessary Words**
+
+❌ *"Please click the button below in order to configure your settings."*
+
+✓ *"Configure settings →"*
+
+**5. Use Fragments for Impact**
+
+❌ *"The saturation level is currently at 87 percent."*
+
+✓ *"Saturation: 87%"*
+
+---
+
+### 8.5 Alert Message Templates & Examples
+
+#### Template 1: Trend Alert (Sound)
+
+```
+🔥 TREND ALERT: [Sound Name]
+
+Niche: #[niche]
+Growth: +[X]% in [timeframe]
+Videos: [current count] (↑[increase])
+Saturation: [X]%
+Velocity Score: [X]/100
+Window: [timeframe]
+
+[View Details →]  [Create Video →]
+```
+
+**Example:**
+```
+🔥 TREND ALERT: "Soft Glam Transformation"
+
+Niche: #beauty
+Growth: +340% in 3 hours
+Videos: 2,891 (↑2,044)
+Saturation: 12%
+Velocity Score: 89/100
+Window: 6-8 hours
+
+[View Details →]  [Create Video →]
+```
+
+---
+
+#### Template 2: Trend Alert (Hashtag)
+
+```
+📈 HASHTAG ALERT: #[hashtag]
+
+Related: #[tag1], #[tag2], #[tag3]
+Growth: +[X]% in [timeframe]
+Cross-niche: [niche1], [niche2]
+Saturation: [X]%
+Window: [timeframe]
+
+[Explore →]
+```
+
+**Example:**
+```
+📈 HASHTAG ALERT: #QuietLuxury
+
+Related: #stealthwealth, #oldmoney, #minimalstyle
+Growth: +280% in 6 hours
+Cross-niche: fashion, lifestyle, travel
+Saturation: 18%
+Window: 12-18 hours
+
+[Explore →]
+```
+
+---
+
+#### Template 3: Format/Pattern Alert
+
+```
+🎬 FORMAT ALERT: [Format Name]
+
+Type: [POV/Transition/Story/etc]
+Pattern: [brief description]
+Niches: [list]
+Adoption: [X] creators in [timeframe]
+Window: [timeframe]
+
+[See Examples →]
+```
+
+**Example:**
+```
+🎬 FORMAT ALERT: "3 Truths 1 Lie"
+
+Type: POV Story
+Pattern: Creator states 3 truths and 1 lie about their niche
+Niches: comedy, finance, beauty
+Adoption: 147 creators in 4 hours
+Window: 24-36 hours
+
+[See Examples →]
+```
+
+---
+
+#### Template 4: Saturation Warning
+
+```
+⚠️ SATURATION ALERT: [Trend Name]
+
+Status: Peaking / Oversaturated
+Saturation: [X]%
+Recommendation: [Action]
+Alternative: [If applicable]
+
+[Find Alternatives →]
+```
+
+**Example:**
+```
+⚠️ SATURATION ALERT: "Wednesday Dance"
+
+Status: Oversaturated
+Saturation: 94%
+Recommendation: Skip or find unique angle
+Alternative: "Wednesday Audio" trend emerging
+
+[Find Alternatives →]
+```
+
+---
+
+#### Template 5: Daily Digest Email
+
+```
+Subject: [X] trends detected today
+
+Good [morning/afternoon],
+
+[X] trends emerged in your monitored niches today.
+
+Top Opportunity:
+[Trend name] — Velocity: [X]/100, Saturation: [X]%
+[One-line description]
+[View →]
+
+Other Trends:
+• [Trend 2] — [brief stats]
+• [Trend 3] — [brief stats]
+
+[View All Trends →]
+
+---
+You're monitoring: [niche1], [niche2], [niche3]
+[Update Preferences →]
+```
+
+---
+
+### 8.6 UI Microcopy Patterns
+
+#### Button Labels
+
+| Action | Label | Context |
+|--------|-------|---------|
+| Primary action | "[Verb] now" | "Create now", "Connect now" |
+| Secondary action | "[Verb]" | "Configure", "Add niche" |
+| Destructive | "[Verb]" | "Remove", "Disconnect" |
+| Navigation | "[Verb] [noun]" | "View details", "See all trends" |
+| Confirmation | "[Verb]" | "Save", "Confirm", "Done" |
+
+**Button Guidelines:**
+- Start with a verb
+- 1-3 words maximum
+- No punctuation
+- "Now" adds urgency for time-sensitive actions
+
+---
+
+#### Form Labels & Placeholders
+
+| Element | Pattern | Example |
+|---------|---------|---------|
+| **Label** | Noun or Noun phrase | "Email address", "Niche selection" |
+| **Placeholder** | Hint or example | "you@example.com", "Search niches..." |
+| **Helper text** | Brief instruction | "Add up to 5 niches on Solo plan" |
+| **Error** | Issue + fix | "Enter a valid email address" |
+
+**Before/After:**
+
+❌ Label: "What should we call you?"  
+❌ Placeholder: "Your name here"  
+❌ Error: "Invalid input"
+
+✓ Label: "Full name"  
+✓ Placeholder: "Sarah Johnson"  
+✓ Error: "Enter your full name"
+
+---
+
+#### Navigation Labels
+
+| Element | Pattern | Examples |
+|---------|---------|----------|
+| **Menu items** | 1-2 words, noun | "Dashboard", "Trends", "Settings" |
+| **Tabs** | Short noun phrase | "Active Trends", "Alert History" |
+| **Breadcrumbs** | Page hierarchy | "Dashboard / Trends / #beauty" |
+| **Account** | Email or "Account" | "sarah@example.com" or "Account" |
+
+---
+
+#### Status Messages
+
+| State | Pattern | Example |
+|-------|---------|---------|
+| **Loading** | Verb + "..." | "Loading trends...", "Connecting..." |
+| **Success** | Noun + past tense verb | "Alert saved", "Slack connected" |
+| **Error** | Noun + "failed" + solution | "Connection failed. Retry?" |
+| **Empty** | "No [noun]" + guidance | "No trends yet. Add niches." |
+| **Updating** | "[Verb]ing..." + time | "Updating... 2 minutes ago" |
+
+---
+
+#### Tooltip & Helper Text
+
+| Context | Pattern | Example |
+|---------|---------|---------|
+| **Explain feature** | "[Feature] [does what]" | "Velocity score measures growth rate" |
+| **Guide action** | Verb phrase | "Click to add a niche" |
+| **Show limit** | "[X] of [Y] [noun]" | "3 of 5 niches selected" |
+| **Keyboard shortcut** | "Press [key] to [action]" | "Press / to search" |
+
+---
+
+### 8.7 Voice Consistency Checklist
+
+Use this checklist before publishing any customer-facing content:
+
+#### Voice Check (Always Apply)
+
+- [ ] **Sharp:** Is every word necessary? Cut 20%.
+- [ ] **Reliable:** Am I making promises I can keep?
+- [ ] **Fast:** Can this be read in one breath?
+- [ ] **Professional:** Would I say this to a respected colleague?
+- [ ] **Action-Oriented:** Is the next step clear?
+
+#### Tone Check (Context-Specific)
+
+- [ ] Does the urgency match the situation?
+- [ ] Am I being helpful, not apologetic (for errors)?
+- [ ] Is the celebration proportional to the milestone?
+
+#### Language Check
+
+- [ ] Did I replace "very," "really," "just," "things"?
+- [ ] Are numbers specific (not "several," "many")?
+- [ ] Is the voice active, not passive?
+- [ ] Did I front-load the important information?
+
+#### Format Check
+
+- [ ] Are headlines 3-6 words?
+- [ ] Are button labels 1-3 words, starting with a verb?
+- [ ] Is punctuation minimal and purposeful?
+- [ ] Are we using numerals, not spelled-out numbers?
+
+#### Brand Terms Check
+
+- [ ] "Alert" not "notification"
+- [ ] "Detected" not "found"
+- [ ] "Saturation" not "popularity"
+- [ ] "Velocity" not "speed"
+- [ ] "Niche" not "category"
+- [ ] "Window" not "opportunity"
+
+---
+
+### 8.8 Voice Examples by Channel
+
+#### In-App Copy
+
+**Dashboard Empty State:**
+❌ *"You don't have any trends yet. Why not add some niches to get started?"*
+
+✓ *"No trends detected yet. Add niches to expand coverage."*
+
+**Settings Saved:**
+❌ *"Great! Your settings have been successfully updated."*
+
+✓ *"Settings saved."*
+
+**Upgrade Prompt:**
+❌ *"Want to unlock more features? Upgrade to our premium plan!"*
+
+✓ *"Upgrade for unlimited alerts. 14-day trial."*
+
+---
+
+#### Email Subject Lines
+
+**Trend Alert:**
+❌ *"Check out this amazing new trend we found!"*
+
+✓ *"🔥 Trend Alert: Sound surging 340% in #beauty"*
+
+**Weekly Digest:**
+❌ *"Your Trendscope weekly summary is here!"*
+
+✓ *"12 trends this week — 3 opportunities"*
+
+**Re-engagement:**
+❌ *"We miss you! Come back to Trendscope!"*
+
+✓ *"Pause alerts or keep them coming"*
+
+---
+
+#### Push Notifications
+
+**Trend Alert:**
+❌ *"Hey! There's a new trend in beauty you might like!"*
+
+✓ *"🔥 #beauty trend: +340% in 3hrs"*
+
+**Window Closing:**
+❌ *"Hurry! This trend won't be available much longer!"*
+
+✓ *"Window closing: 2 hours left"*
+
+---
+
+#### Slack Messages
+
+**Trend Alert:**
+```
+🔥 TREND ALERT
+
+Sound: "Soft Glam"
+Niche: #beauty  
+Growth: +340% (3hrs)
+Saturation: 12%
+Window: 6hrs
+
+View: [link]
+```
+
+**Daily Digest:**
+```
+📊 Daily Digest — 3 trends detected
+
+Top: #beauty (+340%)
+Also: #finance, #gaming
+
+View all: [link]
+```
+
+---
+
+### 8.9 Writing for Different User Tiers
+
+#### Free Tier
+**Tone:** Demonstrating value, upgrade hints
+
+| Context | Copy |
+|---------|------|
+| **Alert limit reached** | "2 of 3 alerts used this week. Upgrade for unlimited." |
+| **Feature locked** | "Saturation tracking available on Solo plan." |
+| **Upgrade CTA** | "Upgrade — $29/mo, 14-day trial" |
+
+#### Solo Tier ($29/mo)
+**Tone:** Validation of smart choice, power user features
+
+| Context | Copy |
+|---------|------|
+| **Feature unlocked** | "Saturation tracking enabled." |
+| **Usage summary** | "47 alerts this month. 12 trends acted on." |
+| **Referral** | "Share Trendscope. Get 1 month free." |
+
+#### Agency Tier ($199/mo)
+**Tone:** Professional, scalable, client-focused
+
+| Context | Copy |
+|---------|------|
+| **White-label ready** | "White-label reports enabled. Add your branding." |
+| **Multi-client** | "5 client workspaces. 12 monitored niches." |
+| **API access** | "API key active. Rate limit: 10,000 req/day." |
+
+---
+
+### 8.10 Emergency & Edge Case Copy
+
+#### System Outages
+
+**Planned Maintenance:**
+```
+Maintenance scheduled
+
+Trendscope will be unavailable for 30 minutes 
+starting [time]. Alerts will resume after.
+```
+
+**Unexpected Downtime:**
+```
+Service temporarily unavailable
+
+Monitoring paused. Restoring now. 
+ETA: 15 minutes. Alerts will resume automatically.
+```
+
+---
+
+#### Data Discrepancies
+
+**Stale Data:**
+```
+Data delayed
+
+Last update: 45 minutes ago.
+Refreshing now. Check back in 5 minutes.
+```
+
+**Partial Data:**
+```
+Partial data available
+
+Some trend metrics updating. Core data current.
+Full update: 10 minutes.
+```
+
+---
+
+#### User Errors
+
+**Rate Limit Hit:**
+```
+API limit reached
+
+10,000 requests/day limit hit. 
+Resets at midnight UTC (8 hours).
+Upgrade for higher limits.
+```
+
+**Invalid Configuration:**
+```
+Slack webhook invalid
+
+Check webhook URL in Settings → Integrations.
+Format: https://hooks.slack.com/services/...
+```
+
+## 09 Imagery & Iconography
 
 ### Iconography Style
 
@@ -317,7 +999,7 @@ Standard ◄──────────────────────�
 
 ---
 
-## 09 UI Component Patterns
+## 10 UI Component Patterns
 
 ### Buttons
 
@@ -384,7 +1066,7 @@ Standard ◄──────────────────────�
 
 ---
 
-## 10 Motion & Animation
+## 11 Motion & Animation
 
 ### Animation Principles
 - **Purposeful:** Every animation guides attention or provides feedback
@@ -411,7 +1093,7 @@ Standard ◄──────────────────────�
 
 ---
 
-## 11 Email & Transactional Templates
+## 12 Email & Transactional Templates
 
 ### Email Header
 - Logo: Wordmark, 120px width, centered
@@ -435,7 +1117,7 @@ Standard ◄──────────────────────�
 
 ---
 
-## 12 File Naming Conventions
+## 13 File Naming Conventions
 
 Use lowercase with hyphens:
 ```
@@ -467,7 +1149,7 @@ assets/
 
 ---
 
-## 13 Quick Reference
+## 14 Quick Reference
 
 ### Brand in 3 Words
 **Fast. Intelligent. Actionable.**
@@ -492,3 +1174,4 @@ Before writing copy, ask:
 ---
 
 *Version 1.0 | Created: 2026-02-16 | Next Review: Post-MVP Launch*
+
