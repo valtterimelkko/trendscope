@@ -1,6 +1,6 @@
-# TrendScope Git Branch Structure
+# Trendscope Git Branch Structure
 
-**Project:** TrendScope - TikTok Trend Intelligence Platform  
+**Project:** Trendscope - TikTok Trend Intelligence Platform  
 **Strategy:** Linear with Stage Prefixes (Sequential Development)  
 **Created:** 2026-02-16
 
@@ -324,7 +324,7 @@ STAGES=(
     "S06-TASK-601/monitoring-observability"
 )
 
-echo "Creating TrendScope feature branches..."
+echo "Creating Trendscope feature branches..."
 
 # Ensure on main
 git checkout main

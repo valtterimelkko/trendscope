@@ -1,4 +1,4 @@
-# TrendScope Technical PRD
+# Trendscope Technical PRD
 
 **The Bloomberg Terminal for Short-Form Video Trends**
 
@@ -9,7 +9,7 @@ Date: 2026-02-16
 
 ## 1. Executive Summary
 
-TrendScope is a real-time TikTok trend detection and alerting platform that monitors velocity at the micro-influencer layer (<10k followers) to identify emerging trends 6-24 hours before mainstream saturation. The platform uses a self-hosted scraping architecture with IPRoyal proxies to achieve 10-50x cost savings over managed APIs.
+Trendscope is a real-time TikTok trend detection and alerting platform that monitors velocity at the micro-influencer layer (<10k followers) to identify emerging trends 6-24 hours before mainstream saturation. The platform uses a self-hosted scraping architecture with IPRoyal proxies to achieve 10-50x cost savings over managed APIs.
 
 **Core Value Proposition:** Transform 4+ hours of daily manual "doomscrolling" into automated, actionable intelligence delivered via Slack, email, and dashboard alerts.
 
