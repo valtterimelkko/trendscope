@@ -216,7 +216,7 @@ To refine this intent document, the following questions should be answered:
 
 ### Technical Priorities
 7. ✅ **Platform Priority:** TikTok ONLY for MVP. No expansion to other platforms envisioned at this stage.
-8. **Visual Analysis:** Is visual similarity detection required for MVP or can it come later?
+8. ✅ **Visual Analysis:** Visual similarity detection architecture designed (CLIP/DINOv2 + FAISS/Milvus). Implementation priority TBD based on resource availability and early user feedback.
 9. ✅ **Real-time vs Near Real-time:** Tier-based latency:
    - Free: Weekly digest
    - Solo: 2-hour latency

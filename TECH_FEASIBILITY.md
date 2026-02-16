@@ -1129,7 +1129,7 @@ def process_video(video_data):
 1. **Use Self-Hosted TikTok-Api as primary** - Lowest cost (~$7-45/month with existing infrastructure)
 2. **Keep JoTucker RapidAPI as fallback** - Zero-cost validation, $5/month if needed
 3. **Implement 72-hour hot window architecture** - Process and discard, minimal storage
-4. **Skip visual similarity for MVP** - Focus on sound/hashtag trends first
+4. **Visual similarity detection** - Architecture documented, implementation timing TBD based on resource availability
 5. **Use adaptive thresholds** - Self-adjusting system reduces manual tuning
 6. **Build for your infrastructure** - No new VPS, no managed databases needed
 
