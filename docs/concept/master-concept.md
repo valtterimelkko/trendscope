@@ -1,4 +1,7 @@
-# TikTok Trend Intelligence Platform - Master Concept
+# Trendscope - TikTok Trend Intelligence Platform
+
+**Domain:** trendscope.io  
+**Tagline:** "Trend Intelligence, Delivered First"
 
 ## Executive Summary
 

@@ -1,4 +1,4 @@
-# Velocity Brand Kit & Guide
+# Trendscope Brand Kit & Guide
 
 > **The Bloomberg Terminal for Short-Form Video Trends**
 
@@ -15,7 +15,7 @@ Become the indispensable early-warning system for the creator economy, where spe
 ### Value Proposition
 > **"Find the signal in the noise. Move while the window is open."**
 
-Velocity detects trends in their first hours by monitoring velocity at the micro-influencer layer—alerting users within hours, not days, of a trend emerging.
+Trendscope detects trends in their first hours by monitoring velocity at the micro-influencer layer—alerting users within hours, not days, of a trend emerging.
 
 ### Brand Promise
 - **Speed First:** Alerts within 6-24 hours of trend emergence
@@ -26,14 +26,14 @@ Velocity detects trends in their first hours by monitoring velocity at the micro
 
 ## 02 Naming Strategy
 
-### Selected Name: **Velocity**
+### Selected Name: **Trendscope**
 
 **Rationale:**
 - Directly communicates the core value proposition (speed of detection)
 - Evokes momentum, acceleration, and forward movement
 - Professional yet dynamic—appropriate for B2B SaaS
 - Memorable, single-word name with strong brand potential
-- Domain-flexible (velocitytrends.com, usevelocity.com, etc.)
+- Domain: trendscope.io
 
 **Alternative Names Considered:**
 | Name | Direction | Status |
@@ -75,7 +75,7 @@ A blend of **Smart Professor** (intelligence, expertise) and **Efficient Assista
 ```
 Casual ◄──────────────────────────────► Formal
 TrendTok                                    Exolyt
-                    🎯 VELOCITY
+                    🎯 TRENDSCOPE
                     (Professional but Approachable)
 ```
 
@@ -87,7 +87,7 @@ TrendTok                                    Exolyt
 
 **Visual Metaphor:** A forward-leaning waveform or pulse line that suggests:
 - Sound waves (audio trends)
-- Velocity/acceleration curves
+- Trendscope/acceleration curves
 - Real-time data visualization
 - Forward momentum
 
@@ -102,7 +102,7 @@ TrendTok                                    Exolyt
 
 ### Logo Specifications
 
-**Clear Space:** Maintain minimum padding equal to the height of the "V" in Velocity on all sides.
+**Clear Space:** Maintain minimum padding equal to the height of the "V" in Trendscope on all sides.
 
 **Minimum Sizes:**
 - Digital: 80px width (wordmark), 24px (icon)
@@ -250,7 +250,7 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, san
 
 | Context | Tone | Example |
 |---------|------|---------|
-| **Onboarding** | Welcoming, guiding | "Welcome to Velocity. Let's set up your first alert." |
+| **Onboarding** | Welcoming, guiding | "Welcome to Trendscope. Let's set up your first alert." |
 | **Success** | Confirming, encouraging | "Alert configured. You'll be the first to know." |
 | **Error** | Helpful, clear | "We couldn't connect to Slack. Check your webhook URL." |
 | **Alert** | Urgent, factual | "🔥 Trend Alert: Sound 'X' surging 340% in #beauty" |

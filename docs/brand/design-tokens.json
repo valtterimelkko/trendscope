@@ -1,7 +1,7 @@
 {
-  "name": "Velocity",
+  "name": "Trendscope",
   "version": "1.0.0",
-  "description": "Design tokens for the Velocity trend intelligence platform",
+  "description": "Design tokens for the Trendscope trend intelligence platform",
   "created": "2026-02-16",
   
   "colors": {
@@ -205,19 +205,19 @@
     "trend": {
       "highGrowth": {
         "value": "#10B981",
-        "description": ">300% velocity"
+        "description": ">300% trendscope"
       },
       "mediumGrowth": {
         "value": "#3B82F6",
-        "description": "100-300% velocity"
+        "description": "100-300% trendscope"
       },
       "lowGrowth": {
         "value": "#64748B",
-        "description": "<100% velocity"
+        "description": "<100% trendscope"
       },
       "declining": {
         "value": "#94A3B8",
-        "description": "Negative velocity"
+        "description": "Negative trendscope"
       }
     }
   },

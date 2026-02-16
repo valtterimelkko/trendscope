@@ -1,4 +1,4 @@
-# Velocity Microcopy Dictionary
+# Trendscope Microcopy Dictionary
 
 > Standardized UI terminology for consistent product language
 
@@ -6,7 +6,7 @@
 
 ## Naming Philosophy
 
-Velocity's microcopy follows three principles:
+Trendscope's microcopy follows three principles:
 1. **Clarity over Cleverness** — Users shouldn't think about what words mean
 2. **Action-Oriented** — Every phrase should enable user action
 3. **Consistent Patterns** — Same terms everywhere reduce cognitive load
@@ -71,7 +71,7 @@ Velocity's microcopy follows three principles:
 | Trend notification | **"Alert"** | Notification | Ping, buzz, heads up |
 | Alert delivery | **"Send"** | Deliver | Fire, push |
 | Alert configuration | **"Alert settings"** | Preferences | Rules, triggers |
-| Rate of growth | **"Velocity"** | Growth rate | Speed, momentum |
+| Rate of growth | **"Trendscope"** | Growth rate | Speed, momentum |
 | Category | **"Niche"** | Category | Bucket, group |
 | Content type | **"Format"** | Template | Style, type |
 | Audio clip | **"Sound"** | Audio | Song, track, audio clip |
@@ -94,7 +94,7 @@ Velocity's microcopy follows three principles:
 | Growth percentage | **"Growth"** or **"+X%"** | "+340% growth" |
 | Time period | **"Last X hours"** | "Last 24 hours" |
 | All-time | **"Total"** | "Total videos: 12.4K" |
-| Current value | **"Current"** | "Current velocity: +180%" |
+| Current value | **"Current"** | "Current trendscope: +180%" |
 | Data freshness | **"Updated X [time] ago"** | "Updated 5 min ago" |
 | Data source | **"Tracking"** | "Tracking 2.4M videos" |
 
@@ -168,7 +168,7 @@ Velocity's microcopy follows three principles:
 |---------|-------------|
 | Password requirements | "Must be at least 8 characters with a number and symbol." |
 | Webhook setup | "Find this in your Slack app's Incoming Webhooks settings." |
-| Velocity threshold | "Only alert when growth exceeds this percentage per hour." |
+| Trendscope threshold | "Only alert when growth exceeds this percentage per hour." |
 | Niche selection | "Select up to 5 niches on the Free plan." |
 
 ### Success Messages
@@ -242,7 +242,7 @@ Growing +340% in #beauty
 847 → 2,891 videos in 3 hours
 Saturation: ~18 hours until mainstream
 
-View details: https://velocity.io/trends/123
+View details: https://trendscope.io/trends/123
 ```
 
 ### Email Digest Format
@@ -267,7 +267,7 @@ We detected [X] trending sounds in your niches this [period]:
 [View All Trends button]
 
 ---
-Velocity Team
+Trendscope Team
 Unsubscribe | Update preferences
 ```
 
@@ -287,7 +287,7 @@ VELOCITY: [TREND_NAME] surging +[VELOCITY]% #[NICHE]. [LINK]
 
 | Context | Tone | Example |
 |---------|------|---------|
-| Onboarding | Welcoming, guiding | "Welcome to Velocity. Let's set up your first alert." |
+| Onboarding | Welcoming, guiding | "Welcome to Trendscope. Let's set up your first alert." |
 | Alert | Urgent, factual | "🔥 Trend Alert: Sound 'X' surging 340% in #beauty" |
 | Success | Confident, concise | "Alert created." |
 | Error | Helpful, clear | "We couldn't connect to Slack. Check your webhook URL." |

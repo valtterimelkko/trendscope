@@ -1,12 +1,12 @@
-# Velocity Color Palette
+# Trendscope Color Palette
 
-> Complete color specifications for the Velocity brand
+> Complete color specifications for the Trendscope brand
 
 ---
 
 ## Color Philosophy
 
-Velocity's color palette reflects its core values:
+Trendscope's color palette reflects its core values:
 - **Speed & Precision:** Clean blues suggest technology and trust
 - **Professional Reliability:** Deep slate grays convey stability
 - **Actionable Clarity:** Clear semantic colors for immediate comprehension
