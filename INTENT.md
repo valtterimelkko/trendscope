@@ -225,7 +225,7 @@ To refine this intent document, the following questions should be answered:
 
 ### Competitive Differentiation
 10. **Community Features:** Should we build creator community features or stay purely tool-focused?
-11. **Script Generation:** How automated should script suggestions be?
+11. ✅ **Script Generation:** AI-generated script suggestions using Kimi k-2.5 (via coding plan quota). Can analyze trend video frames and generate contextual scripts. Automation level TBD based on user feedback.
 12. **Education:** Do users need trend education or just raw alerts?
 
 ---

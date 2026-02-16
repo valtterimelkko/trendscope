@@ -495,6 +495,103 @@ Segment embeddings = cluster of frame embeddings
               └──────────────┘
 ```
 
+---
+
+### 4.5 AI-Powered Trend Analysis (Optional Enhancement)
+
+Beyond pure visual similarity detection, multimodal LLMs can provide semantic understanding of trending content.
+
+#### Hybrid Architecture Recommendation
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    TREND ANALYSIS PIPELINE                  │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  REAL-TIME LAYER (Fast, Cost-Effective)                     │
+│  ├── CLIP/DINOv2 embeddings (self-hosted)                   │
+│  ├── FAISS similarity search                                │
+│  └── Detect: "These 50 videos look similar"                 │
+│                                                              │
+│  ANALYSIS LAYER (LLM-enhanced, Async)                       │
+│  ├── Sample 5-10 videos from detected trend                 │
+│  ├── Send frames to multimodal LLM                          │
+│  └── Generate: Context, script ideas, format name           │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### Why Not Pure LLM for Similarity Detection?
+
+| Factor | CLIP + FAISS | Multimodal LLM (API) |
+|--------|--------------|----------------------|
+| **Cost at 50K videos/day** | ~$0 (self-hosted) | $2,500-25,000/day |
+| **Latency** | < 50ms | 1-5 seconds |
+| **Scalability** | Millions of videos | Rate limited (100-500 req/min) |
+| **Privacy** | On-premise data | Sent to external API |
+
+#### Recommended: Kimi k-2.5 for Analysis Layer
+
+**Primary Choice: Kimi k-2.5 (via Kimi Coding Plan)**
+
+The project has access to a large quota under the Kimi coding plan, making Kimi k-2.5 the cost-effective choice for:
+
+| Use Case | Input | Output |
+|----------|-------|--------|
+| **Trend Context** | 5-10 video keyframes | "This trend is about X theme, popular with Y demographic" |
+| **Script Generation** | Trend video frames + niche | Generate script suggestions based on visual content |
+| **Format Categorization** | Video frames | "This is a POV format, transition type, etc." |
+| **Content Moderation** | Video frames | Filter out NSFW/brand-unsafe trends |
+
+**Alternative Options (if needed):**
+- GPT-4V (OpenAI) - Higher cost, widely tested
+- Gemini Pro Vision (Google) - Competitive pricing, good multimodal capabilities
+
+#### Implementation Approach
+
+```python
+# Example: Using Kimi for trend analysis
+async def analyze_trend_with_kimi(video_frames: List[bytes], niche: str) -> dict:
+    """
+    Analyze a detected trend using Kimi k-2.5.
+    Called asynchronously after CLIP-based similarity detection.
+    """
+    prompt = f"""
+    Analyze these frames from a trending TikTok video in the {niche} niche.
+    
+    Provide:
+    1. Brief description of the visual format
+    2. Why this might be trending
+    3. 3 script angles for creators to adapt this trend
+    4. Target audience demographic
+    5. Brand safety assessment (Safe/Caution/Unsafe)
+    """
+    
+    # Using Kimi API (via coding plan quota)
+    response = await kimi_client.chat.completions.create(
+        model="kimi-k2.5",
+        messages=[{
+            "role": "user",
+            "content": [
+                {"type": "text", "text": prompt},
+                *[{"type": "image", "image": frame} for frame in video_frames]
+            ]
+        }]
+    )
+    
+    return parse_analysis(response.choices[0].message.content)
+```
+
+#### Cost Comparison: Kimi vs. Alternatives
+
+| Service | Cost per 1K Image Analysis | Notes |
+|---------|---------------------------|-------|
+| **Kimi k-2.5** | Effectively $0 (within coding plan quota) | ✅ **RECOMMENDED** - Large quota available |
+| GPT-4V | ~$5-10 | Industry standard, proven |
+| Gemini Pro Vision | ~$1.25-2.50 | Google's competitive offering |
+
+**Recommendation:** Use Kimi k-2.5 for the analysis layer to minimize costs while leveraging multimodal capabilities for trend context and script generation.
+
 **Storage Tiers:**
 | Tier | Data | Storage | Retention |
 |------|------|---------|-----------|
