@@ -1,0 +1,99 @@
+{
+  "test_execution": {
+    "timestamp": "2026-01-10T10:15:24.326477",
+    "project_root": "/root/meta-project-for-mvps/.claude",
+    "local_scripts": "/root/meta-project-for-mvps/.claude/.claude/scripts/supabase"
+  },
+  "summary": {
+    "total_tests": 20,
+    "passed": 13,
+    "failed": 7,
+    "warnings": 0,
+    "success_rate": "65.0%"
+  },
+  "passed_tests": [
+    {
+      "name": "Global config file exists",
+      "details": "Found at /etc/supabase/config.conf"
+    },
+    {
+      "name": "Global projects file exists",
+      "details": "Found at /etc/supabase/projects.json"
+    },
+    {
+      "name": "Global config file permissions",
+      "details": "Mode 600 is acceptable"
+    },
+    {
+      "name": "No absolute /root paths",
+      "details": "All skills use relative ~/.claude/scripts/ paths"
+    },
+    {
+      "name": "Config file readable",
+      "details": "Found 2 configuration entries"
+    },
+    {
+      "name": "SUPABASE_ACCESS_TOKEN present",
+      "details": "Found in config"
+    },
+    {
+      "name": "SUPABASE_ORG_ID present",
+      "details": "Found in config"
+    },
+    {
+      "name": "Projects file structure",
+      "details": "Valid JSON object with 0 projects"
+    },
+    {
+      "name": "supabase_api module import",
+      "details": "Successfully imported from local scripts"
+    },
+    {
+      "name": "Function: load_config",
+      "details": "Available in supabase_api module"
+    },
+    {
+      "name": "Function: load_projects",
+      "details": "Available in supabase_api module"
+    },
+    {
+      "name": "Function: get_access_token",
+      "details": "Available in supabase_api module"
+    },
+    {
+      "name": "Function: management_api_request",
+      "details": "Available in supabase_api module"
+    }
+  ],
+  "failed_tests": [
+    {
+      "name": "Local scripts directory",
+      "reason": "Directory not found: /root/meta-project-for-mvps/.claude/.claude/scripts/supabase"
+    },
+    {
+      "name": "supabase_api.py",
+      "reason": "File not found"
+    },
+    {
+      "name": "supabase-project-manage/SKILL.md",
+      "reason": "File not found"
+    },
+    {
+      "name": "supabase-database/SKILL.md",
+      "reason": "File not found"
+    },
+    {
+      "name": "supabase-auth-setup/SKILL.md",
+      "reason": "File not found"
+    },
+    {
+      "name": "supabase-deployer/SKILL.md",
+      "reason": "File not found"
+    },
+    {
+      "name": "Test script path",
+      "reason": "Not found: /root/meta-project-for-mvps/.claude/.claude/scripts/supabase/save_project_credentials.py"
+    }
+  ],
+  "warnings": []
+}

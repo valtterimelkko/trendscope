@@ -1,0 +1,94 @@
+{
+  "name": "content-creator",
+  "displayName": "Content Creator",
+  "description": "Content management and publishing platform for creators, writers, and media teams",
+  "version": "1.0.0",
+  "category": "content",
+  "personality": {
+    "style": "creative",
+    "tone": "editorial",
+    "colorMode": "light",
+    "accent": "warm"
+  },
+  "techStack": {
+    "frontend": "next@14",
+    "styling": "tailwindcss",
+    "database": "supabase",
+    "auth": "supabase-auth",
+    "payments": "stripe"
+  },
+  "billing": {
+    "model": "feature-limits",
+    "tiers": [
+      {
+        "name": "Starter",
+        "price": 0,
+        "limits": {
+          "posts": 10,
+          "mediaStorage": "500MB",
+          "scheduledPosts": 5,
+          "teamMembers": 1
+        }
+      },
+      {
+        "name": "Creator",
+        "price": 15,
+        "interval": "month",
+        "limits": {
+          "posts": 100,
+          "mediaStorage": "10GB",
+          "scheduledPosts": 50,
+          "teamMembers": 3
+        }
+      },
+      {
+        "name": "Studio",
+        "price": 39,
+        "interval": "month",
+        "limits": {
+          "posts": "unlimited",
+          "mediaStorage": "100GB",
+          "scheduledPosts": "unlimited",
+          "teamMembers": 10
+        }
+      }
+    ]
+  },
+  "features": [
+    "split-composer",
+    "thread-editor",
+    "calendar-grid",
+    "channel-toggle",
+    "post-preview",
+    "media-library",
+    "content-scheduling",
+    "dark-mode"
+  ],
+  "brandTokens": [
+    "--color-primary",
+    "--color-secondary",
+    "--color-accent",
+    "--color-background",
+    "--color-foreground",
+    "--color-muted",
+    "--color-success",
+    "--color-warning",
+    "--color-error",
+    "--color-info",
+    "--font-display",
+    "--font-body"
+  ],
+  "contentSlots": 45,
+  "dependencies": {
+    "ui": ["@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu", "@radix-ui/react-tabs"],
+    "editor": ["@tiptap/react", "@tiptap/starter-kit", "@tiptap/extension-image", "@tiptap/extension-link"],
+    "media": ["react-dropzone"],
+    "calendar": ["date-fns"]
+  },
+  "estimatedSetupTime": "15 minutes",
+  "extraPages": [
+    "/dashboard/calendar",
+    "/dashboard/media",
+    "/settings/channels"
+  ]
+}

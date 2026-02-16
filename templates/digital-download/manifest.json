@@ -1,0 +1,87 @@
+{
+  "name": "digital-download",
+  "displayName": "Digital Download Portal",
+  "description": "Lightweight SaaS template for selling and delivering downloadable file packs with gated access",
+  "version": "1.0.0",
+  "category": "commerce",
+  "personality": {
+    "style": "clean",
+    "tone": "trustworthy",
+    "colorMode": "light",
+    "accent": "neutral"
+  },
+  "techStack": {
+    "frontend": "next@14",
+    "styling": "tailwindcss",
+    "database": "supabase",
+    "auth": "supabase-auth",
+    "payments": "stripe"
+  },
+  "billing": {
+    "model": "tiered-download-access",
+    "tiers": [
+      {
+        "name": "Starter",
+        "price": 0,
+        "limits": {
+          "downloads": 3,
+          "storage": "500MB"
+        }
+      },
+      {
+        "name": "Download Pass",
+        "price": 15,
+        "interval": "month",
+        "limits": {
+          "downloads": 50,
+          "storage": "10GB"
+        }
+      },
+      {
+        "name": "Pro Library",
+        "price": 39,
+        "interval": "month",
+        "limits": {
+          "downloads": "unlimited",
+          "storage": "100GB"
+        }
+      }
+    ]
+  },
+  "features": [
+    "gated-downloads",
+    "secure-file-delivery",
+    "order-history",
+    "license-key-display",
+    "landing-sales-sections",
+    "simple-cta-pricing",
+    "account-portal",
+    "light-mode-default"
+  ],
+  "brandTokens": [
+    "--color-primary",
+    "--color-secondary",
+    "--color-accent",
+    "--color-background",
+    "--color-foreground",
+    "--color-muted",
+    "--color-success",
+    "--color-warning",
+    "--color-error",
+    "--color-info",
+    "--font-display",
+    "--font-body"
+  ],
+  "contentSlots": 45,
+  "dependencies": {
+    "ui": ["@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu", "@radix-ui/react-tabs"],
+    "uploads": ["react-dropzone"],
+    "date": ["date-fns"]
+  },
+  "estimatedSetupTime": "15 minutes",
+  "extraPages": [
+    "/downloads",
+    "/billing",
+    "/settings/files"
+  ]
+}

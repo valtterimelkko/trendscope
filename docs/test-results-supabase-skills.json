@@ -1,0 +1,142 @@
+{
+  "test_execution": {
+    "timestamp": "2026-02-08T10:20:42.903593",
+    "project_root": "/root/meta-project-claudekimi",
+    "local_scripts": "/root/meta-project-claudekimi/.shared/scripts/supabase"
+  },
+  "summary": {
+    "total_tests": 31,
+    "passed": 31,
+    "failed": 0,
+    "warnings": 0,
+    "success_rate": "100.0%"
+  },
+  "passed_tests": [
+    {
+      "name": "Global config file exists",
+      "details": "Found at /etc/supabase/config.conf"
+    },
+    {
+      "name": "Global projects file exists",
+      "details": "Found at /etc/supabase/projects.json"
+    },
+    {
+      "name": "Global config file permissions",
+      "details": "Mode 600 is acceptable"
+    },
+    {
+      "name": "Local scripts directory exists",
+      "details": "Found at /root/meta-project-claudekimi/.shared/scripts/supabase"
+    },
+    {
+      "name": "Script found: supabase_api.py",
+      "details": "/root/meta-project-claudekimi/.shared/scripts/supabase/supabase_api.py"
+    },
+    {
+      "name": "Script found: save_project_credentials.py",
+      "details": "/root/meta-project-claudekimi/.shared/scripts/supabase/save_project_credentials.py"
+    },
+    {
+      "name": "Script found: create_project.py",
+      "details": "/root/meta-project-claudekimi/.shared/scripts/supabase/create_project.py"
+    },
+    {
+      "name": "Script found: list_projects.py",
+      "details": "/root/meta-project-claudekimi/.shared/scripts/supabase/list_projects.py"
+    },
+    {
+      "name": "Script found: get_api_keys.py",
+      "details": "/root/meta-project-claudekimi/.shared/scripts/supabase/get_api_keys.py"
+    },
+    {
+      "name": "Script found: execute_sql.py",
+      "details": "/root/meta-project-claudekimi/.shared/scripts/supabase/execute_sql.py"
+    },
+    {
+      "name": "Script found: list_tables.py",
+      "details": "/root/meta-project-claudekimi/.shared/scripts/supabase/list_tables.py"
+    },
+    {
+      "name": "Script found: query_table.py",
+      "details": "/root/meta-project-claudekimi/.shared/scripts/supabase/query_table.py"
+    },
+    {
+      "name": "Script found: mutate_table.py",
+      "details": "/root/meta-project-claudekimi/.shared/scripts/supabase/mutate_table.py"
+    },
+    {
+      "name": "Script found: manage_rls.py",
+      "details": "/root/meta-project-claudekimi/.shared/scripts/supabase/manage_rls.py"
+    },
+    {
+      "name": "Script found: setup_auth.py",
+      "details": "/root/meta-project-claudekimi/.shared/scripts/supabase/setup_auth.py"
+    },
+    {
+      "name": "Global config path in supabase_api.py",
+      "details": "/etc/supabase/config.conf"
+    },
+    {
+      "name": "Global projects path in supabase_api.py",
+      "details": "/etc/supabase/projects.json"
+    },
+    {
+      "name": "load_config() function exists",
+      "details": "Found in supabase_api.py"
+    },
+    {
+      "name": "load_projects() function exists",
+      "details": "Found in supabase_api.py"
+    },
+    {
+      "name": "No absolute /root paths",
+      "details": "All skills use relative ~/.shared/scripts/ paths"
+    },
+    {
+      "name": "Credential list command",
+      "details": "Successfully executed --list"
+    },
+    {
+      "name": "Config file readable",
+      "details": "Found 2 configuration entries"
+    },
+    {
+      "name": "SUPABASE_ACCESS_TOKEN present",
+      "details": "Found in config"
+    },
+    {
+      "name": "SUPABASE_ORG_ID present",
+      "details": "Found in config"
+    },
+    {
+      "name": "Projects file structure",
+      "details": "Valid JSON object with 1 projects"
+    },
+    {
+      "name": "Project mbwylvonoh... structure",
+      "details": "Has 4/4 credential fields"
+    },
+    {
+      "name": "supabase_api module import",
+      "details": "Successfully imported from local scripts"
+    },
+    {
+      "name": "Function: load_config",
+      "details": "Available in supabase_api module"
+    },
+    {
+      "name": "Function: load_projects",
+      "details": "Available in supabase_api module"
+    },
+    {
+      "name": "Function: get_access_token",
+      "details": "Available in supabase_api module"
+    },
+    {
+      "name": "Function: management_api_request",
+      "details": "Available in supabase_api module"
+    }
+  ],
+  "failed_tests": [],
+  "warnings": []
+}

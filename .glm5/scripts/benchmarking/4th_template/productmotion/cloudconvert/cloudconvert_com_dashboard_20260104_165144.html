@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="en" data-textdirection="ltr" class="loaded"><head>
+    <!-- Meta Information -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+
+
+    <title>Dashboard | CloudConvert</title>
+    <meta name="description" content="&gt;File converter service - more than 200 different audio, video, document, ebook, archive, image, spreadsheet and presentation formats supported.">
+
+
+    <link rel="shortcut icon" href="/images/logo_flat_32.png">
+    <link rel="preconnect" href="https://api.cloudconvert.com">
+
+    
+
+
+
+<!-- CSS -->
+    <link href="/css/app.css?id=a493c9a5eee922d9d995a91d33bcc809" rel="stylesheet">
+
+
+    <script nonce="">
+        window.app = {
+            env: 'production',
+            url: 'https://cloudconvert.com',
+            apiUrl: 'https://api.cloudconvert.com',
+            liveUrl: 'https://cloudconvert.com',
+            sandboxUrl: 'https://sandbox.cloudconvert.com',
+            socketioUrl: 'https://socketio.cloudconvert.com',
+            routeName: 'dashboard'
+        };
+    </script>
+
+
+
+
+            <script defer="" data-domain="cloudconvert.com" src="/js/script.js" nonce=""></script>
+        <script nonce="">window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+    
+    
+
+<style type="text/css">/* Chart.js */
+/*
+ * DOM element rendering detection
+ * https://davidwalsh.name/detect-node-insertion
+ */
+@keyframes chartjs-render-animation {
+	from { opacity: 0.99; }
+	to { opacity: 1; }
+}
+
+.chartjs-render-monitor {
+	animation: chartjs-render-animation 0.001s;
+}
+
+/*
+ * DOM element resizing detection
+ * https://github.com/marcj/css-element-queries
+ */
+.chartjs-size-monitor,
+.chartjs-size-monitor-expand,
+.chartjs-size-monitor-shrink {
+	position: absolute;
+	direction: ltr;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	pointer-events: none;
+	visibility: hidden;
+	z-index: -1;
+}
+
+.chartjs-size-monitor-expand > div {
+	position: absolute;
+	width: 1000000px;
+	height: 1000000px;
+	left: 0;
+	top: 0;
+}
+
+.chartjs-size-monitor-shrink > div {
+	position: absolute;
+	width: 200%;
+	height: 200%;
+	left: 0;
+	top: 0;
+}
+</style></head>
+
+
+
+    <body data-open="click" data-menu="vertical-menu" class="vertical-layout vertical-menu fixed-navbar menu-expanded">
+
+    <div id="app"><nav class="header-navbar navbar-expand-md navbar navbar-with-menu fixed-top navbar-dark navbar-shadow bg-gradient-navbar"><div class="navbar-wrapper container"><div class="navbar-header"><ul class="nav navbar-nav flex-row"><li class="nav-item mobile-menu d-md-none mr-auto"><a href="#" class="nav-link nav-menu-main menu-toggle hidden-xs is-active"><i class="fa fa-bars"></i></a></li> <li class="nav-item"><a href="/" class="navbar-brand"><img alt="" width="51" height="32" src="/images/logo_flat_110_borderless.png" class="brand-logo hidden-xs-down"> <h2 class="brand-text">cloud<strong>convert</strong></h2></a></li> <li class="nav-item d-md-none"><a data-toggle="collapse" data-target="#navbar-mobile" class="nav-link open-navbar-container collapse show" style=""><i class="fa fa-ellipsis-v"></i></a></li></ul></div> <div class="navbar-container content container"><div id="navbar-mobile" class="collapse navbar-collapse"><ul class="nav navbar-nav mr-auto float-left"><li class="nav-item d-none d-md-block"><a href="#" class="nav-link nav-menu-main menu-toggle hidden-xs is-active"><i class="fa fa-bars"></i></a></li> <li class="dropdown nav-item mega-dropdown tools"><a href="/" data-toggle="dropdown" class="nav-link dropdown-toggle">Tools</a> <div class="mega-dropdown-menu dropdown-menu bg-gradient-navbar"><div class="container"><ul class="row w-100"><li class="col-lg-6 col-sm-12"><h6 class="dropdown-menu-header text-uppercase"><i class="fa fa-sync-alt"></i> Convert Files</h6> <ul><li class="menu-list"><ul class="list-2-columns"><li><a href="/archive-converter" class="dropdown-item">Archive Converter</a></li> <li><a href="/audio-converter" class="dropdown-item">Audio Converter</a></li> <li><a href="/cad-converter" class="dropdown-item">CAD Converter</a></li> <li><a href="/document-converter" class="dropdown-item">Document Converter</a></li> <li><a href="/ebook-converter" class="dropdown-item">Ebook Converter</a></li> <li><a href="/font-converter" class="dropdown-item">Font Converter</a></li> <li><a href="/image-converter" class="dropdown-item">Image Converter</a></li> <li><a href="/presentation-converter" class="dropdown-item">Presentation Converter</a></li> <li><a href="/spreadsheet-converter" class="dropdown-item">Spreadsheet Converter</a></li> <li><a href="/vector-converter" class="dropdown-item">Vector Converter</a></li> <li><a href="/video-converter" class="dropdown-item">Video Converter</a></li></ul></li></ul></li> <li class="col-lg-3 col-sm-12"><h6 class="dropdown-menu-header text-uppercase"><i class="fa fa-compress"></i> Optimize Files</h6> <ul><li class="menu-list"><ul><li><a href="/compress-pdf" class="dropdown-item">Compress PDF</a></li> <li><a href="/compress-png" class="dropdown-item">Compress PNG</a></li> <li><a href="/compress-jpg" class="dropdown-item">Compress JPG</a></li> <li><a href="/pdf-ocr" class="dropdown-item">PDF OCR</a></li></ul></li></ul> <h6 class="dropdown-menu-header text-uppercase"><i class="fa fa-compress-alt"></i> Merge Files</h6> <ul><li class="menu-list"><ul><li><a href="/merge-pdf" class="dropdown-item">Merge PDF</a></li></ul></li></ul></li> <li class="col-lg-3 col-sm-12"><h6 class="dropdown-menu-header text-uppercase"><i class="fa fa-browser"></i> Capture Websites</h6> <ul><li class="menu-list"><ul><li><a href="/save-website-pdf" class="dropdown-item">Save Website as PDF</a></li> <li><a href="/website-png-screenshot" class="dropdown-item">Website PNG Screenshot</a></li> <li><a href="/website-jpg-screenshot" class="dropdown-item">Website JPG Screenshot</a></li></ul></li></ul> <h6 class="dropdown-menu-header text-uppercase"><i class="fa fa-file-archive"></i> Archives</h6> <ul><li class="menu-list"><ul><li><a href="/create-zip-archive" class="dropdown-item">Create Archive</a></li> <li><a href="/extract-zip-archive" class="dropdown-item">Extract Archive</a></li></ul></li></ul></li></ul></div></div></li> <li class="dropdown nav-item mega-dropdown"><a href="https://cloudconvert.com/api/v2" data-toggle="dropdown" class="nav-link dropdown-toggle">API</a> <div class="mega-dropdown-menu dropdown-menu bg-gradient-navbar"><div class="container"><ul class="row w-100"><li class="col-lg-3 col-sm-12"><h6 class="dropdown-menu-header text-uppercase"><i class="fa fa-sync-alt"></i>Convert Files</h6> <ul><li class="menu-list"><ul><li><a href="https://cloudconvert.com/apis/file-conversion" class="dropdown-item">File Conversion
+                                        API</a></li> <li><a href="https://cloudconvert.com/apis/office-to-pdf" class="dropdown-item">Office to PDF
+                                        API</a></li> <li><a href="https://cloudconvert.com/apis/iwork-to-pdf" class="dropdown-item">iWork to PDF
+                                        API</a></li> <li><a href="https://cloudconvert.com/apis/pdf-to-office" class="dropdown-item">PDF to Office
+                                        API</a></li> <li><a href="https://cloudconvert.com/apis/video-encoding" class="dropdown-item">Video Encoding
+                                        API</a></li></ul></li></ul></li> <li class="col-lg-3 col-sm-12"><h6 class="dropdown-menu-header text-uppercase"><i class="fa fa-browser"></i>Capture Websites</h6> <ul><li class="menu-list"><ul><li><a href="https://cloudconvert.com/apis/html-to-pdf" class="dropdown-item">HTML to PDF API</a></li> <li><a href="https://cloudconvert.com/apis/website-screenshot" class="dropdown-item">Website
+                                        Screenshot
+                                        API</a></li></ul></li></ul> <h6 class="dropdown-menu-header text-uppercase"><i class="fa fa-compress"></i>Optimize Files</h6> <ul><li class="menu-list"><ul><li><a href="https://cloudconvert.com/apis/compress-pdf" class="dropdown-item">Compress PDF
+                                        API</a></li> <li><a href="https://cloudconvert.com/apis/compress-images" class="dropdown-item">Compress Images
+                                        API</a></li></ul></li></ul></li> <li class="col-lg-3 col-sm-12"><h6 class="dropdown-menu-header text-uppercase"><i class="fa fa-cubes"></i>Other APIs</h6> <ul><li class="menu-list"><ul><li><a href="https://cloudconvert.com/apis/merge-pdf" class="dropdown-item">Merge PDF API</a></li> <li><a href="https://cloudconvert.com/apis/thumbnails" class="dropdown-item">Thumbnail API</a></li> <li><a href="https://cloudconvert.com/apis/watermark" class="dropdown-item">Watermark API</a></li></ul></li></ul> <h6 class="dropdown-menu-header text-uppercase"><i class="fa fa-robot"></i>Automate</h6> <ul><li class="menu-list"><ul><li><a href="https://cloudconvert.com/integrations" class="dropdown-item">Integrations</a></li></ul></li></ul></li> <li class="col-lg-3 col-sm-12"><h6 class="dropdown-menu-header text-uppercase"><i class="fa fa-book"></i> Documentation</h6> <ul><li class="menu-list"><ul><li><a href="https://cloudconvert.com/api/v2" class="dropdown-item">API
+                                        Documentation</a></li> <li><a href="https://cloudconvert.com/api/v2/quickstart" class="dropdown-item">Quickstart
+                                        Guide</a></li> <li><a href="https://cloudconvert.com/api/v2/jobs/builder" class="dropdown-item">Job Builder</a></li></ul></li></ul></li></ul></div></div></li> <li class="nav-item"><a href="https://cloudconvert.com/pricing" class="nav-link">Pricing</a></li></ul> <ul class="nav navbar-nav float-right"><li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar"><img src="https://www.gravatar.com/avatar/1efa305b66394e7f38106e7b16b3b375.jpg?s=200&amp;d=mm" width="30" height="30" alt="avatar"><i></i></span> <span class="user-name">valtterimelkko</span></a> <div class="dropdown-menu dropdown-menu-right"><a href="https://cloudconvert.com/dashboard" class="dropdown-item">Dashboard</a> <div class="dropdown-divider"></div> <a href="https://cloudconvert.com/logout" class="dropdown-item">Logout</a></div></li></ul></div></div></div></nav> <div class="app-content center-layout"><div class="content-wrapper container"><div data-scroll-to-active="true" data-gumshoe="true" class="main-menu menu-fixed menu-light menu-accordion menu-shadow menu-light"><div data-gumshoe="" class="main-menu-content ps ps--active-y"><ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main"><li class="navigation-header"><span>Your Account</span></li> <li class="nav-item active"><a href="https://cloudconvert.com/dashboard"><i class="fa fa-fw fa-tachometer"></i><span class="menu-title">Dashboard</span></a></li> <li class="nav-item has-sub"><a href="#"><i class="fa fa-fw fa-user"></i><span class="menu-title">Account</span></a> <ul class="menu-content menu-expanded"><li><a href="https://cloudconvert.com/settings/profile" class="menu-item">Profile</a></li> <li><a href="https://cloudconvert.com/settings/security" class="menu-item">Security</a></li> <li><a href="https://cloudconvert.com/settings/notifications" class="menu-item">Notifications</a></li> <li><a href="https://cloudconvert.com/dashboard/activitylogs" class="menu-item">Activity
+                    Logs</a></li> <li><a href="https://cloudconvert.com/delete" class="menu-item">Delete</a></li></ul></li> <li class="nav-item has-sub"><a href="#"><i class="fa fa-fw fa-shopping-cart"></i><span class="menu-title">Billing</span></a> <ul class="menu-content menu-expanded"><li><a href="https://cloudconvert.com/settings/billing/plan" class="menu-item">Plan</a></li> <li><a href="https://cloudconvert.com/settings/billing" class="menu-item">Payment
+                    Method</a></li> <li><a href="https://cloudconvert.com/settings/billing/invoices" class="menu-item">Invoices</a></li></ul></li> <li class="nav-item"><a href="https://cloudconvert.com/dashboard/team"><i class="fa fa-fw fa-users"></i><span class="menu-title">Team</span></a></li> <li class="nav-item"><a href="https://cloudconvert.com/dashboard/connected"><i class="fa fa-fw fa-plug"></i><span class="menu-title">Connected Accounts</span></a></li> <li class="nav-item"><a href="https://cloudconvert.com/dashboard/presets"><i class="fa fa-fw fa-wrench"></i><span class="menu-title">Presets</span></a></li> <li class="navigation-header"><span>API</span></li> <li class="nav-item"><a href="https://cloudconvert.com/dashboard/region"><i class="fa fa-fw fa-globe-europe"></i><span class="menu-title">Region</span></a></li> <li class="nav-item has-sub"><a href="#"><i class="fa fa-fw fa-key"></i><span class="menu-title">Authorization</span></a> <ul class="menu-content menu-expanded"><li><a href="https://cloudconvert.com/dashboard/api/v2/keys" class="menu-item">API keys</a></li> <li><a href="https://cloudconvert.com/dashboard/api/v2/clients" class="menu-item">OAuth clients</a></li></ul></li> <li class="nav-item"><a href="https://cloudconvert.com/dashboard/tasks"><i class="fa fa-fw fa-tasks"></i><span class="menu-title">Tasks</span></a></li> <li class="nav-item"><a href="https://cloudconvert.com/dashboard/jobs"><i class="fa fa-fw fa-list-alt"></i><span class="menu-title">Jobs</span></a></li> <li class="nav-item"><a href="https://cloudconvert.com/dashboard/api/v2/webhooks"><i class="fa fa-fw fa-bell"></i><span class="menu-title">Webhooks</span></a></li> <li class="nav-item"><a href="https://cloudconvert.com/dashboard/api/v2/sandbox"><i class="fa fa-fw fa-umbrella-beach"></i><span class="menu-title">Sandbox</span></a></li> <li class="nav-item"><a href="https://cloudconvert.com/dashboard/api/v2/signed-urls"><i class="fa fa-fw fa-link"></i><span class="menu-title">Signed URLs</span></a></li></ul><div class="ps__rail-x" style="left: 0px; top: 51px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 51px; height: 636px; left: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 24px; height: 299px;"></div></div></div></div> <div class="app-content content"><div class="content-wrapper"><h1 class="content-header-title">
+        Dashboard
+    </h1> <div class="card"><div class="card-header"><div class="heading-elements"><ul class="list-inline mb-0"><li><a href="#"><i class="fa fa-sync-alt"></i></a></li></ul></div> <div class="media"><div class="media-body text-left w-100"><h3 class="text-primary">1,950</h3> <span>Conversion credits remaining. <a href="/settings/billing/plan">More details</a></span></div></div> <div class="progress progress-sm mt-1 mb-0"><div role="progressbar" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-primary" style="width: 78%;"></div></div></div></div> <div class="card"><div class="card-header bg-secondary pb-0"><h3 class="card-title text-white">Last 24h</h3> <div class="heading-elements"><ul class="list-inline mb-0"> <!----> <!----> <li><a href="#" class="text-white"><i class="fa fa-sync-alt"></i></a></li></ul></div></div> <div class="card-body bg-secondary"><div class="" style="height: 200px;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div><canvas id="bar-chart" width="713" height="250" style="display: block; height: 200px; width: 571px;" class="chartjs-render-monitor"></canvas></div></div> <div class="card-body"><div class="row"><div class="col-sm"><div class="custom-control custom-radio custom-control-inline display-inline-block"><input type="radio" id="duration24h" value="24h" class="custom-control-input"> <label for="duration24h" class="custom-control-label">Last 24h</label></div> <div class="custom-control custom-radio custom-control-inline display-inline-block"><input type="radio" id="durationMonth" value="month" class="custom-control-input"> <label for="durationMonth" class="custom-control-label">Last Month</label></div> <div class="custom-control custom-radio custom-control-inline display-inline-block"><input type="radio" id="durationYear" value="year" class="custom-control-input"> <label for="durationYear" class="custom-control-label">Last Year</label></div> <div class="custom-control custom-radio custom-control-inline display-inline-block"><input type="radio" id="durationTotal" value="total" class="custom-control-input"> <label for="durationTotal" class="custom-control-label">All Time</label></div></div> <div class="col-sm-auto"><div class="custom-control custom-radio custom-control-inline display-inline-block"><input type="radio" id="unitHourly" value="hour" class="custom-control-input"> <label for="unitHourly" class="custom-control-label">Hourly</label></div> <div class="custom-control custom-radio custom-control-inline display-inline-block"><input type="radio" id="unitDaily" value="day" class="custom-control-input"> <label for="unitDaily" class="custom-control-label">Daily</label></div> <div class="custom-control custom-radio custom-control-inline display-inline-block"><input type="radio" id="unitMonthly" value="month" class="custom-control-input"> <label for="unitMonthly" class="custom-control-label">Monthly</label></div></div></div></div> <div class="card-footer"><div class="row"><div class="col-sm"><h3 class="text-success">0</h3> <span>Successful conversions</span></div> <div class="col-sm"><h3 class="text-danger">0</h3> <span>Failed conversions</span></div> <div class="col-sm"><h3>0</h3> <span>Credits consumed</span></div> <div class="col-sm"><h3>0 Byte</h3> <span>File size converted</span></div></div></div></div></div></div></div></div> <div class="container"><footer class="footer mb-0"><div><div class="row"><div class="col-md align-self-center"><div class="row"><div class="col-6 col-md-auto mr-md-3 mt-1"><h6 class="text-bold-600">Company</h6> <ul class="list-unstyled mb-0"><li><a href="https://cloudconvert.com/about">About Us</a></li> <li><a href="https://cloudconvert.com/security">Security</a></li></ul></div> <div class="col-6 col-md-auto mr-md-3 mt-1"><h6 class="text-bold-600">Resources</h6> <ul class="list-unstyled mb-0"><li><a href="https://cloudconvert.com/blog">Blog</a></li> <li><a href="https://status.cloudconvert.com" target="_blank" rel="noopener">Status</a></li></ul></div> <div class="col-6 col-md-auto mr-md-3 mt-1"><h6 class="text-bold-600">Legal</h6> <ul class="list-unstyled mb-0"><li><a href="https://cloudconvert.com/privacy">Privacy</a></li> <li><a href="https://cloudconvert.com/terms">Terms</a></li> <li><a href="https://cloudconvert.com/about#imprint">Imprint</a></li></ul></div> <div class="col-6 col-md-auto mr-md-3 mt-1"><h6 class="text-bold-600">Contact</h6> <ul class="list-unstyled mb-0"><li><a href="https://cloudconvert.com/contact">Contact Us</a></li></ul></div></div></div> <div class="col-md-auto text-center text-md-right mt-2 mt-md-2"><p>
+                        © 2026 Lunaweb GmbH <br><span class="text-muted d-none d-lg-inline d-xl-inline d-md-inline mt-1">Made in Munich, Germany  </span></p></div></div></div> <p class="text-center text-muted font-medium-4 my-3">
+    We've already converted
+    <strong><span data-v-0abbdf5a="">2,803,862,800</span>
+        files
+    </strong>
+    with a total size of
+    <strong><span data-v-0abbdf5a="">21,766</span>
+        TB</strong>.
+</p></footer></div></div>
+
+
+    
+            <script src="/js/app.js?id=d04e2f02149d2b69995d633934b35115"></script>
+    
+
+
+
+
+
+
+
+
+</body></html>

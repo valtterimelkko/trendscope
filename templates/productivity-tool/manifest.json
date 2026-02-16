@@ -1,0 +1,50 @@
+{
+  "name": "productivity-tool",
+  "displayName": "Productivity Tool",
+  "description": "Fast, keyboard-first SaaS template for task management and team collaboration",
+  "version": "1.0.0",
+  "category": "productivity",
+  "personality": "efficient",
+  "authStyle": {
+    "theme": "dark",
+    "description": "Fast, dark mode default with keyboard hints and minimal animation"
+  },
+  "billingModel": {
+    "type": "seat-based",
+    "metric": "team members",
+    "description": "Per-seat subscription with quantity updates on member changes"
+  },
+  "techStack": {
+    "frontend": "next@14",
+    "styling": "tailwindcss",
+    "database": "supabase",
+    "auth": "supabase-auth",
+    "payments": "stripe"
+  },
+  "features": [
+    "command-palette",
+    "kanban-board",
+    "side-peek",
+    "rich-text-editor",
+    "view-switcher",
+    "keyboard-shortcuts",
+    "drag-and-drop",
+    "dark-mode-default"
+  ],
+  "brandTokens": [
+    "--color-primary",
+    "--color-secondary",
+    "--color-accent",
+    "--color-background",
+    "--color-foreground",
+    "--color-success",
+    "--color-warning",
+    "--color-error",
+    "--color-info",
+    "--font-display",
+    "--font-body"
+  ],
+  "contentSlots": 52,
+  "estimatedSetupTime": "15 minutes",
+  "extraPages": []
+}

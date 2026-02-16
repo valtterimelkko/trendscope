@@ -1,0 +1,159 @@
+{
+  "_meta": {
+    "template": "content-creator",
+    "billing_model": "unknown",
+    "generated": "2026-01-01T10:18:37.481328+00:00",
+    "stripe_cli_version": ">=1.17.0"
+  },
+  "fixtures": [
+    {
+      "name": "product_starter",
+      "path": "/v1/products",
+      "method": "post",
+      "params": {
+        "name": "Starter",
+        "description": "For individual creators getting started",
+        "metadata": {
+          "template_id": "starter",
+          "billing_model": "flat-rate"
+        }
+      }
+    },
+    {
+      "name": "price_starter_default",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${product_starter:id}",
+        "unit_amount": 0,
+        "currency": "usd"
+      }
+    },
+    {
+      "name": "product_creator",
+      "path": "/v1/products",
+      "method": "post",
+      "params": {
+        "name": "Creator",
+        "description": "For growing creators who need more",
+        "metadata": {
+          "template_id": "creator",
+          "billing_model": "flat-rate"
+        }
+      }
+    },
+    {
+      "name": "price_creator_default",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${product_creator:id}",
+        "unit_amount": 1500,
+        "currency": "usd",
+        "recurring": {
+          "interval": "month"
+        }
+      }
+    },
+    {
+      "name": "product_studio",
+      "path": "/v1/products",
+      "method": "post",
+      "params": {
+        "name": "Studio",
+        "description": "For teams and agencies",
+        "metadata": {
+          "template_id": "studio",
+          "billing_model": "flat-rate"
+        }
+      }
+    },
+    {
+      "name": "price_studio_default",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${product_studio:id}",
+        "unit_amount": 3900,
+        "currency": "usd",
+        "recurring": {
+          "interval": "month"
+        }
+      }
+    },
+    {
+      "name": "customer_active",
+      "path": "/v1/customers",
+      "method": "post",
+      "params": {
+        "email": "active-user@test.example.com",
+        "name": "Active Test User",
+        "metadata": {
+          "test": "true",
+          "scenario": "active_subscription"
+        }
+      }
+    },
+    {
+      "name": "customer_trial",
+      "path": "/v1/customers",
+      "method": "post",
+      "params": {
+        "email": "trial-user@test.example.com",
+        "name": "Trial Test User",
+        "metadata": {
+          "test": "true",
+          "scenario": "trial_subscription"
+        }
+      }
+    },
+    {
+      "name": "customer_dunning",
+      "path": "/v1/customers",
+      "method": "post",
+      "params": {
+        "email": "dunning-user@test.example.com",
+        "name": "Dunning Test User",
+        "metadata": {
+          "test": "true",
+          "scenario": "payment_failed"
+        }
+      }
+    },
+    {
+      "name": "subscription_active",
+      "path": "/v1/subscriptions",
+      "method": "post",
+      "params": {
+        "customer": "${customer_active:id}",
+        "items": [
+          {
+            "price": "${price_creator_monthly:id}"
+          }
+        ],
+        "metadata": {
+          "test": "true",
+          "scenario": "active"
+        }
+      }
+    },
+    {
+      "name": "subscription_trial",
+      "path": "/v1/subscriptions",
+      "method": "post",
+      "params": {
+        "customer": "${customer_trial:id}",
+        "items": [
+          {
+            "price": "${price_creator_monthly:id}"
+          }
+        ],
+        "trial_period_days": 14,
+        "metadata": {
+          "test": "true",
+          "scenario": "trial"
+        }
+      }
+    }
+  ]
+}

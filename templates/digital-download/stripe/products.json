@@ -1,0 +1,137 @@
+{
+  "billingModel": "tiered-download-access",
+  "description": "Download limits per plan with optional overage packs",
+  "billingConfig": {
+    "trialDays": 7,
+    "trialType": "reverse",
+    "freemiumEnabled": true,
+    "freemiumTier": "starter",
+    "gracePeriodDays": 7,
+    "annualDiscountPercent": 25,
+    "dunningEnabled": true
+  },
+  "products": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "description": "Great for trying a few downloads",
+      "features": [
+        "3 downloads/month",
+        "500MB total storage",
+        "Standard support"
+      ],
+      "limits": {
+        "downloads": 3,
+        "storage": "500MB"
+      },
+      "prices": {
+        "monthly": {
+          "amount": 0,
+          "currency": "usd",
+          "stripe_price_id": "price_dd_starter_monthly"
+        }
+      },
+      "trial": {
+        "eligible": false,
+        "daysOverride": null
+      },
+      "featureFlags": {
+        "priority_support": false,
+        "license_keys": true
+      }
+    },
+    {
+      "id": "download_pass",
+      "name": "Download Pass",
+      "description": "For customers grabbing assets regularly",
+      "features": [
+        "50 downloads/month",
+        "10GB storage access",
+        "License key locker",
+        "Email support"
+      ],
+      "limits": {
+        "downloads": 50,
+        "storage": "10GB"
+      },
+      "prices": {
+        "monthly": {
+          "amount": 1500,
+          "currency": "usd",
+          "stripe_price_id": "price_dd_pass_monthly"
+        },
+        "yearly": {
+          "amount": 15000,
+          "currency": "usd",
+          "stripe_price_id": "price_dd_pass_yearly",
+          "savings_percent": 17
+        }
+      },
+      "highlighted": true,
+      "badge": "Popular",
+      "trial": {
+        "eligible": true,
+        "daysOverride": null
+      },
+      "featureFlags": {
+        "priority_support": false,
+        "license_keys": true
+      }
+    },
+    {
+      "id": "pro_library",
+      "name": "Pro Library",
+      "description": "Unlimited access for power users and teams",
+      "features": [
+        "Unlimited downloads",
+        "100GB storage access",
+        "Priority support",
+        "Team sharing"
+      ],
+      "limits": {
+        "downloads": -1,
+        "storage": "100GB"
+      },
+      "prices": {
+        "monthly": {
+          "amount": 3900,
+          "currency": "usd",
+          "stripe_price_id": "price_dd_pro_monthly"
+        },
+        "yearly": {
+          "amount": 39000,
+          "currency": "usd",
+          "stripe_price_id": "price_dd_pro_yearly",
+          "savings_percent": 17
+        }
+      },
+      "trial": {
+        "eligible": true,
+        "daysOverride": null
+      },
+      "featureFlags": {
+        "priority_support": true,
+        "license_keys": true,
+        "team_sharing": true
+      }
+    }
+  ],
+  "overage": {
+    "enabled": true,
+    "price_per_download_cents": 50,
+    "currency": "usd",
+    "behavior": "charge_overage"
+  },
+  "webhookEvents": [
+    "checkout.session.completed",
+    "customer.created",
+    "customer.subscription.created",
+    "customer.subscription.updated",
+    "customer.subscription.deleted",
+    "customer.subscription.trial_will_end",
+    "invoice.payment_succeeded",
+    "invoice.payment_failed",
+    "invoice.payment_action_required",
+    "invoice.upcoming"
+  ]
+}

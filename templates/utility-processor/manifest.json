@@ -1,0 +1,50 @@
+{
+  "name": "utility-processor",
+  "displayName": "Utility Processor",
+  "description": "Minimal single-action SaaS template for upload → process → download workflows (e.g., photo or file utilities)",
+  "version": "1.0.0",
+  "category": "utility",
+  "personality": "minimal",
+  "authStyle": {
+    "theme": "dark",
+    "description": "Fast, dark mode default with keyboard hints and minimal animation"
+  },
+  "billingModel": {
+    "type": "usage-based",
+    "metric": "jobs processed",
+    "description": "Credit/usage billing with optional included allowance and overage"
+  },
+  "techStack": {
+    "frontend": "next@14",
+    "styling": "tailwindcss",
+    "database": "supabase",
+    "auth": "supabase-auth",
+    "payments": "stripe"
+  },
+  "features": [
+    "single-action-flow",
+    "upload-and-process",
+    "drag-and-drop-upload",
+    "progress-tracker",
+    "recent-activity-feed",
+    "quota-meter",
+    "simple-sidebar",
+    "primary-cta-header"
+  ],
+  "brandTokens": [
+    "--color-primary",
+    "--color-secondary",
+    "--color-accent",
+    "--color-background",
+    "--color-foreground",
+    "--color-success",
+    "--color-warning",
+    "--color-error",
+    "--color-info",
+    "--font-display",
+    "--font-body"
+  ],
+  "contentSlots": 52,
+  "estimatedSetupTime": "15 minutes",
+  "extraPages": []
+}

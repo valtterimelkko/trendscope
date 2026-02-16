@@ -1,0 +1,417 @@
+{
+  "template": "productivity-tool",
+  "version": "1.0.0",
+  "totalSlots": 64,
+  "slots": {
+    "brand": {
+      "app_name": {
+        "type": "headline",
+        "maxLength": 30,
+        "default": "FlowTask",
+        "description": "Application name displayed in header and title"
+      },
+      "tagline": {
+        "type": "body",
+        "maxLength": 60,
+        "default": "Move fast. Ship faster.",
+        "description": "Primary tagline for marketing"
+      },
+      "description": {
+        "type": "body",
+        "maxLength": 100,
+        "default": "The keyboard-first issue tracker for teams who ship",
+        "description": "One-line product description"
+      }
+    },
+    "landing": {
+      "hero_title": {
+        "type": "headline",
+        "maxLength": 80,
+        "default": "Issue tracking at the speed of thought",
+        "description": "Main hero headline"
+      },
+      "hero_subtitle": {
+        "type": "body",
+        "maxLength": 150,
+        "default": "A keyboard-first workspace designed for engineers who move fast. Less clicking, more shipping.",
+        "description": "Hero supporting text"
+      },
+      "cta_primary": {
+        "type": "button",
+        "maxLength": 25,
+        "default": "Start for free",
+        "description": "Primary CTA button text"
+      },
+      "cta_secondary": {
+        "type": "button",
+        "maxLength": 25,
+        "default": "Watch demo",
+        "description": "Secondary CTA button text"
+      },
+      "feature_1_title": {
+        "type": "feature_title",
+        "maxLength": 40,
+        "default": "Command palette",
+        "description": "Feature 1 title"
+      },
+      "feature_1_description": {
+        "type": "body",
+        "maxLength": 150,
+        "default": "Navigate anywhere with ⌘K. Search issues, jump to projects, or trigger actions—all without touching your mouse.",
+        "description": "Feature 1 description"
+      },
+      "feature_2_title": {
+        "type": "feature_title",
+        "maxLength": 40,
+        "default": "Keyboard-first design",
+        "description": "Feature 2 title"
+      },
+      "feature_2_description": {
+        "type": "body",
+        "maxLength": 150,
+        "default": "Every action has a shortcut. Create issues with C, navigate with J/K, change status with S. Your hands never leave the keyboard.",
+        "description": "Feature 2 description"
+      },
+      "feature_3_title": {
+        "type": "feature_title",
+        "maxLength": 40,
+        "default": "Kanban & lists",
+        "description": "Feature 3 title"
+      },
+      "feature_3_description": {
+        "type": "body",
+        "maxLength": 150,
+        "default": "Switch between Kanban boards and list views instantly. Drag-and-drop or keyboard shortcuts—your choice.",
+        "description": "Feature 3 description"
+      },
+      "social_proof_title": {
+        "type": "section_title",
+        "maxLength": 50,
+        "default": "Trusted by engineering teams",
+        "description": "Social proof section title"
+      }
+    },
+    "auth": {
+      "login_title": {
+        "type": "headline",
+        "maxLength": 40,
+        "default": "Welcome back",
+        "description": "Login page title"
+      },
+      "login_subtitle": {
+        "type": "body",
+        "maxLength": 80,
+        "default": "Sign in to your workspace",
+        "description": "Login page subtitle"
+      },
+      "signup_title": {
+        "type": "headline",
+        "maxLength": 40,
+        "default": "Create your account",
+        "description": "Signup page title"
+      },
+      "signup_subtitle": {
+        "type": "body",
+        "maxLength": 80,
+        "default": "Start organizing your work",
+        "description": "Signup page subtitle"
+      },
+      "google_button": {
+        "type": "button",
+        "maxLength": 30,
+        "default": "Continue with Google",
+        "description": "Google OAuth button text"
+      },
+      "magic_link_button": {
+        "type": "button",
+        "maxLength": 30,
+        "default": "Send magic link",
+        "description": "Magic link button text"
+      }
+    },
+    "dashboard": {
+      "inbox_empty_title": {
+        "type": "empty_state",
+        "maxLength": 40,
+        "default": "Inbox zero",
+        "description": "Empty inbox title"
+      },
+      "inbox_empty_description": {
+        "type": "body",
+        "maxLength": 100,
+        "default": "No issues assigned to you. Press C to create one.",
+        "description": "Empty inbox description"
+      },
+      "projects_empty_title": {
+        "type": "empty_state",
+        "maxLength": 40,
+        "default": "No projects yet",
+        "description": "Empty projects title"
+      },
+      "projects_empty_description": {
+        "type": "body",
+        "maxLength": 100,
+        "default": "Create your first project to start organizing issues.",
+        "description": "Empty projects description"
+      },
+      "all_done_title": {
+        "type": "empty_state",
+        "maxLength": 40,
+        "default": "All caught up!",
+        "description": "All issues complete title"
+      },
+      "all_done_description": {
+        "type": "body",
+        "maxLength": 100,
+        "default": "You have no open issues assigned to you.",
+        "description": "All issues complete description"
+      }
+    },
+    "billing": {
+      "free_plan_name": {
+        "type": "headline",
+        "maxLength": 20,
+        "default": "Free",
+        "description": "Free tier name"
+      },
+      "free_plan_description": {
+        "type": "body",
+        "maxLength": 60,
+        "default": "For small teams getting started",
+        "description": "Free tier description"
+      },
+      "pro_plan_name": {
+        "type": "headline",
+        "maxLength": 20,
+        "default": "Pro",
+        "description": "Pro tier name"
+      },
+      "pro_plan_description": {
+        "type": "body",
+        "maxLength": 60,
+        "default": "For growing teams that need more",
+        "description": "Pro tier description"
+      },
+      "business_plan_name": {
+        "type": "headline",
+        "maxLength": 20,
+        "default": "Business",
+        "description": "Business tier name"
+      },
+      "business_plan_description": {
+        "type": "body",
+        "maxLength": 60,
+        "default": "For enterprises with advanced needs",
+        "description": "Business tier description"
+      },
+      "seat_limit_warning": {
+        "type": "error",
+        "maxLength": 100,
+        "default": "You've reached your seat limit. Upgrade to add more members.",
+        "description": "Seat limit warning message"
+      },
+      "upgrade_cta": {
+        "type": "button",
+        "maxLength": 25,
+        "default": "Upgrade plan",
+        "description": "Upgrade button text"
+      }
+    },
+    "settings": {
+      "general_title": {
+        "type": "headline",
+        "maxLength": 40,
+        "default": "General Settings",
+        "description": "General settings page title"
+      },
+      "team_title": {
+        "type": "headline",
+        "maxLength": 40,
+        "default": "Team Members",
+        "description": "Team settings page title"
+      },
+      "billing_title": {
+        "type": "headline",
+        "maxLength": 40,
+        "default": "Billing",
+        "description": "Billing settings page title"
+      },
+      "invite_button": {
+        "type": "button",
+        "maxLength": 25,
+        "default": "Invite member",
+        "description": "Invite team member button text"
+      },
+      "save_button": {
+        "type": "button",
+        "maxLength": 25,
+        "default": "Save changes",
+        "description": "Save button text"
+      }
+    },
+    "errors": {
+      "auth_error": {
+        "type": "error",
+        "maxLength": 100,
+        "default": "Something went wrong. Please try again.",
+        "description": "Generic auth error message"
+      },
+      "not_found_title": {
+        "type": "error",
+        "maxLength": 40,
+        "default": "Page not found",
+        "description": "404 page title"
+      },
+      "not_found_description": {
+        "type": "error",
+        "maxLength": 100,
+        "default": "The page you're looking for doesn't exist.",
+        "description": "404 page description"
+      },
+      "server_error_title": {
+        "type": "error",
+        "maxLength": 40,
+        "default": "Something went wrong",
+        "description": "500 page title"
+      },
+      "server_error_description": {
+        "type": "error",
+        "maxLength": 100,
+        "default": "We're working on it. Please try again later.",
+        "description": "500 page description"
+      }
+    },
+    "keyboard": {
+      "hint_create": {
+        "type": "body",
+        "maxLength": 25,
+        "default": "Create issue",
+        "description": "Create issue shortcut hint"
+      },
+      "hint_search": {
+        "type": "body",
+        "maxLength": 25,
+        "default": "Search",
+        "description": "Search shortcut hint"
+      },
+      "hint_navigate": {
+        "type": "body",
+        "maxLength": 25,
+        "default": "Navigate",
+        "description": "Navigation shortcut hint"
+      },
+      "hint_open": {
+        "type": "body",
+        "maxLength": 25,
+        "default": "Open",
+        "description": "Open item shortcut hint"
+      },
+      "hint_edit": {
+        "type": "body",
+        "maxLength": 25,
+        "default": "Edit",
+        "description": "Edit shortcut hint"
+      }
+    },
+    "meta": {
+      "title_template": {
+        "type": "body",
+        "maxLength": 50,
+        "default": "%s | FlowTask",
+        "description": "Page title template"
+      },
+      "default_title": {
+        "type": "headline",
+        "maxLength": 60,
+        "default": "FlowTask - Keyboard-first Issue Tracking",
+        "description": "Default page title"
+      },
+      "meta_description": {
+        "type": "body",
+        "maxLength": 160,
+        "default": "The keyboard-first issue tracker for teams who ship. Navigate with shortcuts, create issues instantly, and move fast.",
+        "description": "Meta description for SEO"
+      }
+    },
+    "inbox": {
+      "title": {
+        "type": "section_title",
+        "maxLength": 20,
+        "default": "Inbox",
+        "description": "Inbox page heading"
+      },
+      "subtitle": {
+        "type": "body",
+        "maxLength": 80,
+        "default": "Stay on top of mentions and updates",
+        "description": "Inbox page description"
+      },
+      "tabs.all": {
+        "type": "button",
+        "maxLength": 15,
+        "default": "All",
+        "description": "All notifications tab"
+      },
+      "tabs.mentions": {
+        "type": "button",
+        "maxLength": 15,
+        "default": "Mentions",
+        "description": "Mentions filter tab"
+      },
+      "tabs.assigned": {
+        "type": "button",
+        "maxLength": 15,
+        "default": "Assigned",
+        "description": "Assigned to me filter tab"
+      },
+      "tabs.watching": {
+        "type": "button",
+        "maxLength": 15,
+        "default": "Watching",
+        "description": "Subscribed items filter tab"
+      },
+      "empty.title": {
+        "type": "section_title",
+        "maxLength": 40,
+        "default": "All caught up",
+        "description": "Empty inbox heading"
+      },
+      "empty.description": {
+        "type": "body",
+        "maxLength": 100,
+        "default": "No new notifications. Take a break or jump back into your work.",
+        "description": "Empty inbox description"
+      },
+      "markRead.button": {
+        "type": "button",
+        "maxLength": 20,
+        "default": "Mark all read",
+        "description": "Mark all as read button"
+      },
+      "priority.urgent": {
+        "type": "body",
+        "maxLength": 15,
+        "default": "Urgent",
+        "description": "Urgent priority label"
+      },
+      "priority.high": {
+        "type": "body",
+        "maxLength": 15,
+        "default": "High",
+        "description": "High priority label"
+      },
+      "priority.medium": {
+        "type": "body",
+        "maxLength": 15,
+        "default": "Medium",
+        "description": "Medium priority label"
+      },
+      "priority.low": {
+        "type": "body",
+        "maxLength": 15,
+        "default": "Low",
+        "description": "Low priority label"
+      }
+    }
+  }
+}

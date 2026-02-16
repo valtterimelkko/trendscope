@@ -1,0 +1,184 @@
+{
+  "webhook-handler": {
+    "description": "Complete webhook handler with signature verification for Next.js App Router",
+    "category": "webhooks",
+    "language": "typescript",
+    "tags": ["webhook", "signature", "events", "next.js"],
+    "docs_url": "https://docs.stripe.com/webhooks",
+    "code": "import { headers } from 'next/headers'\nimport { NextResponse } from 'next/server'\nimport Stripe from 'stripe'\nimport { createServiceClient } from '@/lib/supabase/server'\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {\n  apiVersion: '2024-06-20',\n})\n\nconst webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!\n\nexport async function POST(request: Request) {\n  const body = await request.text()\n  const signature = headers().get('stripe-signature')!\n\n  let event: Stripe.Event\n\n  try {\n    event = stripe.webhooks.constructEvent(body, signature, webhookSecret)\n  } catch (err) {\n    console.error('Webhook signature verification failed:', err)\n    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })\n  }\n\n  const supabase = createServiceClient()\n\n  try {\n    switch (event.type) {\n      case 'checkout.session.completed': {\n        const session = event.data.object as Stripe.Checkout.Session\n        // Handle successful checkout\n        break\n      }\n      case 'customer.subscription.created':\n      case 'customer.subscription.updated': {\n        const subscription = event.data.object as Stripe.Subscription\n        // Update subscription in database\n        break\n      }\n      case 'customer.subscription.deleted': {\n        const subscription = event.data.object as Stripe.Subscription\n        // Mark subscription as canceled\n        break\n      }\n      case 'invoice.payment_succeeded': {\n        const invoice = event.data.object as Stripe.Invoice\n        // Update subscription status to active\n        break\n      }\n      case 'invoice.payment_failed': {\n        const invoice = event.data.object as Stripe.Invoice\n        // Mark subscription as past_due, trigger dunning\n        break\n      }\n    }\n    return NextResponse.json({ received: true })\n  } catch (error) {\n    console.error('Webhook handler error:', error)\n    return NextResponse.json({ error: 'Webhook handler failed' }, { status: 500 })\n  }\n}",
+    "notes": [
+      "Always verify the stripe-signature header",
+      "Use request.text() not request.json() for signature verification",
+      "Handle errors gracefully - return 200 even for unknown event types",
+      "Use a service client (admin) for Supabase to bypass RLS"
+    ],
+    "related": ["checkout-session", "subscription-create", "dunning-handler"]
+  },
+  "checkout-session": {
+    "description": "Create Stripe Checkout session for subscription purchases",
+    "category": "checkout",
+    "language": "typescript",
+    "tags": ["checkout", "subscription", "payment"],
+    "docs_url": "https://docs.stripe.com/api/checkout/sessions/create",
+    "code": "import { NextResponse } from 'next/server'\nimport Stripe from 'stripe'\nimport { createClient } from '@/lib/supabase/server'\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {\n  apiVersion: '2024-06-20',\n})\n\nexport async function POST(request: Request) {\n  const { priceId, successUrl, cancelUrl } = await request.json()\n  \n  const supabase = createClient()\n  const { data: { user } } = await supabase.auth.getUser()\n  \n  if (!user) {\n    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })\n  }\n\n  // Get or create Stripe customer\n  const { data: customer } = await supabase\n    .from('customers')\n    .select('stripe_customer_id')\n    .eq('id', user.id)\n    .single()\n\n  const sessionConfig: Stripe.Checkout.SessionCreateParams = {\n    mode: 'subscription',\n    payment_method_types: ['card'],\n    line_items: [{ price: priceId, quantity: 1 }],\n    success_url: successUrl || `${process.env.NEXT_PUBLIC_APP_URL}/dashboard?success=true`,\n    cancel_url: cancelUrl || `${process.env.NEXT_PUBLIC_APP_URL}/pricing?canceled=true`,\n    metadata: { user_id: user.id },\n  }\n\n  if (customer?.stripe_customer_id) {\n    sessionConfig.customer = customer.stripe_customer_id\n  } else {\n    sessionConfig.customer_email = user.email\n  }\n\n  const session = await stripe.checkout.sessions.create(sessionConfig)\n\n  return NextResponse.json({ url: session.url })\n}",
+    "notes": [
+      "Always pass user_id in metadata for webhook handling",
+      "Use existing customer ID if available to link subscriptions",
+      "customer_email pre-fills the checkout form for new customers",
+      "Consider adding allow_promotion_codes: true for discounts"
+    ],
+    "related": ["webhook-handler", "customer-portal"]
+  },
+  "customer-portal": {
+    "description": "Create Customer Portal session for self-service billing management",
+    "category": "portal",
+    "language": "typescript",
+    "tags": ["portal", "billing", "self-service", "invoices"],
+    "docs_url": "https://docs.stripe.com/customer-management/portal-deep-links",
+    "code": "import { NextResponse } from 'next/server'\nimport Stripe from 'stripe'\nimport { createClient } from '@/lib/supabase/server'\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {\n  apiVersion: '2024-06-20',\n})\n\nexport async function POST(request: Request) {\n  const supabase = createClient()\n  const { data: { user } } = await supabase.auth.getUser()\n  \n  if (!user) {\n    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })\n  }\n\n  // Get customer's Stripe ID\n  const { data: customer } = await supabase\n    .from('customers')\n    .select('stripe_customer_id')\n    .eq('id', user.id)\n    .single()\n\n  if (!customer?.stripe_customer_id) {\n    return NextResponse.json({ error: 'No billing account found' }, { status: 400 })\n  }\n\n  const { url } = await stripe.billingPortal.sessions.create({\n    customer: customer.stripe_customer_id,\n    return_url: `${process.env.NEXT_PUBLIC_APP_URL}/settings/billing`,\n  })\n\n  return NextResponse.json({ url })\n}",
+    "notes": [
+      "Configure portal settings in Stripe Dashboard first",
+      "Enable retention coupons to reduce churn",
+      "Users can update payment methods, view invoices, cancel subscriptions",
+      "No custom UI needed - Stripe hosts the portal"
+    ],
+    "related": ["checkout-session", "subscription-update"]
+  },
+  "meters-api": {
+    "description": "Usage-based billing with Stripe Meters API v2",
+    "category": "usage",
+    "language": "typescript",
+    "tags": ["meters", "usage", "metered", "events", "api-v2"],
+    "docs_url": "https://docs.stripe.com/billing/subscriptions/usage-based/recording-usage-api",
+    "code": "import Stripe from 'stripe'\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {\n  apiVersion: '2024-06-20',\n})\n\n// Record a single usage event\nexport async function recordUsageEvent(\n  customerId: string,\n  meterId: string,\n  value: number,\n  idempotencyKey: string\n) {\n  try {\n    await stripe.billing.meterEvents.create({\n      event_name: meterId,\n      payload: {\n        stripe_customer_id: customerId,\n        value: value.toString(),\n      },\n    }, {\n      idempotencyKey: idempotencyKey,\n    })\n    return { success: true }\n  } catch (error) {\n    console.error('Failed to record usage:', error)\n    return { success: false, error }\n  }\n}\n\n// Batch usage recording (for high-volume apps)\nexport async function recordUsageBatch(\n  events: Array<{\n    customerId: string\n    meterId: string\n    value: number\n    idempotencyKey: string\n  }>\n) {\n  const results = await Promise.allSettled(\n    events.map(e => recordUsageEvent(\n      e.customerId,\n      e.meterId,\n      e.value,\n      e.idempotencyKey\n    ))\n  )\n  return results\n}\n\n// Get current meter usage\nexport async function getMeterUsage(\n  customerId: string,\n  meterId: string\n): Promise<number> {\n  const meterEventSummaries = await stripe.billing.meters.listEventSummaries(\n    meterId,\n    {\n      customer: customerId,\n      start_time: Math.floor(Date.now() / 1000) - 30 * 24 * 60 * 60, // Last 30 days\n      end_time: Math.floor(Date.now() / 1000),\n    }\n  )\n  \n  return meterEventSummaries.data.reduce(\n    (sum, summary) => sum + summary.aggregated_value,\n    0\n  )\n}",
+    "notes": [
+      "Always use idempotencyKey to prevent duplicate billing",
+      "Generate idempotencyKey from the action being billed (e.g., 'api_call_12345')",
+      "For high-volume apps, batch events and sync hourly instead of per-request",
+      "Listen to v1.billing.meter.error_report_triggered webhook for failed events",
+      "Events older than 35 days are rejected"
+    ],
+    "related": ["usage-records", "webhook-handler"]
+  },
+  "subscription-create": {
+    "description": "Create subscription programmatically (without Checkout)",
+    "category": "subscriptions",
+    "language": "typescript",
+    "tags": ["subscription", "create", "programmatic"],
+    "docs_url": "https://docs.stripe.com/api/subscriptions/create",
+    "code": "import Stripe from 'stripe'\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {\n  apiVersion: '2024-06-20',\n})\n\nexport async function createSubscription(\n  customerId: string,\n  priceId: string,\n  options?: {\n    trialDays?: number\n    quantity?: number\n    metadata?: Record<string, string>\n  }\n) {\n  const subscriptionParams: Stripe.SubscriptionCreateParams = {\n    customer: customerId,\n    items: [{ price: priceId, quantity: options?.quantity || 1 }],\n    payment_behavior: 'default_incomplete',\n    payment_settings: {\n      save_default_payment_method: 'on_subscription',\n    },\n    expand: ['latest_invoice.payment_intent'],\n    metadata: options?.metadata,\n  }\n\n  if (options?.trialDays) {\n    subscriptionParams.trial_period_days = options.trialDays\n  }\n\n  const subscription = await stripe.subscriptions.create(subscriptionParams)\n\n  return {\n    subscriptionId: subscription.id,\n    status: subscription.status,\n    clientSecret: (subscription.latest_invoice as Stripe.Invoice)\n      ?.payment_intent\n      ? ((subscription.latest_invoice as Stripe.Invoice).payment_intent as Stripe.PaymentIntent).client_secret\n      : null,\n  }\n}",
+    "notes": [
+      "Use payment_behavior: 'default_incomplete' for SCA compliance",
+      "Return clientSecret to frontend for payment confirmation",
+      "Prefer Checkout for most use cases - it handles more edge cases",
+      "Set trial_period_days for trial subscriptions"
+    ],
+    "related": ["checkout-session", "trial-subscription", "subscription-update"]
+  },
+  "subscription-update": {
+    "description": "Update subscription (upgrade, downgrade, change quantity)",
+    "category": "subscriptions",
+    "language": "typescript",
+    "tags": ["subscription", "update", "upgrade", "downgrade"],
+    "docs_url": "https://docs.stripe.com/api/subscriptions/update",
+    "code": "import Stripe from 'stripe'\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {\n  apiVersion: '2024-06-20',\n})\n\n// Change plan (upgrade/downgrade)\nexport async function changePlan(\n  subscriptionId: string,\n  newPriceId: string,\n  prorationBehavior: 'create_prorations' | 'none' | 'always_invoice' = 'create_prorations'\n) {\n  const subscription = await stripe.subscriptions.retrieve(subscriptionId)\n  \n  const updatedSubscription = await stripe.subscriptions.update(subscriptionId, {\n    items: [{\n      id: subscription.items.data[0].id,\n      price: newPriceId,\n    }],\n    proration_behavior: prorationBehavior,\n  })\n\n  return updatedSubscription\n}\n\n// Update quantity (for seat-based billing)\nexport async function updateQuantity(\n  subscriptionId: string,\n  newQuantity: number,\n  prorationBehavior: 'create_prorations' | 'none' | 'always_invoice' = 'always_invoice'\n) {\n  const subscription = await stripe.subscriptions.retrieve(subscriptionId)\n  \n  const updatedSubscription = await stripe.subscriptions.update(subscriptionId, {\n    items: [{\n      id: subscription.items.data[0].id,\n      quantity: newQuantity,\n    }],\n    proration_behavior: prorationBehavior,\n  })\n\n  return updatedSubscription\n}\n\n// Cancel subscription at period end\nexport async function cancelSubscription(\n  subscriptionId: string,\n  cancelImmediately: boolean = false\n) {\n  if (cancelImmediately) {\n    return await stripe.subscriptions.cancel(subscriptionId)\n  }\n  \n  return await stripe.subscriptions.update(subscriptionId, {\n    cancel_at_period_end: true,\n  })\n}",
+    "notes": [
+      "create_prorations: Adds/removes prorated charges to next invoice",
+      "always_invoice: Creates immediate invoice for upgrade charges",
+      "none: No proration, change takes effect next billing cycle",
+      "For downgrades, consider using 'none' or crediting the difference"
+    ],
+    "related": ["proration", "seat-based-billing"]
+  },
+  "proration": {
+    "description": "Handle prorated charges when changing subscriptions mid-cycle",
+    "category": "subscriptions",
+    "language": "typescript",
+    "tags": ["proration", "upgrade", "downgrade", "preview"],
+    "docs_url": "https://docs.stripe.com/billing/subscriptions/prorations",
+    "code": "import Stripe from 'stripe'\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {\n  apiVersion: '2024-06-20',\n})\n\n// Preview proration before making changes\nexport async function previewProration(\n  subscriptionId: string,\n  newPriceId: string\n): Promise<{ amount: number; description: string }> {\n  const subscription = await stripe.subscriptions.retrieve(subscriptionId)\n  \n  const proration_date = Math.floor(Date.now() / 1000)\n  \n  const invoice = await stripe.invoices.retrieveUpcoming({\n    customer: subscription.customer as string,\n    subscription: subscriptionId,\n    subscription_items: [{\n      id: subscription.items.data[0].id,\n      price: newPriceId,\n    }],\n    subscription_proration_date: proration_date,\n  })\n\n  // Find proration line items\n  const prorationItems = invoice.lines.data.filter(\n    line => line.proration\n  )\n  \n  const totalProration = prorationItems.reduce(\n    (sum, item) => sum + item.amount,\n    0\n  )\n\n  return {\n    amount: totalProration, // In cents\n    description: totalProration >= 0 \n      ? `You'll be charged $${(totalProration / 100).toFixed(2)} now`\n      : `You'll receive a credit of $${(Math.abs(totalProration) / 100).toFixed(2)}`,\n  }\n}",
+    "notes": [
+      "Always preview proration before showing upgrade/downgrade UI",
+      "Positive amount = charge, negative = credit",
+      "Display the preview to user before confirming the change",
+      "Use subscription_proration_date for accurate calculations"
+    ],
+    "related": ["subscription-update", "invoice-preview"]
+  },
+  "trial-subscription": {
+    "description": "Create subscription with trial period (standard or reverse trial)",
+    "category": "subscriptions",
+    "language": "typescript",
+    "tags": ["trial", "reverse-trial", "subscription"],
+    "docs_url": "https://docs.stripe.com/billing/subscriptions/trials",
+    "code": "import Stripe from 'stripe'\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {\n  apiVersion: '2024-06-20',\n})\n\n// Standard trial: Free access, then billing starts\nexport async function createTrialSubscription(\n  customerId: string,\n  priceId: string,\n  trialDays: number = 14\n) {\n  const subscription = await stripe.subscriptions.create({\n    customer: customerId,\n    items: [{ price: priceId }],\n    trial_period_days: trialDays,\n    payment_behavior: 'default_incomplete',\n    payment_settings: {\n      save_default_payment_method: 'on_subscription',\n    },\n    expand: ['latest_invoice.payment_intent'],\n  })\n\n  return subscription\n}\n\n// Reverse trial: Start on Pro, downgrade to Free after trial\n// Implementation pattern:\n// 1. Create user on Pro plan with trial\n// 2. Listen to customer.subscription.trial_will_end webhook\n// 3. If no payment method, downgrade to free tier\n// 4. If payment method exists, trial converts to paid\n\nexport async function handleTrialEnding(\n  subscriptionId: string,\n  freePriceId: string\n) {\n  const subscription = await stripe.subscriptions.retrieve(subscriptionId, {\n    expand: ['customer'],\n  })\n  \n  const customer = subscription.customer as Stripe.Customer\n  \n  // Check if customer has payment method\n  const paymentMethods = await stripe.paymentMethods.list({\n    customer: customer.id,\n    type: 'card',\n  })\n  \n  if (paymentMethods.data.length === 0) {\n    // No payment method - downgrade to free\n    await stripe.subscriptions.update(subscriptionId, {\n      items: [{\n        id: subscription.items.data[0].id,\n        price: freePriceId,\n      }],\n      trial_end: 'now', // End trial immediately\n    })\n    return { action: 'downgraded_to_free' }\n  }\n  \n  // Has payment method - trial will convert to paid automatically\n  return { action: 'converting_to_paid' }\n}",
+    "notes": [
+      "Reverse trial has higher conversion than standard freemium",
+      "Listen to customer.subscription.trial_will_end (3 days before)",
+      "Show countdown banner in app during trial period",
+      "Collect payment method early with SetupIntent for better conversion"
+    ],
+    "related": ["subscription-create", "webhook-handler"]
+  },
+  "dunning-handler": {
+    "description": "Handle failed payments and dunning (retry) sequences",
+    "category": "dunning",
+    "language": "typescript",
+    "tags": ["dunning", "failed-payment", "retry", "past-due"],
+    "docs_url": "https://docs.stripe.com/billing/revenue-recovery/smart-retries",
+    "code": "import Stripe from 'stripe'\nimport { createServiceClient } from '@/lib/supabase/server'\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {\n  apiVersion: '2024-06-20',\n})\n\n// Webhook handler for payment failures\nexport async function handlePaymentFailed(\n  invoice: Stripe.Invoice\n) {\n  const supabase = createServiceClient()\n  const subscriptionId = invoice.subscription as string\n  \n  // Calculate grace period (7 days from now)\n  const gracePeriodUntil = new Date()\n  gracePeriodUntil.setDate(gracePeriodUntil.getDate() + 7)\n  \n  // Update subscription status\n  await supabase\n    .from('subscriptions')\n    .update({\n      status: 'past_due',\n      dunning_started_at: new Date().toISOString(),\n      grace_period_until: gracePeriodUntil.toISOString(),\n      dunning_emails_sent: 1,\n    })\n    .eq('id', subscriptionId)\n  \n  // TODO: Send dunning email #1\n  // \"Payment failed. Update your card to avoid service interruption.\"\n  \n  return { action: 'dunning_started' }\n}\n\n// Webhook handler for payment recovery\nexport async function handlePaymentRecovered(\n  invoice: Stripe.Invoice\n) {\n  const supabase = createServiceClient()\n  const subscriptionId = invoice.subscription as string\n  \n  // Clear dunning state\n  await supabase\n    .from('subscriptions')\n    .update({\n      status: 'active',\n      dunning_started_at: null,\n      grace_period_until: null,\n      dunning_emails_sent: 0,\n    })\n    .eq('id', subscriptionId)\n  \n  // TODO: Send recovery confirmation email\n  \n  return { action: 'payment_recovered' }\n}\n\n// Check if user is in grace period (still has access)\nexport async function checkGracePeriod(\n  userId: string\n): Promise<{ hasAccess: boolean; daysRemaining: number | null }> {\n  const supabase = createServiceClient()\n  \n  const { data: subscription } = await supabase\n    .from('subscriptions')\n    .select('status, grace_period_until')\n    .eq('user_id', userId)\n    .single()\n  \n  if (!subscription) {\n    return { hasAccess: false, daysRemaining: null }\n  }\n  \n  if (subscription.status === 'active') {\n    return { hasAccess: true, daysRemaining: null }\n  }\n  \n  if (subscription.status === 'past_due' && subscription.grace_period_until) {\n    const gracePeriodEnd = new Date(subscription.grace_period_until)\n    const now = new Date()\n    \n    if (now < gracePeriodEnd) {\n      const daysRemaining = Math.ceil(\n        (gracePeriodEnd.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)\n      )\n      return { hasAccess: true, daysRemaining }\n    }\n  }\n  \n  return { hasAccess: false, daysRemaining: 0 }\n}",
+    "notes": [
+      "Stripe Smart Retries recover ~57% of failed payments automatically",
+      "Don't lock users out immediately - use 5-7 day grace period",
+      "Show in-app banner during grace period linking to Customer Portal",
+      "Send dunning emails: Day 0, Day 3, Day 7 (before lockout)",
+      "After grace period: Allow read access, block write access"
+    ],
+    "related": ["webhook-handler", "customer-portal"]
+  },
+  "seat-based-billing": {
+    "description": "Per-seat subscription management with quantity updates",
+    "category": "subscriptions",
+    "language": "typescript",
+    "tags": ["seats", "quantity", "team", "per-user"],
+    "docs_url": "https://docs.stripe.com/billing/subscriptions/upgrade-downgrade",
+    "code": "import Stripe from 'stripe'\nimport { createServiceClient } from '@/lib/supabase/server'\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {\n  apiVersion: '2024-06-20',\n})\n\n// Add a seat (team member added)\nexport async function addSeat(\n  subscriptionId: string,\n  prorationBehavior: 'always_invoice' | 'create_prorations' = 'always_invoice'\n) {\n  const subscription = await stripe.subscriptions.retrieve(subscriptionId)\n  const currentQuantity = subscription.items.data[0].quantity || 1\n  \n  const updatedSubscription = await stripe.subscriptions.update(subscriptionId, {\n    items: [{\n      id: subscription.items.data[0].id,\n      quantity: currentQuantity + 1,\n    }],\n    proration_behavior: prorationBehavior,\n  })\n  \n  return {\n    newQuantity: currentQuantity + 1,\n    subscription: updatedSubscription,\n  }\n}\n\n// Remove a seat (team member removed)\nexport async function removeSeat(\n  subscriptionId: string,\n  prorationBehavior: 'create_prorations' | 'none' = 'create_prorations'\n) {\n  const subscription = await stripe.subscriptions.retrieve(subscriptionId)\n  const currentQuantity = subscription.items.data[0].quantity || 1\n  \n  if (currentQuantity <= 1) {\n    throw new Error('Cannot reduce below 1 seat')\n  }\n  \n  const updatedSubscription = await stripe.subscriptions.update(subscriptionId, {\n    items: [{\n      id: subscription.items.data[0].id,\n      quantity: currentQuantity - 1,\n    }],\n    proration_behavior: prorationBehavior,\n  })\n  \n  return {\n    newQuantity: currentQuantity - 1,\n    subscription: updatedSubscription,\n  }\n}\n\n// Sync seat count from database (nightly job pattern)\nexport async function syncSeatCount(\n  teamId: string,\n  subscriptionId: string\n) {\n  const supabase = createServiceClient()\n  \n  // Count active team members\n  const { count } = await supabase\n    .from('team_members')\n    .select('*', { count: 'exact', head: true })\n    .eq('team_id', teamId)\n    .eq('role', 'member') // Exclude guests/viewers if they're free\n  \n  const subscription = await stripe.subscriptions.retrieve(subscriptionId)\n  const currentQuantity = subscription.items.data[0].quantity || 1\n  \n  if (count && count !== currentQuantity) {\n    await stripe.subscriptions.update(subscriptionId, {\n      items: [{\n        id: subscription.items.data[0].id,\n        quantity: count,\n      }],\n      proration_behavior: 'create_prorations',\n    })\n    \n    return { synced: true, oldQuantity: currentQuantity, newQuantity: count }\n  }\n  \n  return { synced: false, quantity: currentQuantity }\n}",
+    "notes": [
+      "Use always_invoice for seat additions to charge immediately",
+      "Use create_prorations for removals to credit next invoice",
+      "Consider free guests/viewers - only bill for full members",
+      "Run nightly sync to catch any missed updates",
+      "Show proration preview before confirming seat changes"
+    ],
+    "related": ["subscription-update", "proration"]
+  },
+  "usage-records": {
+    "description": "Record usage for legacy metered billing (pre-Meters API)",
+    "category": "usage",
+    "language": "typescript",
+    "tags": ["usage", "metered", "legacy"],
+    "docs_url": "https://docs.stripe.com/billing/subscriptions/usage-based-legacy/recording-usage",
+    "code": "import Stripe from 'stripe'\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {\n  apiVersion: '2024-06-20',\n})\n\n// Record usage for a subscription item\nexport async function recordUsage(\n  subscriptionItemId: string,\n  quantity: number,\n  action: 'increment' | 'set' = 'increment',\n  idempotencyKey?: string\n) {\n  const usageRecord = await stripe.subscriptionItems.createUsageRecord(\n    subscriptionItemId,\n    {\n      quantity,\n      action,\n      timestamp: Math.floor(Date.now() / 1000),\n    },\n    {\n      idempotencyKey,\n    }\n  )\n  \n  return usageRecord\n}\n\n// Get usage summary for current period\nexport async function getUsageSummary(\n  subscriptionItemId: string\n) {\n  const usageRecords = await stripe.subscriptionItems.listUsageRecordSummaries(\n    subscriptionItemId,\n    { limit: 1 }\n  )\n  \n  return usageRecords.data[0] || { total_usage: 0 }\n}",
+    "notes": [
+      "This is the legacy API - prefer Meters API v2 for new implementations",
+      "Use increment for cumulative usage, set for absolute values",
+      "Always use idempotencyKey to prevent duplicate records",
+      "Usage is billed at the end of the billing period"
+    ],
+    "related": ["meters-api"]
+  },
+  "invoice-preview": {
+    "description": "Preview upcoming invoice for customer",
+    "category": "invoices",
+    "language": "typescript",
+    "tags": ["invoice", "preview", "upcoming"],
+    "docs_url": "https://docs.stripe.com/api/invoices/upcoming",
+    "code": "import Stripe from 'stripe'\n\nconst stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {\n  apiVersion: '2024-06-20',\n})\n\nexport async function getUpcomingInvoice(\n  customerId: string\n): Promise<{\n  amount: number\n  currency: string\n  periodEnd: Date\n  lineItems: Array<{ description: string; amount: number }>\n}> {\n  const invoice = await stripe.invoices.retrieveUpcoming({\n    customer: customerId,\n  })\n  \n  return {\n    amount: invoice.amount_due,\n    currency: invoice.currency,\n    periodEnd: new Date(invoice.period_end * 1000),\n    lineItems: invoice.lines.data.map(line => ({\n      description: line.description || 'Subscription',\n      amount: line.amount,\n    })),\n  }\n}",
+    "notes": [
+      "Use for 'Your next bill will be $X' UI messages",
+      "Helpful for usage-based billing to show projected costs",
+      "Returns 404 if customer has no upcoming invoice"
+    ],
+    "related": ["proration", "meters-api"]
+  }
+}

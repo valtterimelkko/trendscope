@@ -1,0 +1,143 @@
+---
+name: context7-search
+description: Search for libraries in Context7. Use when the user mentions a library by name and you need to find its exact Context7 ID before fetching documentation.
+---
+
+# Search for Libraries in Context7
+
+Search for libraries in the Context7 documentation database. This helps identify the correct `owner/repo` format needed for fetching documentation.
+
+## When to Use
+
+Use this skill when:
+- User mentions a library by informal name (e.g., "next", "prisma", "mongo")
+- You need to discover the exact library identifier
+- User wants to compare multiple related libraries
+- Library name is ambiguous or has multiple versions
+
+**Skip this skill** when you already know the exact library (e.g., `vercel/next.js`). Use `context7-docs` directly instead.
+
+## Prerequisites
+
+The Context7 API key is checked in this order:
+1. **Primary**: `CONTEXT7_API_KEY` environment variable
+2. **Fallback**: `~/.bashrc` with `export CONTEXT7_API_KEY="your-key"`
+
+### Setting the API Key
+
+**For GLM-5 Web:**
+Add to your GLM-5 settings or environment configuration:
+```
+CONTEXT7_API_KEY=your-api-key-here
+```
+
+**For Local Development:**
+Add to your `~/.bashrc`:
+```bash
+export CONTEXT7_API_KEY="your-api-key-here"
+```
+Then reload: `source ~/.bashrc`
+
+## How to Execute
+
+### Basic Library Search
+
+```bash
+python3 .shared/scripts/context7/resolve_library.py --query "LIBRARY_NAME"
+```
+
+### Limit Results
+
+```bash
+python3 .shared/scripts/context7/resolve_library.py --query "LIBRARY_NAME" --limit 5
+```
+
+## Parameters
+
+| Parameter | Required | Default | Description |
+|-----------|----------|---------|-------------|
+| `--query` | Yes | - | Library name to search (fuzzy matching) |
+| `--limit` | No | 10 | Maximum number of results |
+
+## Example Queries
+
+```bash
+# Search for Next.js
+python3 .shared/scripts/context7/resolve_library.py --query "next.js"
+
+# Search for Prisma
+python3 .shared/scripts/context7/resolve_library.py --query "prisma" --limit 5
+
+# Search for MongoDB driver
+python3 .shared/scripts/context7/resolve_library.py --query "mongodb"
+```
+
+## Response Format
+
+```json
+{
+  "success": true,
+  "data": {
+    "query": "next.js",
+    "count": 3,
+    "matches": [
+      {
+        "id": "/vercel/next.js",
+        "title": "Next.js",
+        "description": "React framework for full-stack web applications",
+        "stars": 131745,
+        "trustScore": 10,
+        "versions": ["v15.1.8", "v14.3.0", "v13.5.11"]
+      }
+    ]
+  }
+}
+```
+
+## Selecting the Best Match
+
+After getting results, select the best library based on:
+
+1. **Trust score** - Higher is better (0-10 scale)
+2. **Stars** - More stars indicates popularity
+3. **Description relevance** - Match to user's specific needs
+4. **VIP status** - VIP libraries are official/verified
+
+## Common Library IDs
+
+For frequently used libraries, you can skip search and use directly:
+
+| Library | ID |
+|---------|-------------|
+| Next.js | `vercel/next.js` |
+| React | `facebook/react` |
+| Prisma | `prisma/prisma` |
+| Supabase | `supabase/supabase` |
+| FastAPI | `fastapi/fastapi` |
+| Express | `expressjs/express` |
+| Django | `django/django` |
+
+## Workflow
+
+```
+1. User asks about a library (e.g., "How do I use Prisma?")
+     |
+2. Run context7-search to find library ID
+     |
+3. Select best match from results (e.g., prisma/prisma)
+     |
+4. Use context7-docs skill with the library ID
+```
+
+## Error Handling
+
+**No matches found:**
+- Try simpler search term (e.g., "next" instead of "next.js framework")
+- Try the library's official name
+- Check spelling
+
+**API error / Authentication error:**
+- **GLM-5 Web**: Verify the `CONTEXT7_API_KEY` environment variable is set in your settings
+- **Local**: Verify `CONTEXT7_API_KEY` is in environment or `~/.bashrc`
+- Check network connectivity
+- Verify your API key is valid

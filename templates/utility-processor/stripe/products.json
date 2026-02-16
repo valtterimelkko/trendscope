@@ -1,0 +1,141 @@
+{
+  "billingModel": "usage-based",
+  "description": "Credit/usage pricing for processed jobs with included allowance and overage",
+  "billingConfig": {
+    "trialDays": 7,
+    "trialType": "reverse",
+    "freemiumEnabled": false,
+    "freemiumTier": null,
+    "gracePeriodDays": 7,
+    "annualDiscountPercent": 25,
+    "dunningEnabled": true
+  },
+  "products": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "description": "For light processing needs",
+      "features": [
+        "Up to 500 jobs/month",
+        "Basic processing queue",
+        "7-day history",
+        "Standard support"
+      ],
+      "limits": {
+        "jobs": 500,
+        "history_days": 7,
+        "storage_mb": 512
+      },
+      "prices": {
+        "monthly": {
+          "amount": 900,
+          "currency": "usd",
+          "stripe_price_id": "price_util_starter_monthly"
+        },
+        "yearly": {
+          "amount": 8400,
+          "currency": "usd",
+          "stripe_price_id": "price_util_starter_yearly",
+          "savings_percent": 22
+        }
+      },
+      "trial": {
+        "eligible": true,
+        "daysOverride": null
+      },
+      "featureFlags": {
+        "priority_support": false,
+        "advanced_options": false,
+        "batch_processing": false
+      }
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "description": "For teams running frequent jobs",
+      "features": [
+        "Up to 10,000 jobs/month",
+        "Batch processing enabled",
+        "30-day history",
+        "Priority support"
+      ],
+      "limits": {
+        "jobs": 10000,
+        "history_days": 30,
+        "storage_mb": 5120
+      },
+      "prices": {
+        "monthly": {
+          "amount": 2900,
+          "currency": "usd",
+          "stripe_price_id": "price_util_pro_monthly"
+        },
+        "yearly": {
+          "amount": 29400,
+          "currency": "usd",
+          "stripe_price_id": "price_util_pro_yearly",
+          "savings_percent": 15
+        }
+      },
+      "highlighted": true,
+      "badge": "Popular",
+      "trial": {
+        "eligible": true,
+        "daysOverride": null
+      },
+      "featureFlags": {
+        "priority_support": true,
+        "advanced_options": true,
+        "batch_processing": true
+      }
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "description": "Custom limits and SLAs",
+      "features": [
+        "Unlimited jobs",
+        "Custom processing pipelines",
+        "Audit + compliance",
+        "Dedicated success manager"
+      ],
+      "limits": {
+        "jobs": -1,
+        "history_days": -1,
+        "storage_mb": -1
+      },
+      "prices": {
+        "custom": true,
+        "contact_sales": true
+      },
+      "trial": {
+        "eligible": false,
+        "daysOverride": null
+      },
+      "featureFlags": {
+        "priority_support": true,
+        "advanced_options": true,
+        "batch_processing": true,
+        "audit_logs": true
+      }
+    }
+  ],
+  "overage": {
+    "enabled": true,
+    "price_per_job_cents": 5,
+    "currency": "usd",
+    "behavior": "charge_overage"
+  },
+  "webhookEvents": [
+    "checkout.session.completed",
+    "customer.created",
+    "customer.subscription.created",
+    "customer.subscription.updated",
+    "customer.subscription.deleted",
+    "customer.subscription.trial_will_end",
+    "invoice.payment_succeeded",
+    "invoice.payment_failed",
+    "invoice.payment_action_required",
+    "invoice.upcoming"
+  ]
+}

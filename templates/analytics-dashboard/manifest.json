@@ -1,0 +1,53 @@
+{
+  "name": "analytics-dashboard",
+  "displayName": "Analytics Dashboard",
+  "description": "Clean, data-focused SaaS template with metrics visualization, real-time activity tracking, and public dashboard sharing",
+  "version": "1.0.0",
+  "category": "analytics",
+  "personality": "trustworthy",
+  "authStyle": {
+    "theme": "light",
+    "description": "Clean, minimal, light default with subtle grid background"
+  },
+  "billingModel": {
+    "type": "usage-based",
+    "metric": "events/month",
+    "description": "Metered pricing with usage records and overage charges"
+  },
+  "techStack": {
+    "frontend": "next@14",
+    "styling": "tailwindcss",
+    "database": "supabase",
+    "auth": "supabase-auth",
+    "payments": "stripe"
+  },
+  "features": [
+    "big-number-cards",
+    "sparkline-charts",
+    "date-range-controller",
+    "breakdown-lists",
+    "real-time-ticker",
+    "public-dashboard",
+    "tracking-snippet",
+    "dark-mode"
+  ],
+  "brandTokens": [
+    "--color-primary",
+    "--color-secondary",
+    "--color-accent",
+    "--color-background",
+    "--color-foreground",
+    "--color-success",
+    "--color-warning",
+    "--color-error",
+    "--color-info",
+    "--font-display",
+    "--font-body"
+  ],
+  "contentSlots": 48,
+  "estimatedSetupTime": "15 minutes",
+  "extraPages": [
+    "/settings/snippet",
+    "/dashboard/public"
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "billingModel": "feature-limits",
+  "description": "Feature-gated pricing with free tier and credit packs",
+  "billingConfig": {
+    "trialDays": 14,
+    "trialType": "reverse",
+    "freemiumEnabled": true,
+    "freemiumTier": "starter",
+    "gracePeriodDays": 7,
+    "annualDiscountPercent": 33,
+    "dunningEnabled": true
+  },
+  "creditPacks": [
+    {
+      "id": "credits_5k",
+      "name": "5,000 Credits",
+      "amount": 500,
+      "credits": 5000,
+      "stripe_price_id": "price_credits_5k"
+    },
+    {
+      "id": "credits_10k",
+      "name": "10,000 Credits",
+      "amount": 900,
+      "credits": 10000,
+      "stripe_price_id": "price_credits_10k",
+      "badge": "Best Value"
+    },
+    {
+      "id": "credits_25k",
+      "name": "25,000 Credits",
+      "amount": 2000,
+      "credits": 25000,
+      "stripe_price_id": "price_credits_25k"
+    }
+  ],
+  "products": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "description": "For individual creators getting started",
+      "type": "feature-limits",
+      "default_price": {
+        "amount": 0,
+        "currency": "usd",
+        "interval": null
+      },
+      "features": [
+        "10 posts",
+        "500MB media storage",
+        "5 scheduled posts",
+        "1 team member",
+        "Basic editor"
+      ],
+      "limits": {
+        "posts": 10,
+        "storage_mb": 500,
+        "scheduled_posts": 5,
+        "team_members": 1,
+        "monthly_credits": 1000
+      },
+      "metadata": {
+        "tier": "free"
+      },
+      "trial": {
+        "eligible": false,
+        "daysOverride": null
+      },
+      "featureFlags": {
+        "seo_tools": false,
+        "custom_categories": false,
+        "api_access": false,
+        "analytics_dashboard": false,
+        "custom_domain": false,
+        "white_label": false
+      }
+    },
+    {
+      "id": "creator",
+      "name": "Creator",
+      "description": "For growing creators who need more",
+      "type": "feature-limits",
+      "default_price": {
+        "amount": 1500,
+        "currency": "usd",
+        "interval": "month"
+      },
+      "annual_price": {
+        "amount": 12000,
+        "currency": "usd",
+        "interval": "year"
+      },
+      "features": [
+        "100 posts",
+        "10GB media storage",
+        "50 scheduled posts",
+        "3 team members",
+        "Priority support",
+        "Custom categories",
+        "SEO tools"
+      ],
+      "limits": {
+        "posts": 100,
+        "storage_mb": 10240,
+        "scheduled_posts": 50,
+        "team_members": 3,
+        "monthly_credits": 10000
+      },
+      "metadata": {
+        "tier": "creator",
+        "recommended": true
+      },
+      "trial": {
+        "eligible": true,
+        "daysOverride": null
+      },
+      "featureFlags": {
+        "seo_tools": true,
+        "custom_categories": true,
+        "api_access": false,
+        "analytics_dashboard": false,
+        "custom_domain": false,
+        "white_label": false
+      }
+    },
+    {
+      "id": "studio",
+      "name": "Studio",
+      "description": "For teams and agencies",
+      "type": "feature-limits",
+      "default_price": {
+        "amount": 3900,
+        "currency": "usd",
+        "interval": "month"
+      },
+      "annual_price": {
+        "amount": 31200,
+        "currency": "usd",
+        "interval": "year"
+      },
+      "features": [
+        "Unlimited posts",
+        "100GB media storage",
+        "Unlimited scheduling",
+        "10 team members",
+        "Custom domain",
+        "API access",
+        "Analytics dashboard",
+        "White-label option"
+      ],
+      "limits": {
+        "posts": -1,
+        "storage_mb": 102400,
+        "scheduled_posts": -1,
+        "team_members": 10,
+        "monthly_credits": -1
+      },
+      "metadata": {
+        "tier": "studio"
+      },
+      "trial": {
+        "eligible": true,
+        "daysOverride": null
+      },
+      "featureFlags": {
+        "seo_tools": true,
+        "custom_categories": true,
+        "api_access": true,
+        "analytics_dashboard": true,
+        "custom_domain": true,
+        "white_label": true
+      }
+    }
+  ],
+  "webhookEvents": [
+    "checkout.session.completed",
+    "customer.created",
+    "customer.subscription.created",
+    "customer.subscription.updated",
+    "customer.subscription.deleted",
+    "customer.subscription.trial_will_end",
+    "invoice.payment_succeeded",
+    "invoice.payment_failed",
+    "invoice.payment_action_required",
+    "invoice.upcoming"
+  ]
+}

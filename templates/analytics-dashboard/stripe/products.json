@@ -1,0 +1,169 @@
+{
+  "billingModel": "usage-based",
+  "description": "Event-based pricing with monthly quotas and overage charges",
+  "billingConfig": {
+    "trialDays": 14,
+    "trialType": "reverse",
+    "freemiumEnabled": false,
+    "freemiumTier": null,
+    "gracePeriodDays": 7,
+    "annualDiscountPercent": 28,
+    "dunningEnabled": true
+  },
+  "products": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "description": "For personal projects and small websites",
+      "features": [
+        "Up to 1,000 events/month",
+        "7-day data retention",
+        "1 website",
+        "Email support"
+      ],
+      "limits": {
+        "events": 1000,
+        "sites": 1,
+        "retention_days": 7,
+        "team_members": 1
+      },
+      "prices": {
+        "monthly": {
+          "amount": 900,
+          "currency": "usd",
+          "stripe_price_id": "price_starter_monthly"
+        },
+        "yearly": {
+          "amount": 7900,
+          "currency": "usd",
+          "stripe_price_id": "price_starter_yearly",
+          "savings_percent": 27
+        }
+      },
+      "trial": {
+        "eligible": true,
+        "daysOverride": null
+      },
+      "featureFlags": {
+        "exports": false,
+        "api_access": false,
+        "custom_events": false,
+        "team_collaboration": false,
+        "priority_support": false
+      }
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "description": "For growing teams and businesses",
+      "features": [
+        "Up to 50,000 events/month",
+        "1-year data retention",
+        "Unlimited websites",
+        "Priority support",
+        "Team collaboration",
+        "Custom events",
+        "API access"
+      ],
+      "limits": {
+        "events": 50000,
+        "sites": -1,
+        "retention_days": 365,
+        "team_members": 10
+      },
+      "prices": {
+        "monthly": {
+          "amount": 2900,
+          "currency": "usd",
+          "stripe_price_id": "price_pro_monthly"
+        },
+        "yearly": {
+          "amount": 24900,
+          "currency": "usd",
+          "stripe_price_id": "price_pro_yearly",
+          "savings_percent": 28
+        }
+      },
+      "highlighted": true,
+      "badge": "Popular",
+      "trial": {
+        "eligible": true,
+        "daysOverride": null
+      },
+      "featureFlags": {
+        "exports": true,
+        "api_access": true,
+        "custom_events": true,
+        "team_collaboration": true,
+        "priority_support": true
+      }
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "description": "For large organizations with custom needs",
+      "features": [
+        "Unlimited events",
+        "Unlimited data retention",
+        "Unlimited websites",
+        "Dedicated support",
+        "Custom integrations",
+        "SLA guarantee",
+        "On-premise option"
+      ],
+      "limits": {
+        "events": -1,
+        "sites": -1,
+        "retention_days": -1,
+        "team_members": -1
+      },
+      "prices": {
+        "custom": true,
+        "contact_sales": true
+      },
+      "trial": {
+        "eligible": false,
+        "daysOverride": null
+      },
+      "featureFlags": {
+        "exports": true,
+        "api_access": true,
+        "custom_events": true,
+        "team_collaboration": true,
+        "priority_support": true,
+        "custom_integrations": true,
+        "sla_guarantee": true
+      }
+    }
+  ],
+  "metering": {
+    "metric": "events",
+    "unit": "event",
+    "stripeMeterId": "mtr_events",
+    "syncIntervalMinutes": 60,
+    "softOveragePercent": 10,
+    "overage": {
+      "enabled": true,
+      "rate_per_unit": 0.001,
+      "description": "$0.001 per event over quota"
+    }
+  },
+  "trial": {
+    "enabled": true,
+    "days": 14,
+    "require_payment_method": false
+  },
+  "webhookEvents": [
+    "checkout.session.completed",
+    "customer.created",
+    "customer.subscription.created",
+    "customer.subscription.updated",
+    "customer.subscription.deleted",
+    "customer.subscription.trial_will_end",
+    "invoice.payment_succeeded",
+    "invoice.payment_failed",
+    "invoice.payment_action_required",
+    "invoice.upcoming",
+    "billing.meter.error_report_triggered"
+  ]
+}

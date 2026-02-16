@@ -1,0 +1,84 @@
+/* Brand Token CSS Variables
+ * These are the customization points for template personalization.
+ * Edit these values to match your brand identity.
+ */
+
+:root {
+  /* Primary Brand Colors */
+  --color-primary: #3B82F6;      /* Blue - primary actions, links */
+  --color-secondary: #60A5FA;    /* Indigo - secondary elements */
+  --color-accent: #1D4ED8;       /* Purple - highlights, badges */
+
+  /* Background & Foreground */
+  --color-background: #FFFFFF;
+  --color-foreground: #1F2937;
+  --color-muted: #9CA3AF;
+
+  /* Semantic Colors - Standard across all templates */
+  --color-success: #10B981;      /* Green - positive metrics, success states */
+  --color-warning: #F59E0B;      /* Amber - warnings, caution */
+  --color-error: #EF4444;        /* Red - errors, negative metrics */
+  --color-info: #06B6D4;         /* Cyan - informational */
+
+  /* Surface Colors */
+  --color-surface: #F9FAFB;
+  --color-surface-hover: #F3F4F6;
+  --color-border: #E5E7EB;
+  --color-border-strong: #D1D5DB;
+
+  /* Text Colors */
+  --color-text-primary: #111827;
+  --color-text-secondary: #6B7280;
+  --color-text-muted: #9CA3AF;
+
+  /* Typography */
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Spacing Scale (8px base) */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+}
+
+/* Dark Mode Tokens */
+.dark {
+  --color-background: #0F172A;
+  --color-foreground: #F8FAFC;
+
+  --color-surface: #1E293B;
+  --color-surface-hover: #334155;
+  --color-border: #334155;
+  --color-border-strong: #475569;
+
+  --color-text-primary: #F1F5F9;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+
+  /* Adjusted primary colors for dark mode */
+  --color-primary: #3B82F6;
+  --color-secondary: #60A5FA;
+  --color-accent: #1D4ED8;
+}

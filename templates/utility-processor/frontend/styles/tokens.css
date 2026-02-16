@@ -1,0 +1,120 @@
+/* Brand Token CSS Variables
+ * Productivity Tool - Dark Mode First, Linear-inspired
+ * Edit these values to match your brand identity.
+ */
+
+:root {
+  /* Primary Brand Colors - Muted, professional */
+  --color-primary: #5E6AD2;      /* Indigo - primary actions */
+  --color-secondary: #8B5CF6;    /* Purple - secondary elements */
+  --color-accent: #06B6D4;       /* Cyan - highlights */
+
+  /* Background & Foreground - Dark by default */
+  --color-background: #0A0A0B;
+  --color-foreground: #EEEEF0;
+  --color-muted: #71717A;
+
+  /* Semantic Colors */
+  --color-success: #4ADE80;      /* Green - completed */
+  --color-warning: #FBBF24;      /* Amber - in progress */
+  --color-error: #F87171;        /* Red - blocked, urgent */
+  --color-info: #60A5FA;         /* Blue - informational */
+
+  /* Surface Colors - Subtle grays */
+  --color-surface: #161618;
+  --color-surface-hover: #1F1F22;
+  --color-surface-active: #27272A;
+  --color-border: #27272A;
+  --color-border-strong: #3F3F46;
+
+  /* Text Colors */
+  --color-text-primary: #FAFAFA;
+  --color-text-secondary: #A1A1AA;
+  --color-text-muted: #71717A;
+
+  /* Status Colors (for Kanban) */
+  --color-status-backlog: #71717A;
+  --color-status-todo: #FBBF24;
+  --color-status-inprogress: #60A5FA;
+  --color-status-done: #4ADE80;
+  --color-status-canceled: #F87171;
+
+  /* Typography */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* Spacing Scale (8px base) */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows - Subtle for dark mode */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+
+  /* Transitions - Fast for responsiveness */
+  --transition-fast: 100ms ease;
+  --transition-base: 150ms ease;
+  --transition-slow: 200ms ease;
+}
+
+/* Dark Mode - default styles already dark, but add .dark for consistency */
+.dark {
+  --color-background: #0A0A0B;
+  --color-foreground: #EEEEF0;
+  --color-muted: #71717A;
+
+  --color-surface: #161618;
+  --color-surface-hover: #1F1F22;
+  --color-surface-active: #27272A;
+  --color-border: #27272A;
+  --color-border-strong: #3F3F46;
+
+  --color-text-primary: #FAFAFA;
+  --color-text-secondary: #A1A1AA;
+  --color-text-muted: #71717A;
+
+  --color-primary: #5E6AD2;
+  --color-secondary: #8B5CF6;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+}
+
+/* Light Mode Override */
+.light {
+  --color-background: #FAFAFA;
+  --color-foreground: #18181B;
+
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #F4F4F5;
+  --color-surface-active: #E4E4E7;
+  --color-border: #E4E4E7;
+  --color-border-strong: #D4D4D8;
+
+  --color-text-primary: #18181B;
+  --color-text-secondary: #52525B;
+  --color-text-muted: #A1A1AA;
+
+  /* Adjusted for light mode */
+  --color-primary: #4F46E5;
+  --color-secondary: #7C3AED;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}

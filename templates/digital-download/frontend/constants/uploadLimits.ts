@@ -1,0 +1,2 @@
+export const FREE_UPLOAD_CAP_MB = 500
+export const FREE_UPLOAD_CAP_BYTES = FREE_UPLOAD_CAP_MB * 1024 * 1024

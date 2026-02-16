@@ -1,0 +1,441 @@
+{
+  "template": "content-creator",
+  "version": "1.0.0",
+  "totalSlots": 72,
+  "slots": {
+    "brand": {
+      "app_name": {
+        "type": "headline",
+        "maxLength": 30,
+        "default": "Content Studio",
+        "description": "Application name displayed in header and title"
+      },
+      "tagline": {
+        "type": "body",
+        "maxLength": 60,
+        "default": "Where great content comes to life",
+        "description": "Primary tagline for marketing"
+      },
+      "description": {
+        "type": "body",
+        "maxLength": 100,
+        "default": "The all-in-one platform for writers, creators, and media teams",
+        "description": "One-line product description"
+      }
+    },
+    "landing": {
+      "hero_title": {
+        "type": "headline",
+        "maxLength": 80,
+        "default": "Where great content comes to life",
+        "description": "Main hero headline"
+      },
+      "hero_subtitle": {
+        "type": "body",
+        "maxLength": 150,
+        "default": "The all-in-one platform for writers, creators, and media teams to draft, collaborate, and publish beautiful content.",
+        "description": "Hero supporting text"
+      },
+      "cta_primary": {
+        "type": "button",
+        "maxLength": 25,
+        "default": "Start for free",
+        "description": "Primary CTA button text"
+      },
+      "cta_secondary": {
+        "type": "button",
+        "maxLength": 25,
+        "default": "See how it works",
+        "description": "Secondary CTA button text"
+      },
+      "feature_1_title": {
+        "type": "feature_title",
+        "maxLength": 40,
+        "default": "Rich text editor",
+        "description": "Feature 1 title"
+      },
+      "feature_1_description": {
+        "type": "body",
+        "maxLength": 150,
+        "default": "A beautiful writing experience with markdown support, embeds, and real-time collaboration.",
+        "description": "Feature 1 description"
+      },
+      "feature_2_title": {
+        "type": "feature_title",
+        "maxLength": 40,
+        "default": "Media library",
+        "description": "Feature 2 title"
+      },
+      "feature_2_description": {
+        "type": "body",
+        "maxLength": 150,
+        "default": "Organize images, videos, and files in one place. Drag and drop into any post.",
+        "description": "Feature 2 description"
+      },
+      "feature_3_title": {
+        "type": "feature_title",
+        "maxLength": 40,
+        "default": "Content calendar",
+        "description": "Feature 3 title"
+      },
+      "feature_3_description": {
+        "type": "body",
+        "maxLength": 150,
+        "default": "Plan and schedule your content with a visual calendar. Never miss a publish date.",
+        "description": "Feature 3 description"
+      },
+      "social_proof_title": {
+        "type": "section_title",
+        "maxLength": 50,
+        "default": "Trusted by thousands of creators",
+        "description": "Social proof section title"
+      }
+    },
+    "auth": {
+      "login_title": {
+        "type": "headline",
+        "maxLength": 40,
+        "default": "Welcome back",
+        "description": "Login page title"
+      },
+      "login_subtitle": {
+        "type": "body",
+        "maxLength": 80,
+        "default": "Sign in to continue creating",
+        "description": "Login page subtitle"
+      },
+      "signup_title": {
+        "type": "headline",
+        "maxLength": 40,
+        "default": "Create your account",
+        "description": "Signup page title"
+      },
+      "signup_subtitle": {
+        "type": "body",
+        "maxLength": 80,
+        "default": "Start creating in minutes",
+        "description": "Signup page subtitle"
+      },
+      "google_button": {
+        "type": "button",
+        "maxLength": 30,
+        "default": "Continue with Google",
+        "description": "Google OAuth button text"
+      },
+      "magic_link_button": {
+        "type": "button",
+        "maxLength": 40,
+        "default": "Send me a magic link instead",
+        "description": "Magic link button text"
+      }
+    },
+    "dashboard": {
+      "content_empty_title": {
+        "type": "empty_state",
+        "maxLength": 40,
+        "default": "No posts yet",
+        "description": "Empty content list title"
+      },
+      "content_empty_description": {
+        "type": "body",
+        "maxLength": 100,
+        "default": "Create your first post to get started",
+        "description": "Empty content list description"
+      },
+      "media_empty_title": {
+        "type": "empty_state",
+        "maxLength": 40,
+        "default": "No media yet",
+        "description": "Empty media library title"
+      },
+      "media_empty_description": {
+        "type": "body",
+        "maxLength": 100,
+        "default": "Upload images and files to use in your posts",
+        "description": "Empty media library description"
+      },
+      "new_post_button": {
+        "type": "button",
+        "maxLength": 25,
+        "default": "New Post",
+        "description": "Create new post button text"
+      },
+      "upload_media_button": {
+        "type": "button",
+        "maxLength": 25,
+        "default": "Upload Media",
+        "description": "Upload media button text"
+      }
+    },
+    "editor": {
+      "title_placeholder": {
+        "type": "body",
+        "maxLength": 30,
+        "default": "Untitled",
+        "description": "Post title placeholder"
+      },
+      "content_placeholder": {
+        "type": "body",
+        "maxLength": 40,
+        "default": "Start writing...",
+        "description": "Editor content placeholder"
+      },
+      "save_draft_button": {
+        "type": "button",
+        "maxLength": 25,
+        "default": "Save draft",
+        "description": "Save draft button text"
+      },
+      "publish_button": {
+        "type": "button",
+        "maxLength": 20,
+        "default": "Publish",
+        "description": "Publish button text"
+      },
+      "schedule_button": {
+        "type": "button",
+        "maxLength": 20,
+        "default": "Schedule",
+        "description": "Schedule button text"
+      }
+    },
+    "billing": {
+      "starter_name": {
+        "type": "headline",
+        "maxLength": 20,
+        "default": "Starter",
+        "description": "Free tier name"
+      },
+      "starter_description": {
+        "type": "body",
+        "maxLength": 60,
+        "default": "For individual creators getting started",
+        "description": "Free tier description"
+      },
+      "creator_name": {
+        "type": "headline",
+        "maxLength": 20,
+        "default": "Creator",
+        "description": "Mid tier name"
+      },
+      "creator_description": {
+        "type": "body",
+        "maxLength": 60,
+        "default": "For growing creators who need more",
+        "description": "Mid tier description"
+      },
+      "studio_name": {
+        "type": "headline",
+        "maxLength": 20,
+        "default": "Studio",
+        "description": "Top tier name"
+      },
+      "studio_description": {
+        "type": "body",
+        "maxLength": 60,
+        "default": "For teams and agencies",
+        "description": "Top tier description"
+      },
+      "limit_warning": {
+        "type": "error",
+        "maxLength": 80,
+        "default": "You've reached your limit. Upgrade to continue.",
+        "description": "Feature limit warning message"
+      },
+      "upgrade_cta": {
+        "type": "button",
+        "maxLength": 25,
+        "default": "Upgrade plan",
+        "description": "Upgrade button text"
+      }
+    },
+    "settings": {
+      "general_title": {
+        "type": "headline",
+        "maxLength": 40,
+        "default": "General Settings",
+        "description": "General settings page title"
+      },
+      "team_title": {
+        "type": "headline",
+        "maxLength": 40,
+        "default": "Team Members",
+        "description": "Team settings page title"
+      },
+      "billing_title": {
+        "type": "headline",
+        "maxLength": 40,
+        "default": "Billing",
+        "description": "Billing settings page title"
+      },
+      "invite_button": {
+        "type": "button",
+        "maxLength": 25,
+        "default": "Invite member",
+        "description": "Invite team member button text"
+      },
+      "save_button": {
+        "type": "button",
+        "maxLength": 25,
+        "default": "Save changes",
+        "description": "Save button text"
+      }
+    },
+    "status": {
+      "draft": {
+        "type": "body",
+        "maxLength": 20,
+        "default": "Draft",
+        "description": "Draft status label"
+      },
+      "review": {
+        "type": "body",
+        "maxLength": 20,
+        "default": "In Review",
+        "description": "Review status label"
+      },
+      "scheduled": {
+        "type": "body",
+        "maxLength": 20,
+        "default": "Scheduled",
+        "description": "Scheduled status label"
+      },
+      "published": {
+        "type": "body",
+        "maxLength": 20,
+        "default": "Published",
+        "description": "Published status label"
+      },
+      "archived": {
+        "type": "body",
+        "maxLength": 20,
+        "default": "Archived",
+        "description": "Archived status label"
+      }
+    },
+    "connect": {
+      "title": {
+        "type": "headline",
+        "maxLength": 40,
+        "default": "Connect Your Accounts",
+        "description": "Connect page title"
+      },
+      "subtitle": {
+        "type": "body",
+        "maxLength": 120,
+        "default": "Link your social media accounts to publish content directly from your dashboard.",
+        "description": "Connect page subtitle"
+      },
+      "security_note": {
+        "type": "body",
+        "maxLength": 200,
+        "default": "We use OAuth to securely connect your accounts. We never store your passwords and you can revoke access at any time.",
+        "description": "Security info on connect page"
+      }
+    },
+    "queue": {
+      "title": {
+        "type": "headline",
+        "maxLength": 30,
+        "default": "Post Queue",
+        "description": "Queue page title"
+      },
+      "subtitle": {
+        "type": "body",
+        "maxLength": 100,
+        "default": "Manage your scheduled posts and upcoming content.",
+        "description": "Queue page subtitle"
+      },
+      "empty_title": {
+        "type": "headline",
+        "maxLength": 40,
+        "default": "Your queue is empty",
+        "description": "Empty queue state title"
+      },
+      "empty_description": {
+        "type": "body",
+        "maxLength": 150,
+        "default": "Schedule your first post to build a consistent content calendar. Your audience will thank you!",
+        "description": "Empty queue state description"
+      },
+      "tip": {
+        "type": "body",
+        "maxLength": 150,
+        "default": "Set up your posting schedule in Settings to automatically fill your queue with optimal post times based on your audience.",
+        "description": "Pro tip on queue page"
+      }
+    },
+    "analytics": {
+      "title": {
+        "type": "headline",
+        "maxLength": 30,
+        "default": "Content Analytics",
+        "description": "Analytics page title"
+      },
+      "subtitle": {
+        "type": "body",
+        "maxLength": 100,
+        "default": "Track how your content is performing across all platforms.",
+        "description": "Analytics page subtitle"
+      },
+      "empty_title": {
+        "type": "headline",
+        "maxLength": 40,
+        "default": "No analytics data yet",
+        "description": "Empty analytics state title"
+      },
+      "empty_description": {
+        "type": "body",
+        "maxLength": 150,
+        "default": "Publish your first post to start tracking engagement and performance metrics.",
+        "description": "Empty analytics state description"
+      }
+    },
+    "errors": {
+      "auth_error": {
+        "type": "error",
+        "maxLength": 100,
+        "default": "Something went wrong. Please try again.",
+        "description": "Generic auth error message"
+      },
+      "limit_reached": {
+        "type": "error",
+        "maxLength": 100,
+        "default": "You've reached your plan limit. Please upgrade to continue.",
+        "description": "Feature limit error message"
+      },
+      "not_found_title": {
+        "type": "error",
+        "maxLength": 40,
+        "default": "Page not found",
+        "description": "404 page title"
+      },
+      "not_found_description": {
+        "type": "error",
+        "maxLength": 100,
+        "default": "The page you're looking for doesn't exist.",
+        "description": "404 page description"
+      }
+    },
+    "meta": {
+      "title_template": {
+        "type": "body",
+        "maxLength": 50,
+        "default": "%s | Content Studio",
+        "description": "Page title template"
+      },
+      "default_title": {
+        "type": "headline",
+        "maxLength": 60,
+        "default": "Content Studio - Create & Publish",
+        "description": "Default page title"
+      },
+      "meta_description": {
+        "type": "body",
+        "maxLength": 160,
+        "default": "The all-in-one platform for writers, creators, and media teams to draft, collaborate, and publish beautiful content.",
+        "description": "Meta description for SEO"
+      }
+    }
+  }
+}
