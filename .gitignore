@@ -88,6 +88,10 @@ temp/
 *.temp
 .cache/
 
+# Credential screenshots (processed, credentials moved to .env)
+screencapture*.png
+iproyal*.png
+
 # Backup files
 *.bak
 *.backup

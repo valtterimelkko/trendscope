@@ -14,7 +14,9 @@ Based on comprehensive research, **building Viral Waves using TikTok's official 
 | **Trend Endpoints** | ❌ None available | ✅ Full data access |
 | **Cost** | Free (but ineligible) | ~$100-500/month for MVP |
 
-**Revised Recommendation:** Build on **Self-Hosted TikTok-Api** as the primary data source (~$10-35/month with existing VPS), with **JoTucker RapidAPI** as a zero-cost fallback for initial validation.
+**Revised Recommendation:** ✅ **CONFIRMED: Self-Hosted TikTok-Api** as the primary data source (~$7-45/month with existing VPS + IPRoyal proxies). See `.env` file for configured proxy credentials.
+
+**Note:** JoTucker RapidAPI available as fallback if self-hosted encounters issues.
 
 ---
 
@@ -831,9 +833,11 @@ Viral Waves is a **trend detection and alerting system**, not a video library. T
 
 ---
 
-### 10.1 Recommended Stack: Self-Hosted (Primary)
+### 10.1 Recommended Stack: Self-Hosted (Primary) ✅ SELECTED
 
 **For founders with existing VPS + proxy infrastructure**
+
+> **Credentials:** Proxy credentials are pre-configured in `.env` file at project root. The scraper implementation should read from this file.
 
 #### Stack Overview
 
@@ -869,7 +873,7 @@ Viral Waves is a **trend detection and alerting system**, not a video library. T
 | Component | Technology | Purpose | Cost |
 |-----------|-----------|---------|------|
 | **Scraper** | TikTok-Api (Python) + Playwright | Extract TikTok metadata | $0 (open source) |
-| **Proxies** | IPRoyal (existing) | Rotate IPs to avoid blocks | ~$7.50/GB used |
+| **Proxies** | IPRoyal (existing - see `.env`) | Rotate IPs to avoid blocks | ~$7.50/GB used |
 | **Hot Cache** | Redis with TTL | 72-hour rolling window | $0 (on existing VPS) |
 | **Trend DB** | PostgreSQL | Persistent trend + alert history | $0 (on existing VPS) |
 | **Processing** | Python asyncio | Stream processing | $0 (existing compute) |

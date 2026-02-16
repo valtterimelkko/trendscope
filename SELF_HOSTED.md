@@ -106,10 +106,12 @@ sudo apt-get install -y libnss3 libatk-bridge2.0 libxss1 libgtk-3-0
 
 **Required:** Rotating residential proxies
 
+> **✅ Credentials Configured:** IPRoyal credentials are pre-configured in `.env` file at project root.
+
 | Provider | Price | Recommendation |
 |----------|-------|----------------|
-| **IPRoyal** | $7/GB | Good for testing, rotating residential |
-| **Webshare** | $3.50-15/month | Best value for TikTok |
+| **IPRoyal** | $7/GB | ✅ **CONFIGURED** - Credentials in `.env` |
+| **Webshare** | $3.50-15/month | Alternative if needed |
 | **Bright Data** | Pay-as-you-go | Most reliable, higher cost |
 | **Oxylabs** | $99/month | Enterprise option |
 
@@ -546,12 +548,17 @@ if __name__ == "__main__":
 # proxy_config.py
 from TikTokApi import TikTokApi
 import asyncio
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load credentials from .env file
 
 async def scrape_with_proxy():
     """Scrape using proxy."""
     
-    # Format: http://user:pass@host:port
-    proxy = "http://username:password@proxy.iproyal.com:12321"
+    # Credentials loaded from .env file
+    proxy = os.getenv('PROXY_URL')
+    # Format: http://user:pass@geo.iproyal.com:12321
     
     async with TikTokApi() as api:
         # Note: TikTok-Api uses Playwright, proxy is set at browser level
@@ -888,14 +895,16 @@ volumes:
 
 ### 9.3 Environment Variables
 
+> **Pre-configured:** `.env` file exists at project root with IPRoyal proxy credentials.
+
 ```bash
-# .env
+# .env (already configured with IPRoyal credentials)
 # Database
 DATABASE_URL=postgresql://user:pass@localhost:5432/viralwaves
 REDIS_URL=redis://localhost:6379/0
 
-# Proxy (optional)
-PROXY_URL=http://user:pass@proxy:port
+# Proxy (CONFIGURED - read from .env)
+PROXY_URL=http://***REMOVED***:...@geo.iproyal.com:12321
 
 # Scraping config
 SCRAPE_RATE_LIMIT=10  # requests per minute
@@ -906,6 +915,8 @@ SCRAPE_INTERVAL=300   # seconds between runs
 METRICS_PORT=9090
 LOG_LEVEL=INFO
 ```
+
+**Note:** The scraper should use `python-dotenv` to load credentials from `.env` file.
 
 ---
 

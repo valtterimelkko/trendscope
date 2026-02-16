@@ -143,9 +143,14 @@ This 46x growth in search interest indicates:
 ### MVP Phase (Launch)
 
 **Core Features:**
-- Real-time trend alerts (sounds, hashtags, formats)
+- **TikTok-only** trend detection (sounds, hashtags, formats)
+- Multi-region coverage from day one
+- **Tier-based alert system:**
+  - **Free:** Weekly digest, basic alerts, Slack/Email only
+  - **Solo ($29/mo):** 2-hour latency, detailed alerts, Slack/Email
+  - **Agency ($199/mo):** 30-minute latency, white-label reports, Slack/Email
+  - **Enterprise ($499/mo):** Real-time alerts, SMS included, API access
 - Growth rate threshold monitoring
-- Multi-channel delivery (email, Slack, SMS)
 - Basic niche clustering
 
 **Success Metric:** 50 creators actively using and iterating based on alerts
@@ -161,10 +166,11 @@ This 46x growth in search interest indicates:
 ### Scale Phase (Months 6-12)
 
 **Platform Expansion:**
-- Instagram Reels integration
-- YouTube Shorts integration
-- Cross-platform trend correlation
-- API for enterprise integrations
+- ~~Instagram Reels integration~~ (Not planned - TikTok focus)
+- ~~YouTube Shorts integration~~ (Not planned - TikTok focus)
+- Cross-platform trend correlation (if expansion pursued later)
+- Advanced API for enterprise integrations
+- Enhanced white-label capabilities for MCNs and talent agencies
 
 ---
 
@@ -195,19 +201,27 @@ This 46x growth in search interest indicates:
 To refine this intent document, the following questions should be answered:
 
 ### Product Scope
-1. **Geographic Focus:** Should we start with US-only trends or multi-region from day one?
+1. ✅ **Geographic Focus:** Multi-region from day one. Algorithms optimized for global trend detection.
 2. **Niche Coverage:** Are there specific verticals (beauty, finance, comedy) we should prioritize?
-3. **Alert Frequency:** What's the right balance? Too many alerts = noise; too few = missed opportunities
+3. ✅ **Alert Frequency:** Tier-based approach:
+   - **Free Tier:** Weekly digest (proof of concept, limited utility)
+   - **Solo ($29/mo):** 2-hour latency alerts (Slack/Email only)
+   - **Agency ($199/mo):** 30-minute latency alerts
+   - **Enterprise ($499/mo):** Real-time alerts (including SMS)
 
 ### Business Model
-4. **Free Tier:** Should we offer a limited free tier for user acquisition, or free trial only?
+4. ✅ **Free Tier:** Yes - weekly digest with basic alerts (proof the service works, but limited utility). No SMS (cost control). Paid tiers get progressively more detailed reports and faster alerts.
 5. **Data Retention:** How much historical trend data should users have access to?
-6. **White-label:** Is agency white-labeling a near-term or future consideration?
+6. ✅ **White-label:** Near-term priority - Agency tier ($199/mo) includes white-label capabilities
 
 ### Technical Priorities
-7. **Platform Priority:** TikTok first, then expand? Or multi-platform from launch?
+7. ✅ **Platform Priority:** TikTok ONLY for MVP. No expansion to other platforms envisioned at this stage.
 8. **Visual Analysis:** Is visual similarity detection required for MVP or can it come later?
-9. **Real-time vs Near Real-time:** What latency is acceptable for trend alerts (5 min? 30 min? 2 hours)?
+9. ✅ **Real-time vs Near Real-time:** Tier-based latency:
+   - Free: Weekly digest
+   - Solo: 2-hour latency
+   - Agency: 30-minute latency
+   - Enterprise: Real-time (< 5 min)
 
 ### Competitive Differentiation
 10. **Community Features:** Should we build creator community features or stay purely tool-focused?
