@@ -1,0 +1,50 @@
+# Template Selection for Trendscope
+
+**Status:** Pending User Confirmation
+**Date:** 2026-02-16
+
+## Available Templates
+
+Based on the Technical PRD, Trendscope requires:
+- Next.js frontend
+- Supabase backend (Auth, Database, RLS)
+- Stripe payments (4-tier: Free/Solo/Agency/Enterprise)
+- Python FastAPI backend (for scraper/processor)
+- Redis for job queue
+
+## Recommended Template: Supabase + Next.js SaaS Starter
+
+A template that provides:
+- ✅ Next.js 14+ with App Router
+- ✅ Supabase Auth (email/password, OAuth)
+- ✅ Supabase Database with RLS policies
+- ✅ Stripe integration (subscriptions, webhooks)
+- ✅ TypeScript, Tailwind CSS
+- ✅ Dashboard UI components
+
+## Custom Components Needed (Beyond Template)
+
+1. **Python Scraper Service** (separate from template)
+   - FastAPI app for TikTok-Api integration
+   - Redis producer-consumer pattern
+   - Background job processing
+
+2. **Trend Detection Engine**
+   - Velocity calculation algorithms
+   - Alert triggering logic
+   - Niche clustering
+
+3. **Alert Delivery System**
+   - Slack webhook integration
+   - Email service integration
+   - SMS (future)
+
+4. **Custom Dashboard Components**
+   - Trend cards with velocity graphs
+   - Saturation indicators
+   - Niche selectors
+   - Alert history
+
+## Template Selection Pending
+
+Awaiting user confirmation on template choice before proceeding to Phase 4.3 (Template Integration with GLM-5).
