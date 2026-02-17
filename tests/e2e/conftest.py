@@ -299,17 +299,33 @@ class MockPostgresConnection:
     
     async def fetch(self, query: str, *args) -> List[MockAsyncpgRecord]:
         """Delegate to pool fetch."""
-        results = await self._pool.fetch(query, *args)
+        results = await self._pool._fetch(query, *args)
         return [MockAsyncpgRecord(r) if isinstance(r, dict) else r for r in results]
     
     async def fetchrow(self, query: str, *args) -> Optional[MockAsyncpgRecord]:
         """Delegate to pool fetchrow."""
-        result = await self._pool.fetchrow(query, *args)
+        result = await self._pool._fetchrow(query, *args)
         return MockAsyncpgRecord(result) if isinstance(result, dict) else result
     
     async def execute(self, query: str, *args) -> str:
         """Delegate to pool execute."""
-        return await self._pool.execute(query, *args)
+        return await self._pool._execute(query, *args)
+
+
+class MockPoolAcquireContext:
+    """Async context manager for pool acquire."""
+    
+    def __init__(self, pool: "MockPostgresPool"):
+        self._pool = pool
+        self._connection = None
+    
+    async def __aenter__(self) -> MockPostgresConnection:
+        self._connection = MockPostgresConnection(self._pool)
+        return self._connection
+    
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        self._connection = None
+        return False
 
 
 class MockPostgresPool:
@@ -333,21 +349,21 @@ class MockPostgresPool:
         self._id_counter += 1
         return f"mock_id_{self._id_counter}"
     
-    async def acquire(self) -> MockPostgresConnection:
+    def acquire(self) -> MockPoolAcquireContext:
         """Acquire a connection from the pool."""
-        return MockPostgresConnection(self)
+        return MockPoolAcquireContext(self)
     
     async def release(self, connection: MockPostgresConnection):
         """Release a connection back to the pool."""
         pass
     
     async def __aenter__(self) -> MockPostgresConnection:
-        return await self.acquire()
+        return MockPostgresConnection(self)
     
     async def __aexit__(self, *args):
         pass
     
-    async def fetch(self, query: str, *args) -> List[Dict]:
+    async def _fetch(self, query: str, *args) -> List[Dict]:
         """Mock fetch operation."""
         query_upper = query.upper()
         
