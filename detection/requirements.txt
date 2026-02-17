@@ -1,0 +1,25 @@
+# Trend Detection Engine Dependencies
+# Python 3.11+
+
+# Core async
+asyncpg>=0.29.0
+redis[hiredis]>=5.0.0
+
+# Data validation
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+
+# Scientific computing (for velocity calculations)
+numpy>=1.26.0
+scipy>=1.12.0
+
+# Logging
+structlog>=24.1.0
+
+# HTTP (for health check server)
+aiohttp>=3.9.0
+
+# Development dependencies (optional)
+# pytest>=8.0.0
+# pytest-asyncio>=0.23.0
+# mypy>=1.8.0
