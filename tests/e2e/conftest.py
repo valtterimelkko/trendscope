@@ -269,11 +269,55 @@ class FakePipeline:
         pass
 
 
+class MockAsyncpgRecord:
+    """Mock asyncpg Record that supports dict-like access."""
+    
+    def __init__(self, data: Dict):
+        self._data = data
+    
+    def __getitem__(self, key):
+        return self._data.get(key)
+    
+    def get(self, key, default=None):
+        return self._data.get(key, default)
+    
+    def keys(self):
+        return self._data.keys()
+    
+    def values(self):
+        return self._data.values()
+    
+    def items(self):
+        return self._data.items()
+
+
+class MockPostgresConnection:
+    """Mock PostgreSQL connection for E2E testing."""
+    
+    def __init__(self, pool: "MockPostgresPool"):
+        self._pool = pool
+    
+    async def fetch(self, query: str, *args) -> List[MockAsyncpgRecord]:
+        """Delegate to pool fetch."""
+        results = await self._pool.fetch(query, *args)
+        return [MockAsyncpgRecord(r) if isinstance(r, dict) else r for r in results]
+    
+    async def fetchrow(self, query: str, *args) -> Optional[MockAsyncpgRecord]:
+        """Delegate to pool fetchrow."""
+        result = await self._pool.fetchrow(query, *args)
+        return MockAsyncpgRecord(result) if isinstance(result, dict) else result
+    
+    async def execute(self, query: str, *args) -> str:
+        """Delegate to pool execute."""
+        return await self._pool.execute(query, *args)
+
+
 class MockPostgresPool:
     """
     Mock PostgreSQL connection pool for E2E testing.
     
     Simulates trend persistence with in-memory storage.
+    Compatible with asyncpg Pool interface.
     """
     
     def __init__(self):
@@ -283,10 +327,25 @@ class MockPostgresPool:
         }
         self.closed = False
         self._id_counter = 0
+        self._lock = asyncio.Lock()
     
     def _next_id(self) -> str:
         self._id_counter += 1
         return f"mock_id_{self._id_counter}"
+    
+    async def acquire(self) -> MockPostgresConnection:
+        """Acquire a connection from the pool."""
+        return MockPostgresConnection(self)
+    
+    async def release(self, connection: MockPostgresConnection):
+        """Release a connection back to the pool."""
+        pass
+    
+    async def __aenter__(self) -> MockPostgresConnection:
+        return await self.acquire()
+    
+    async def __aexit__(self, *args):
+        pass
     
     async def fetch(self, query: str, *args) -> List[Dict]:
         """Mock fetch operation."""
@@ -297,7 +356,12 @@ class MockPostgresPool:
             results = list(self._data["trends"])
             
             # Handle WHERE clause for status filter
-            if "WHERE" in query_upper and "STATUS =" in query_upper:
+            if "WHERE" in query_upper and "STATUS IN" in query_upper:
+                # Filter by status list
+                statuses = [arg for arg in args if isinstance(arg, str) and arg in ['emerging', 'peaking', 'saturated', 'expired']]
+                if statuses:
+                    results = [r for r in results if r.get("status") in statuses]
+            elif "WHERE" in query_upper and "STATUS =" in query_upper:
                 # Extract status from query or args
                 for trend in results[:]:
                     if args and trend.get("status") != args[0]:
@@ -309,15 +373,19 @@ class MockPostgresPool:
             
             if "LIMIT" in query_upper and args:
                 limit = args[-2] if len(args) >= 2 else args[-1]
-                results = results[:limit]
+                if isinstance(limit, int):
+                    results = results[:limit]
             
             return results
         
         elif "FROM TREND_VELOCITY_HISTORY" in query_upper:
             trend_id = args[0] if args else None
             if trend_id:
-                return [h for h in self._data["trend_velocity_history"] 
+                history = [h for h in self._data["trend_velocity_history"] 
                        if str(h.get("trend_id")) == str(trend_id)]
+                # Sort by timestamp
+                history.sort(key=lambda x: x.get("timestamp", datetime.min))
+                return history
             return list(self._data["trend_velocity_history"])
         
         return []
@@ -345,7 +413,8 @@ class MockPostgresPool:
         
         elif "INSERT INTO TRENDS" in query_upper:
             # Create new trend
-            trend_id = args[0] if args else self._next_id()
+            import uuid
+            trend_id = args[0] if args else uuid.uuid4()
             trend = {
                 "id": trend_id,
                 "type": args[1] if len(args) > 1 else None,
@@ -359,7 +428,7 @@ class MockPostgresPool:
                 "saturation_percent": args[9] if len(args) > 9 else 0,
                 "video_count_start": args[10] if len(args) > 10 else 1,
                 "video_count_current": args[11] if len(args) > 11 else 1,
-                "growth_rate": args[12] if len(args) > 12 else 0.0,
+                "growth_rate": float(args[12]) if len(args) > 12 and args[12] else 0.0,
                 "metadata": json.loads(args[13]) if len(args) > 13 and args[13] else {},
                 "created_at": args[14] if len(args) > 14 else datetime.now(timezone.utc),
                 "updated_at": args[15] if len(args) > 15 else datetime.now(timezone.utc),
@@ -378,7 +447,7 @@ class MockPostgresPool:
             trend_id = args[0] if args else None
             for i, trend in enumerate(self._data["trends"]):
                 if str(trend.get("id")) == str(trend_id):
-                    # Update fields from args (simplified)
+                    # Update timestamp
                     self._data["trends"][i]["updated_at"] = datetime.now(timezone.utc)
                     return self._data["trends"][i]
             return None
@@ -396,7 +465,7 @@ class MockPostgresPool:
                 "timestamp": args[1] if len(args) > 1 else datetime.now(timezone.utc),
                 "video_count": args[2] if len(args) > 2 else 0,
                 "velocity_score": args[3] if len(args) > 3 else None,
-                "growth_rate": args[4] if len(args) > 4 else None,
+                "growth_rate": float(args[4]) if len(args) > 4 and args[4] else None,
                 "saturation_percent": args[5] if len(args) > 5 else None,
             }
             self._data["trend_velocity_history"].append(history)
@@ -595,7 +664,7 @@ def generate_test_video(video_factory) -> Callable[..., "VideoData"]:
             stats=stats,
             author=author,
             music=music,
-            has_tags=hashtags or ["test"],
+            hashtags=hashtags or ["test"],
             scraped_at=now,
             source_type="trending",
             source_query=None

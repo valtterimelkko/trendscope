@@ -25,7 +25,7 @@ export async function handleCheckoutComplete(event: Stripe.Event): Promise<void>
   if (!priceId && session.line_items) {
     // Fetch full session with line items if needed
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-      apiVersion: '2023-10-16',
+      apiVersion: '2025-02-24.acacia',
     });
     const fullSession = await stripe.checkout.sessions.retrieve(session.id, {
       expand: ['line_items'],

@@ -395,7 +395,7 @@ class TestAlertStatus:
         
         assert status == AlertStatus.PENDING
         assert status != AlertStatus.SENT
-        assert status != "pending"  # Enum comparison, not string
+        assert status == "pending"  # str Enum can compare with string
 
 
 # =============================================================================

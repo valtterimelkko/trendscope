@@ -28,7 +28,7 @@ export async function handleInvoicePaid(event: Stripe.Event): Promise<void> {
 
   // Get subscription details to determine current tier
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: '2023-10-16',
+    apiVersion: '2025-02-24.acacia',
   });
   const subscription = await stripe.subscriptions.retrieve(stripeSubscriptionId);
   const priceId = subscription.items.data[0]?.price?.id;
