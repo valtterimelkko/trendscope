@@ -9,7 +9,7 @@ CRITICAL: Database and Redis credentials should be in .env file.
 """
 
 from pydantic_settings import BaseSettings
-from pydantic import Field
+from pydantic import Field, ConfigDict
 from typing import Optional
 from functools import lru_cache
 from pathlib import Path
@@ -232,10 +232,12 @@ class DetectionSettings(BaseSettings):
         description="Application environment: development, staging, production"
     )
 
-    class Config:
-        env_file = str(Path(__file__).parent.parent / ".env")
-        env_file_encoding = "utf-8"
-        case_sensitive = False
+    model_config = ConfigDict(
+        env_file=str(Path(__file__).parent.parent / ".env"),
+        env_file_encoding="utf-8",
+        case_sensitive=False,
+        extra='ignore'
+    )
 
     @property
     def is_production(self) -> bool:

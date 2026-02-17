@@ -1,0 +1,302 @@
+[
+  {
+    "id": "tiktok_video_001",
+    "url": "https://www.tiktok.com/@danceking/video/7283456789012345678",
+    "author": {
+      "id": "user_001",
+      "username": "danceking",
+      "display_name": "Dance King",
+      "followers": 2500000
+    },
+    "stats": {
+      "views": 12500000,
+      "likes": 2850000,
+      "shares": 425000,
+      "comments": 85000,
+      "saves": 520000
+    },
+    "content": {
+      "description": "This new dance move is taking over! 🔥 #dancechallenge #viral",
+      "hashtags": ["dancechallenge", "viral", "fyp", "trending"],
+      "music": {
+        "id": "music_001",
+        "title": "Original Sound - Dance King",
+        "author": "Dance King",
+        "plays": 8900000
+      },
+      "duration_seconds": 15
+    },
+    "timestamp": "2026-02-17T06:30:00+00:00",
+    "platform": "tiktok"
+  },
+  {
+    "id": "tiktok_video_002",
+    "url": "https://www.tiktok.com/@chefmaria/video/7283456789012345679",
+    "author": {
+      "id": "user_002",
+      "username": "chefmaria",
+      "display_name": "Chef Maria",
+      "followers": 890000
+    },
+    "stats": {
+      "views": 850000,
+      "likes": 125000,
+      "shares": 15000,
+      "comments": 8200,
+      "saves": 45000
+    },
+    "content": {
+      "description": "Easy 5-minute recipe that broke the internet! #foodtok #recipe",
+      "hashtags": ["foodtok", "recipe", "easyrecipe", "cooking"],
+      "music": {
+        "id": "music_002",
+        "title": "Food ASMR",
+        "author": "TikTok Sounds",
+        "plays": 2500000
+      },
+      "duration_seconds": 45
+    },
+    "timestamp": "2026-02-17T05:15:00+00:00",
+    "platform": "tiktok"
+  },
+  {
+    "id": "tiktok_video_003",
+    "url": "https://www.tiktok.com/@techguru/video/7283456789012345680",
+    "author": {
+      "id": "user_003",
+      "username": "techguru",
+      "display_name": "Tech Guru",
+      "followers": 3200000
+    },
+    "stats": {
+      "views": 4500000,
+      "likes": 685000,
+      "shares": 125000,
+      "comments": 42000,
+      "saves": 180000
+    },
+    "content": {
+      "description": "This gadget changed my life! Unboxing the future 🚀 #tech #unboxing",
+      "hashtags": ["tech", "unboxing", "gadget", "review"],
+      "music": {
+        "id": "music_003",
+        "title": "Tech Beat",
+        "author": "Electronic Dreams",
+        "plays": 1200000
+      },
+      "duration_seconds": 60
+    },
+    "timestamp": "2026-02-17T04:45:00+00:00",
+    "platform": "tiktok"
+  },
+  {
+    "id": "tiktok_video_004",
+    "url": "https://www.tiktok.com/@fitnessjane/video/7283456789012345681",
+    "author": {
+      "id": "user_004",
+      "username": "fitnessjane",
+      "display_name": "Jane Fitness",
+      "followers": 1500000
+    },
+    "stats": {
+      "views": 2200000,
+      "likes": 320000,
+      "shares": 58000,
+      "comments": 15000,
+      "saves": 125000
+    },
+    "content": {
+      "description": "Workout that burns 500 calories in 20 mins! 💪 #fitness #workout",
+      "hashtags": ["fitness", "workout", "health", "gymtok"],
+      "music": {
+        "id": "music_004",
+        "title": "Workout Motivation",
+        "author": "Fitness Beats",
+        "plays": 3500000
+      },
+      "duration_seconds": 120
+    },
+    "timestamp": "2026-02-17T03:20:00+00:00",
+    "platform": "tiktok"
+  },
+  {
+    "id": "tiktok_video_005",
+    "url": "https://www.tiktok.com/@comedycentral/video/7283456789012345682",
+    "author": {
+      "id": "user_005",
+      "username": "comedycentral",
+      "display_name": "Comedy Central",
+      "followers": 5600000
+    },
+    "stats": {
+      "views": 8900000,
+      "likes": 1450000,
+      "shares": 385000,
+      "comments": 95000,
+      "saves": 285000
+    },
+    "content": {
+      "description": "POV: When you realize it's Monday tomorrow 😭 #comedy #relatable",
+      "hashtags": ["comedy", "relatable", "funnymoments", "monday"],
+      "music": {
+        "id": "music_005",
+        "title": "Dramatic Sound Effect",
+        "author": "Comedy Sounds",
+        "plays": 5600000
+      },
+      "duration_seconds": 12
+    },
+    "timestamp": "2026-02-17T02:00:00+00:00",
+    "platform": "tiktok"
+  },
+  {
+    "id": "tiktok_video_006",
+    "url": "https://www.tiktok.com/@beautyguru/video/7283456789012345683",
+    "author": {
+      "id": "user_006",
+      "username": "beautyguru",
+      "display_name": "Beauty Guru",
+      "followers": 4200000
+    },
+    "stats": {
+      "views": 3200000,
+      "likes": 485000,
+      "shares": 78000,
+      "comments": 28000,
+      "saves": 145000
+    },
+    "content": {
+      "description": "This makeup hack went viral for a reason! ✨ #makeup #beauty",
+      "hashtags": ["makeup", "beauty", "tutorial", "glam"],
+      "music": {
+        "id": "music_006",
+        "title": "Glamorous",
+        "author": "Pop Hits",
+        "plays": 4200000
+      },
+      "duration_seconds": 30
+    },
+    "timestamp": "2026-02-17T01:45:00+00:00",
+    "platform": "tiktok"
+  },
+  {
+    "id": "tiktok_video_007",
+    "url": "https://www.tiktok.com/@traveltom/video/7283456789012345684",
+    "author": {
+      "id": "user_007",
+      "username": "traveltom",
+      "display_name": "Travel Tom",
+      "followers": 1800000
+    },
+    "stats": {
+      "views": 6800000,
+      "likes": 920000,
+      "shares": 245000,
+      "comments": 52000,
+      "saves": 385000
+    },
+    "content": {
+      "description": "Hidden paradise you need to visit! 🌴 #travel #wanderlust",
+      "hashtags": ["travel", "wanderlust", "vacation", "paradise"],
+      "music": {
+        "id": "music_007",
+        "title": "Tropical Vibes",
+        "author": "Island Beats",
+        "plays": 2800000
+      },
+      "duration_seconds": 45
+    },
+    "timestamp": "2026-02-17T00:30:00+00:00",
+    "platform": "tiktok"
+  },
+  {
+    "id": "tiktok_video_008",
+    "url": "https://www.tiktok.com/@gamingpro/video/7283456789012345685",
+    "author": {
+      "id": "user_008",
+      "username": "gamingpro",
+      "display_name": "Gaming Pro",
+      "followers": 2100000
+    },
+    "stats": {
+      "views": 4200000,
+      "likes": 580000,
+      "shares": 125000,
+      "comments": 85000,
+      "saves": 95000
+    },
+    "content": {
+      "description": "This game is breaking all records! 🎮 #gaming #viralgame",
+      "hashtags": ["gaming", "viralgame", "gamer", "stream"],
+      "music": {
+        "id": "music_008",
+        "title": "Game Over",
+        "author": "8-Bit Sounds",
+        "plays": 1800000
+      },
+      "duration_seconds": 90
+    },
+    "timestamp": "2026-02-16T23:15:00+00:00",
+    "platform": "tiktok"
+  },
+  {
+    "id": "tiktok_video_009",
+    "url": "https://www.tiktok.com/@petlover/video/7283456789012345686",
+    "author": {
+      "id": "user_009",
+      "username": "petlover",
+      "display_name": "Pet Lover",
+      "followers": 3200000
+    },
+    "stats": {
+      "views": 15600000,
+      "likes": 3200000,
+      "shares": 685000,
+      "comments": 185000,
+      "saves": 890000
+    },
+    "content": {
+      "description": "This dog learned a new trick! 🐕 #pets #dogsoftiktok",
+      "hashtags": ["pets", "dogsoftiktok", "cute", "animals"],
+      "music": {
+        "id": "music_009",
+        "title": "Cute Melody",
+        "author": "Pet Tunes",
+        "plays": 7200000
+      },
+      "duration_seconds": 20
+    },
+    "timestamp": "2026-02-16T22:00:00+00:00",
+    "platform": "tiktok"
+  },
+  {
+    "id": "tiktok_video_010",
+    "url": "https://www.tiktok.com/@smallbiz/video/7283456789012345687",
+    "author": {
+      "id": "user_010",
+      "username": "smallbiz",
+      "display_name": "Small Business",
+      "followers": 450000
+    },
+    "stats": {
+      "views": 125000,
+      "likes": 18000,
+      "shares": 2500,
+      "comments": 1200,
+      "saves": 5800
+    },
+    "content": {
+      "description": "Small business supporting small businesses! 💼 #smallbusiness",
+      "hashtags": ["smallbusiness", "supportlocal", "handmade", "shoplocal"],
+      "music": {
+        "id": "music_010",
+        "title": "Inspiring Business",
+        "author": "Motivation Hub",
+        "plays": 850000
+      },
+      "duration_seconds": 35
+    },
+    "timestamp": "2026-02-16T21:30:00+00:00",
+    "platform": "tiktok"
+  }
+]

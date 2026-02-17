@@ -1,0 +1,197 @@
+[
+  {
+    "id": "trend_emerging_001",
+    "hashtag": "#emergingdance",
+    "status": "emerging",
+    "lifecycle_stage": "emerging",
+    "velocity": 0.28,
+    "saturation": 0.22,
+    "confidence": 0.76,
+    "first_seen": "2026-02-17T02:00:00+00:00",
+    "last_seen": "2026-02-17T08:30:00+00:00",
+    "video_count": 156,
+    "total_views": 2850000,
+    "metadata": {
+      "top_videos": [
+        "tiktok_video_001",
+        "tiktok_video_003",
+        "tiktok_video_007"
+      ],
+      "top_creators": [
+        {"id": "user_001", "username": "danceking", "video_count": 12},
+        {"id": "user_003", "username": "techguru", "video_count": 8}
+      ],
+      "related_hashtags": ["dance", "viral", "fyp"],
+      "velocity_history": [
+        {"timestamp": "2026-02-17T02:00:00+00:00", "velocity": 0.12, "views": 125000},
+        {"timestamp": "2026-02-17T03:00:00+00:00", "velocity": 0.15, "views": 285000},
+        {"timestamp": "2026-02-17T04:00:00+00:00", "velocity": 0.18, "views": 520000},
+        {"timestamp": "2026-02-17T05:00:00+00:00", "velocity": 0.22, "views": 890000},
+        {"timestamp": "2026-02-17T06:00:00+00:00", "velocity": 0.25, "views": 1450000},
+        {"timestamp": "2026-02-17T07:00:00+00:00", "velocity": 0.27, "views": 2100000},
+        {"timestamp": "2026-02-17T08:00:00+00:00", "velocity": 0.28, "views": 2850000}
+      ],
+      "saturation_indicators": {
+        "view_velocity": 0.28,
+        "engagement_rate": 0.16,
+        "creator_diversity": 0.78,
+        "content_freshness": 0.85
+      }
+    }
+  },
+  {
+    "id": "trend_peaking_001",
+    "hashtag": "#peakingrecipe",
+    "status": "peaking",
+    "lifecycle_stage": "peaking",
+    "velocity": 0.72,
+    "saturation": 0.68,
+    "confidence": 0.88,
+    "first_seen": "2026-02-16T12:00:00+00:00",
+    "last_seen": "2026-02-17T08:45:00+00:00",
+    "video_count": 2847,
+    "total_views": 48500000,
+    "metadata": {
+      "top_videos": [
+        "tiktok_video_002",
+        "tiktok_video_006",
+        "tiktok_video_009"
+      ],
+      "top_creators": [
+        {"id": "user_002", "username": "chefmaria", "video_count": 45},
+        {"id": "user_006", "username": "beautyguru", "video_count": 32},
+        {"id": "user_009", "username": "petlover", "video_count": 28}
+      ],
+      "related_hashtags": ["foodtok", "recipe", "cooking", "easyrecipe"],
+      "velocity_history": [
+        {"timestamp": "2026-02-16T12:00:00+00:00", "velocity": 0.15, "views": 125000},
+        {"timestamp": "2026-02-16T15:00:00+00:00", "velocity": 0.32, "views": 850000},
+        {"timestamp": "2026-02-16T18:00:00+00:00", "velocity": 0.48, "views": 3200000},
+        {"timestamp": "2026-02-16T21:00:00+00:00", "velocity": 0.62, "views": 8500000},
+        {"timestamp": "2026-02-17T00:00:00+00:00", "velocity": 0.70, "views": 18500000},
+        {"timestamp": "2026-02-17T03:00:00+00:00", "velocity": 0.74, "views": 32000000},
+        {"timestamp": "2026-02-17T06:00:00+00:00", "velocity": 0.72, "views": 48500000}
+      ],
+      "saturation_indicators": {
+        "view_velocity": 0.72,
+        "engagement_rate": 0.14,
+        "creator_diversity": 0.58,
+        "content_freshness": 0.65
+      }
+    }
+  },
+  {
+    "id": "trend_saturated_001",
+    "hashtag": "#saturateddance",
+    "status": "saturated",
+    "lifecycle_stage": "saturated",
+    "velocity": 0.08,
+    "saturation": 0.94,
+    "confidence": 0.92,
+    "first_seen": "2026-02-14T08:00:00+00:00",
+    "last_seen": "2026-02-17T08:00:00+00:00",
+    "video_count": 25850,
+    "total_views": 485000000,
+    "metadata": {
+      "top_videos": [
+        "tiktok_video_001",
+        "tiktok_video_004",
+        "tiktok_video_008"
+      ],
+      "top_creators": [
+        {"id": "user_001", "username": "danceking", "video_count": 156},
+        {"id": "user_004", "username": "fitnessjane", "video_count": 142},
+        {"id": "user_008", "username": "gamingpro", "video_count": 128}
+      ],
+      "related_hashtags": ["dance", "viral", "trending", "dancechallenge"],
+      "velocity_history": [
+        {"timestamp": "2026-02-14T08:00:00+00:00", "velocity": 0.12, "views": 250000},
+        {"timestamp": "2026-02-14T20:00:00+00:00", "velocity": 0.45, "views": 2500000},
+        {"timestamp": "2026-02-15T08:00:00+00:00", "velocity": 0.82, "views": 18500000},
+        {"timestamp": "2026-02-15T20:00:00+00:00", "velocity": 0.95, "views": 85000000},
+        {"timestamp": "2026-02-16T08:00:00+00:00", "velocity": 0.88, "views": 185000000},
+        {"timestamp": "2026-02-16T20:00:00+00:00", "velocity": 0.45, "views": 350000000},
+        {"timestamp": "2026-02-17T08:00:00+00:00", "velocity": 0.08, "views": 485000000}
+      ],
+      "saturation_indicators": {
+        "view_velocity": 0.08,
+        "engagement_rate": 0.06,
+        "creator_diversity": 0.22,
+        "content_freshness": 0.15
+      }
+    }
+  },
+  {
+    "id": "trend_expired_001",
+    "hashtag": "#expiredchallenge",
+    "status": "expired",
+    "lifecycle_stage": "expired",
+    "velocity": 0.0,
+    "saturation": 0.18,
+    "confidence": 0.85,
+    "first_seen": "2026-02-10T10:00:00+00:00",
+    "last_seen": "2026-02-15T18:00:00+00:00",
+    "video_count": 12580,
+    "total_views": 185000000,
+    "metadata": {
+      "top_videos": [
+        "old_video_001",
+        "old_video_002",
+        "old_video_003"
+      ],
+      "top_creators": [
+        {"id": "old_user_1", "username": "earlyadopter", "video_count": 89},
+        {"id": "old_user_2", "username": "trendstarter", "video_count": 76}
+      ],
+      "related_hashtags": ["oldtrend", "challenge", "2024"],
+      "velocity_history": [
+        {"timestamp": "2026-02-10T10:00:00+00:00", "velocity": 0.18, "views": 50000},
+        {"timestamp": "2026-02-11T10:00:00+00:00", "velocity": 0.52, "views": 850000},
+        {"timestamp": "2026-02-12T10:00:00+00:00", "velocity": 0.78, "views": 8500000},
+        {"timestamp": "2026-02-13T10:00:00+00:00", "velocity": 0.65, "views": 32000000},
+        {"timestamp": "2026-02-14T10:00:00+00:00", "velocity": 0.25, "views": 85000000},
+        {"timestamp": "2026-02-15T10:00:00+00:00", "velocity": 0.05, "views": 165000000},
+        {"timestamp": "2026-02-15T18:00:00+00:00", "velocity": 0.0, "views": 185000000}
+      ],
+      "saturation_indicators": {
+        "view_velocity": -0.12,
+        "engagement_rate": 0.04,
+        "creator_diversity": 0.08,
+        "content_freshness": 0.05
+      }
+    }
+  },
+  {
+    "id": "trend_new_001",
+    "hashtag": "#brandnewtrend",
+    "status": "new",
+    "lifecycle_stage": "new",
+    "velocity": 0.12,
+    "saturation": 0.08,
+    "confidence": 0.62,
+    "first_seen": "2026-02-17T06:00:00+00:00",
+    "last_seen": "2026-02-17T08:30:00+00:00",
+    "video_count": 12,
+    "total_views": 85000,
+    "metadata": {
+      "top_videos": [
+        "tiktok_video_010"
+      ],
+      "top_creators": [
+        {"id": "user_010", "username": "smallbiz", "video_count": 3}
+      ],
+      "related_hashtags": ["new", "trending", "smallbusiness"],
+      "velocity_history": [
+        {"timestamp": "2026-02-17T06:00:00+00:00", "velocity": 0.08, "views": 12000},
+        {"timestamp": "2026-02-17T07:00:00+00:00", "velocity": 0.10, "views": 35000},
+        {"timestamp": "2026-02-17T08:00:00+00:00", "velocity": 0.12, "views": 85000}
+      ],
+      "saturation_indicators": {
+        "view_velocity": 0.12,
+        "engagement_rate": 0.18,
+        "creator_diversity": 0.92,
+        "content_freshness": 0.95
+      }
+    }
+  }
+]
