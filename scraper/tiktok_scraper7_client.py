@@ -206,7 +206,10 @@ class TikTokScraper7Client:
             "count": count
         })
         
-        videos_data = data.get('data', {}).get('videos', [])
+        videos_data = data.get('data', [])
+        # Handle both list and dict with 'videos' key
+        if isinstance(videos_data, dict):
+            videos_data = videos_data.get('videos', [])
         return [self._parse_video(v) for v in videos_data]
     
     async def search_hashtags(self, keyword: str, count: int = 10) -> List[Challenge]:
@@ -226,7 +229,9 @@ class TikTokScraper7Client:
             "cursor": 0
         })
         
-        challenges_data = data.get('data', {}).get('challenges', [])
+        challenges_data = data.get('data', [])
+        if isinstance(challenges_data, dict):
+            challenges_data = challenges_data.get('challenges', [])
         challenges = []
         
         for ch in challenges_data:
@@ -256,7 +261,9 @@ class TikTokScraper7Client:
             "count": count
         })
         
-        videos_data = data.get('data', {}).get('videos', [])
+        videos_data = data.get('data', [])
+        if isinstance(videos_data, dict):
+            videos_data = videos_data.get('videos', [])
         return [self._parse_video(v) for v in videos_data]
     
     async def get_user_videos(self, user_id: str, count: int = 20) -> List[Video]:
@@ -275,7 +282,9 @@ class TikTokScraper7Client:
             "count": count
         })
         
-        videos_data = data.get('data', {}).get('videos', [])
+        videos_data = data.get('data', [])
+        if isinstance(videos_data, dict):
+            videos_data = videos_data.get('videos', [])
         return [self._parse_video(v) for v in videos_data]
     
     async def search_users(self, keyword: str, count: int = 10) -> List[User]:
@@ -295,7 +304,9 @@ class TikTokScraper7Client:
             "cursor": 0
         })
         
-        users_data = data.get('data', {}).get('users', [])
+        users_data = data.get('data', [])
+        if isinstance(users_data, dict):
+            users_data = users_data.get('users', [])
         users = []
         
         for u in users_data:
@@ -328,7 +339,9 @@ class TikTokScraper7Client:
             "count": count
         })
         
-        videos_data = data.get('data', {}).get('videos', [])
+        videos_data = data.get('data', [])
+        if isinstance(videos_data, dict):
+            videos_data = videos_data.get('videos', [])
         return [self._parse_video(v) for v in videos_data]
 
 
