@@ -1,0 +1,14 @@
+# System Safeguards for Trendscope Testing
+
+## Memory Limits
+- Max RAM per test: 2GB
+- Max test duration: 60 seconds
+- No browser downloads during CI
+- Use mocked responses where possible
+
+## Testing Rules
+1. Always use `timeout` command
+2. Set `ulimit -v 2097152` (2GB virtual memory)
+3. Prefer unit tests over integration tests
+4. Skip live tests by default
+5. Use `--collect-only` before running full suite
