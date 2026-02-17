@@ -196,17 +196,14 @@ class HealthAggregator:
         any_warn = False
 
         # Run all checks concurrently
-        tasks = {
-            name: check.check_func()
-            for name, check in self._checks.items()
-        }
-
+        check_items = list(self._checks.items())
+        
         results = await asyncio.gather(
-            *tasks.values(),
+            *[check.check_func() for _, check in check_items],
             return_exceptions=True,
         )
 
-        for (name, check), result in zip(tasks.items(), results):
+        for (name, check), result in zip(check_items, results):
             if isinstance(result, Exception):
                 # Check threw an exception
                 component_health = ComponentHealth(
@@ -229,12 +226,12 @@ class HealthAggregator:
             checks[name] = component_health
 
         # Determine overall status
-        if all_critical_pass and not any_fail:
-            status = HealthStatus.PASS
-        elif any_fail:
+        if any_fail:
             status = HealthStatus.FAIL
-        else:
+        elif any_warn:
             status = HealthStatus.WARN
+        else:
+            status = HealthStatus.PASS
 
         return HealthCheckResponse(
             status=status,

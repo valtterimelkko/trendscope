@@ -1,1 +1,1 @@
-# Alerts module tests
+"""Alert Services Tests Package"""

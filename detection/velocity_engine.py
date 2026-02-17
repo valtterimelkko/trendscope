@@ -164,16 +164,23 @@ class VelocityEngine:
             data_points=len(data_points)
         )
 
+        # Defensive: Check for NaN/inf values before rounding to avoid errors
+        # NaN can occur with insufficient or invalid data points
+        def safe_round(val, digits):
+            if np.isnan(val) or np.isinf(val):
+                return 0.0 if digits > 0 else 0
+            return round(val, digits)
+        
         return VelocityResult(
-            score=velocity_score,
-            growth_rate=round(growth_rate, 2),
-            doubling_time=round(doubling_time, 2),
-            r_squared=round(r_squared, 3),
+            score=safe_round(velocity_score, 0) if not np.isnan(velocity_score) else 0,
+            growth_rate=safe_round(growth_rate, 2),
+            doubling_time=safe_round(doubling_time, 2) if not np.isinf(doubling_time) else float('inf'),
+            r_squared=safe_round(r_squared, 3),
             is_exponential=is_exponential,
-            acceleration=round(acceleration, 4),
-            confidence=round(confidence, 2),
+            acceleration=safe_round(acceleration, 4),
+            confidence=safe_round(confidence, 2),
             data_points=len(data_points),
-            time_window_hours=round(times[-1] - times[0], 2)
+            time_window_hours=safe_round(times[-1] - times[0], 2)
         )
 
     def _calculate_score(
@@ -194,6 +201,12 @@ class VelocityEngine:
         - Minimum score of 0
         - Maximum score of 100
         """
+        # Defensive: Check for NaN/inf values
+        if np.isnan(growth_rate) or np.isinf(growth_rate):
+            return 0
+        if np.isnan(r_squared) or np.isinf(r_squared):
+            r_squared = 0
+        
         if is_exponential and growth_rate > 50:
             # Exponential growth with high rate = high score
             # Score directly reflects growth rate for viral content
@@ -202,6 +215,8 @@ class VelocityEngine:
             # Linear or weak growth = reduced score
             # Multiply by r_squared to penalize poor fits
             raw_score = growth_rate * r_squared
+            if np.isnan(raw_score):
+                return 0
             return min(100, max(0, int(raw_score)))
 
     def _calculate_acceleration(

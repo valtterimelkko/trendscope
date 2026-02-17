@@ -537,7 +537,38 @@ class MockPostgresPool:
             trend_id = args[0] if args else None
             for i, trend in enumerate(self._data["trends"]):
                 if str(trend.get("id")) == str(trend_id):
-                    # Update timestamp
+                    # Parse the SET clause to extract fields to update
+                    # Query format: UPDATE trends SET updated_at = NOW(), field1 = $2, field2 = $3, ... WHERE id = $1
+                    # args[0] = trend_id, args[1] = value1, args[2] = value2, etc.
+                    
+                    # Extract field names from query (between SET and WHERE)
+                    import re
+                    # Match SET ... WHERE, handling queries with RETURNING clause
+                    # Pattern: SET clause, then WHERE clause (which may be followed by RETURNING)
+                    set_match = re.search(r'SET\s+(.+?)\s+WHERE', query, re.IGNORECASE | re.DOTALL)
+                    if set_match:
+                        set_clause = set_match.group(1)
+                        # Find all field assignments like "field = $N" or "field = $N::type"
+                        # Note: The query may have escaped backslash-dollar (\\$) or just dollar ($)
+                        # Pattern handles: field = $N, field = \$N, field = $N::typename
+                        # We match both "field = $N" and "field = \$N" patterns
+                        assignments = re.findall(r'(\w+)\s*=\s*\\?\$(\d+)(?:::\w+)?', set_clause)
+                        
+                        for field_name, param_idx in assignments:
+                            # Skip updated_at as it's handled separately
+                            if field_name == "updated_at":
+                                continue
+                            param_index = int(param_idx) - 1  # Convert to 0-based index
+                            if param_index < len(args):
+                                value = args[param_index]
+                                # Handle special case for metadata (needs to be parsed if JSON string)
+                                if field_name == "metadata" and isinstance(value, str):
+                                    value = self._parse_json(value)
+                                # Handle numpy types
+                                value = self._serialize_for_json(value)
+                                self._data["trends"][i][field_name] = value
+                    
+                    # Always update timestamp
                     self._data["trends"][i]["updated_at"] = datetime.now(timezone.utc)
                     return self._data["trends"][i]
             return None

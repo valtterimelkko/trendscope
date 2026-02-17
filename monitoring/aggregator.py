@@ -8,7 +8,7 @@ Provides health summaries, trend summaries, and cross-service metrics.
 import asyncio
 import time
 from datetime import datetime, timedelta
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Callable
 from pydantic import BaseModel, Field
 import structlog
 

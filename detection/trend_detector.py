@@ -141,10 +141,13 @@ class TrendDetector:
         # Extract hashtag trends
         for hashtag in video.hashtags:
             if hashtag:  # Skip empty strings
+                # Normalize hashtag: lowercase and strip '#' prefix for platform_id
+                # This ensures consistency between creation and lookup
+                hashtag_clean = hashtag.lower().lstrip('#')
                 trends.append(ExtractedTrend(
                     type=TrendType.HASHTAG,
-                    platform_id=hashtag.lower(),  # Normalize to lowercase
-                    name=f"#{hashtag}",
+                    platform_id=hashtag_clean,  # platform_id without '#' prefix
+                    name=f"#{hashtag_clean}",  # Display name with '#' prefix
                     video=video
                 ))
 
