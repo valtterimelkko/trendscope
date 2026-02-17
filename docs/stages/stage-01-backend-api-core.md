@@ -648,6 +648,13 @@ if (maxAllowed === 0) {
 | Date | Task | Status | Notes |
 |------|------|--------|-------|
 | 2026-02-17 | Architecture plan created | Complete | This document |
+| 2026-02-17 | Bookmarks API (GET/POST) | Complete | /api/bookmarks/route.ts |
+| 2026-02-17 | Bookmark by ID API (PATCH/DELETE) | Complete | /api/bookmarks/[id]/route.ts |
+| 2026-02-17 | Clients API (GET/POST) | Complete | /api/clients/route.ts with tier enforcement |
+| 2026-02-17 | Client by ID API (GET/PUT/DELETE) | Complete | /api/clients/[id]/route.ts |
+| 2026-02-17 | Alert stats API (GET) | Complete | /api/alerts/stats/route.ts |
+| 2026-02-17 | Alert dismiss API (PATCH) | Complete | /api/alerts/[id]/dismiss/route.ts |
+| 2026-02-17 | Alerts route updated | Complete | Added dismissed filter support |
 
 ---
 
@@ -661,13 +668,13 @@ if (maxAllowed === 0) {
 
 ## 12. Completion Checklist
 
-- [ ] All Bookmark API endpoints implemented
-- [ ] All Client Management API endpoints implemented
-- [ ] Alert dismiss endpoint implemented
-- [ ] Alert stats endpoint implemented
-- [ ] All endpoints have authentication
-- [ ] RLS policies verified
-- [ ] Unit tests passing
+- [x] All Bookmark API endpoints implemented
+- [x] All Client Management API endpoints implemented
+- [x] Alert dismiss endpoint implemented
+- [x] Alert stats endpoint implemented
+- [x] All endpoints have authentication
+- [x] RLS policies verified (uses existing RLS from Phase 4.3.5)
+- [ ] Unit tests passing (deferred to integration testing)
 - [ ] Manual testing complete
 - [ ] Code reviewed
 - [ ] Merged to main

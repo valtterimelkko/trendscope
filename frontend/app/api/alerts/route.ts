@@ -14,6 +14,7 @@ export async function GET(request: NextRequest) {
     // Parse query parameters
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
+    const dismissed = searchParams.get('dismissed');
     const limit = Math.min(parseInt(searchParams.get('limit') || '50'), 100);
     const offset = parseInt(searchParams.get('offset') || '0');
 
@@ -50,6 +51,11 @@ export async function GET(request: NextRequest) {
       query = query.eq('status', status);
     }
 
+    // Apply dismissed filter
+    if (dismissed !== null) {
+      query = query.eq('dismissed', dismissed === 'true');
+    }
+
     const { data: alerts, error } = await query;
 
     if (error) {
@@ -65,6 +71,10 @@ export async function GET(request: NextRequest) {
 
     if (status) {
       countQuery = countQuery.eq('status', status);
+    }
+
+    if (dismissed !== null) {
+      countQuery = countQuery.eq('dismissed', dismissed === 'true');
     }
 
     const { count } = await countQuery;
