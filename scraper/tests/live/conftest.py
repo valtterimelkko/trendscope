@@ -65,9 +65,47 @@ def pytest_collection_modifyitems(config, items):
 @pytest.fixture(scope="module")
 def proxy_url() -> Optional[str]:
     """Get IPRoyal session proxy URL from environment."""
-    proxy = os.getenv("PROXY_URL")
+    from scraper.proxy_utils import load_proxy_from_env, validate_proxy_url, test_proxy_connection
+    
+    proxy = load_proxy_from_env()
     if not proxy:
         pytest.skip("PROXY_URL not configured in environment", allow_module_level=True)
+    
+    # Validate proxy URL
+    validation = validate_proxy_url(proxy)
+    if not validation["valid"]:
+        pytest.skip(
+            f"PROXY_URL is invalid: {'; '.join(validation['issues'])}",
+            allow_module_level=True
+        )
+    
+    # Check for warnings (expired session credentials)
+    if validation["warnings"]:
+        warnings_str = "; ".join(validation["warnings"])
+        # Don't skip, but warn
+        print(f"\n⚠️  PROXY WARNING: {warnings_str}")
+    
+    # Test connection
+    try:
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        test_result = loop.run_until_complete(test_proxy_connection(proxy))
+        loop.close()
+        
+        if not test_result["success"]:
+            error_msg = test_result.get("error", "Unknown error")
+            if "407" in error_msg:
+                pytest.skip(
+                    f"Proxy authentication failed (407). Credentials may be expired. "
+                    f"Get new credentials from IPRoyal dashboard. Original URL had: "
+                    f"{validation.get('components', {}).get('password_length', 'unknown')} char password",
+                    allow_module_level=True
+                )
+            else:
+                pytest.skip(f"Proxy connection test failed: {error_msg}", allow_module_level=True)
+    except Exception as e:
+        pytest.skip(f"Could not test proxy: {e}", allow_module_level=True)
+    
     return proxy
 
 
