@@ -1,0 +1,18 @@
+# Monitoring Module Dependencies
+# Install with: pip install -r monitoring/requirements.txt
+
+# Prometheus metrics
+prometheus-client>=0.19.0
+
+# Structured logging
+structlog>=24.1.0
+
+# Configuration
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# Async support (usually already installed)
+asyncio-compat>=0.1.0
+
+# HTTP client for Slack webhooks
+httpx>=0.26.0
