@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { validateUuid } from '@/lib/utils';
 
 // PATCH - Dismiss an alert
 export async function PATCH(
@@ -16,6 +17,12 @@ export async function PATCH(
     }
 
     const { id } = await params;
+
+    // Validate UUID format
+    const uuidCheck = validateUuid(id, 'Alert ID');
+    if (!uuidCheck.valid) {
+      return NextResponse.json({ error: uuidCheck.error }, { status: 400 });
+    }
 
     // Update alert to dismissed (RLS ensures user owns it)
     const { data: alert, error } = await supabase

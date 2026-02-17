@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { validateUuid } from '@/lib/utils';
 
 // Tier limits for client management
 const TIER_CLIENT_LIMITS: Record<string, number> = {
@@ -44,6 +45,12 @@ export async function GET(
     }
 
     const { id } = await params;
+
+    // Validate UUID format
+    const uuidCheck = validateUuid(id, 'Client ID');
+    if (!uuidCheck.valid) {
+      return NextResponse.json({ error: uuidCheck.error }, { status: 400 });
+    }
 
     // Fetch client (RLS ensures agency owns it)
     const { data: client, error } = await supabase
@@ -143,6 +150,13 @@ export async function PUT(
     }
 
     const { id } = await params;
+
+    // Validate UUID format
+    const uuidCheck = validateUuid(id, 'Client ID');
+    if (!uuidCheck.valid) {
+      return NextResponse.json({ error: uuidCheck.error }, { status: 400 });
+    }
+
     const body = await request.json();
     const { name, logo_url, config, is_active } = body;
 
@@ -226,6 +240,12 @@ export async function DELETE(
     }
 
     const { id } = await params;
+
+    // Validate UUID format
+    const uuidCheck = validateUuid(id, 'Client ID');
+    if (!uuidCheck.valid) {
+      return NextResponse.json({ error: uuidCheck.error }, { status: 400 });
+    }
 
     // Delete client (cascades to client_alerts, RLS ensures agency owns it)
     const { error } = await supabase

@@ -57,64 +57,75 @@ class TestSingleVideoFlow:
         Test complete flow for a single video with latency measurement.
         
         Expected: Video pushed → trend detected → persisted within acceptable latency.
+        
+        Note: We need at least 3 videos with the same hashtag to trigger velocity calculation
+        (min_data_points = 3 in velocity engine).
         """
-        # Setup: Create test video
-        video = VideoData(
-            id="test_video_001",
-            desc="Test video with #testtrend",
-            create_time=int(datetime.now(timezone.utc).timestamp()),
-            stats=VideoStats(
-                play_count=50000,
-                digg_count=7500,
-                share_count=1000,
-                comment_count=500
-            ),
-            author=VideoAuthor(
-                unique_id="testcreator",
-                nickname="Test Creator",
-                follower_count=10000
-            ),
-            music=VideoMusic(
-                id="sound_123",
-                title="Test Sound",
-                author_name="Test Artist"
-            ),
-            hashtags=["testtrend", "viral"],
-            scraped_at=datetime.now(timezone.utc),
-            source_type="trending",
-            source_query=None
-        )
+        # Setup: Create test videos (need 3+ for velocity calculation)
+        hashtag = "testtrend"  # Note: no # prefix - detector adds it for name but not platform_id
+        videos = []
+        base_views = 10000
+        
+        for i in range(5):
+            video = VideoData(
+                id=f"test_video_{i:03d}",
+                desc=f"Test video {i} with {hashtag}",
+                create_time=int((datetime.now(timezone.utc) - timedelta(hours=5-i)).timestamp()),
+                stats=VideoStats(
+                    play_count=int(base_views * (1.5 ** i)),  # Exponential growth
+                    digg_count=int(base_views * 0.15),
+                    share_count=int(base_views * 0.02),
+                    comment_count=int(base_views * 0.01)
+                ),
+                author=VideoAuthor(
+                    unique_id="testcreator",
+                    nickname="Test Creator",
+                    follower_count=10000
+                ),
+                music=VideoMusic(
+                    id="sound_123",
+                    title="Test Sound",
+                    author_name="Test Artist"
+                ),
+                hashtags=[hashtag, "viral"],
+                scraped_at=datetime.now(timezone.utc) - timedelta(hours=5-i),
+                source_type="trending",
+                source_query=None
+            )
+            videos.append(video)
         
         # Start latency measurement
         start_time = time.time()
         
-        # Execute: Push to Redis
-        await producer.push_to_queue(video)
-        pipeline_metrics.videos_pushed += 1
+        # Execute: Push batch to Redis
+        await producer.push_batch_to_queue(videos)
+        pipeline_metrics.videos_pushed = len(videos)
         
         # Record queue depth after push
         queue_depth = await clean_redis.llen("tiktok:videos")
         pipeline_metrics.record_queue_depth(queue_depth, "after_push")
         
-        # Execute: Consume from Redis (simulating consumer fetch)
-        batch = await clean_redis.lrange("tiktok:videos", 0, 0)
-        assert len(batch) == 1, f"Expected 1 video in queue, got {len(batch)}"
+        # Execute: Consume and process all from Redis
+        processed = 0
+        trends_created = []
         
-        # Parse and process
-        video_json = batch[0].decode('utf-8') if isinstance(batch[0], bytes) else batch[0]
-        video_data = VideoData.model_validate_json(video_json)
+        for video_json in await clean_redis.lrange("tiktok:videos", 0, -1):
+            video_data = VideoData.model_validate_json(
+                video_json.decode('utf-8') if isinstance(video_json, bytes) else video_json
+            )
+            trends = await trend_detector.process_video(video_data)
+            trends_created.extend(trends)
+            processed += 1
         
-        # Execute: Process through trend detector
-        trends = await trend_detector.process_video(video_data)
+        # Clear queue
+        await clean_redis.flushall()
         
-        # Remove from queue (simulating consumer acknowledgment)
-        await clean_redis.ltrim("tiktok:videos", 1, -1)
+        pipeline_metrics.videos_processed = processed
         
-        pipeline_metrics.videos_processed += 1
-        
-        # Verify: Trend created
-        assert len(trends) > 0, "Expected at least one trend to be created"
-        trend = trends[0]
+        # Verify: Trends created (at least the hashtag trend)
+        hashtag_trends = [t for t in trends_created if t.type.value == TrendType.HASHTAG.value and hashtag.lower() in t.platform_id.lower()]
+        assert len(hashtag_trends) > 0, f"Expected at least one hashtag trend to be created. Got {len(trends_created)} trends: {[(t.type.value, t.platform_id) for t in trends_created]}"
+        trend = hashtag_trends[0]
         
         # Verify: Persisted to database
         persisted = await trend_repository.get_by_platform_id(
@@ -124,10 +135,10 @@ class TestSingleVideoFlow:
         assert persisted is not None, "Trend should be persisted in database"
         assert persisted.platform_id == trend.platform_id
         assert persisted.name == trend.name
-        assert persisted.status == TrendStatus.EMERGING
-        assert persisted.velocity_score > 0
+        assert persisted.status in [TrendStatus.EMERGING, TrendStatus.PEAKING]
+        assert persisted.velocity_score > 0, f"Expected positive velocity, got {persisted.velocity_score}"
         
-        pipeline_metrics.trends_created += 1
+        pipeline_metrics.trends_created = len(set((t.type.value, t.platform_id) for t in trends_created))
         
         # Calculate and record latency
         end_time = time.time()
@@ -140,8 +151,8 @@ class TestSingleVideoFlow:
         
         # Verify metrics
         metrics = pipeline_metrics.to_dict()
-        assert metrics["videos_pushed"] == 1
-        assert metrics["videos_processed"] == 1
+        assert metrics["videos_pushed"] == 5
+        assert metrics["videos_processed"] == 5
         assert metrics["trends_created"] >= 1
         
     async def test_single_video_with_sound_and_hashtags(

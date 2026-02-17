@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { validateUuid } from '@/lib/utils';
 
 // PATCH - Update bookmark notes
 export async function PATCH(
@@ -16,6 +17,13 @@ export async function PATCH(
     }
 
     const { id } = await params;
+
+    // Validate UUID format
+    const uuidCheck = validateUuid(id, 'Bookmark ID');
+    if (!uuidCheck.valid) {
+      return NextResponse.json({ error: uuidCheck.error }, { status: 400 });
+    }
+
     const body = await request.json();
     const { notes } = body;
 
@@ -64,6 +72,12 @@ export async function DELETE(
     }
 
     const { id } = await params;
+
+    // Validate UUID format
+    const uuidCheck = validateUuid(id, 'Bookmark ID');
+    if (!uuidCheck.valid) {
+      return NextResponse.json({ error: uuidCheck.error }, { status: 400 });
+    }
 
     // Delete bookmark (RLS ensures user owns it)
     const { error, count } = await supabase

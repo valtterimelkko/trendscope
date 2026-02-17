@@ -1,13 +1,37 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
+/**
+ * Add security headers to response
+ */
+function addSecurityHeaders(response: NextResponse): NextResponse {
+  // Prevent clickjacking
+  response.headers.set('X-Frame-Options', 'DENY');
+  // Prevent MIME type sniffing
+  response.headers.set('X-Content-Type-Options', 'nosniff');
+  // Enable XSS filter in browsers
+  response.headers.set('X-XSS-Protection', '1; mode=block');
+  // Control referrer information
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  // Basic CSP - can be expanded based on needs
+  response.headers.set(
+    'Content-Security-Policy',
+    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co https://api.stripe.com;"
+  );
+  // Prevent sending referrer to other origins
+  response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+
+  return response;
+}
+
 export async function middleware(request: NextRequest) {
   // TEMPORARY: Allow all access without authentication for preview/demo
   // This bypasses Supabase auth checks since backend is not yet set up
   const bypassAuth = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   
   if (bypassAuth) {
-    return NextResponse.next();
+    const response = NextResponse.next();
+    return addSecurityHeaders(response);
   }
 
   let supabaseResponse = NextResponse.next({
@@ -46,7 +70,7 @@ export async function middleware(request: NextRequest) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = '/auth/login';
     redirectUrl.searchParams.set('redirectTo', request.nextUrl.pathname);
-    return NextResponse.redirect(redirectUrl);
+    return addSecurityHeaders(NextResponse.redirect(redirectUrl));
   }
 
   // Redirect to dashboard if already logged in and trying to access auth pages
@@ -57,10 +81,10 @@ export async function middleware(request: NextRequest) {
   ) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = '/app';
-    return NextResponse.redirect(redirectUrl);
+    return addSecurityHeaders(NextResponse.redirect(redirectUrl));
   }
 
-  return supabaseResponse;
+  return addSecurityHeaders(supabaseResponse);
 }
 
 export const config = {

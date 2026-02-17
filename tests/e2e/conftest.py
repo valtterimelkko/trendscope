@@ -105,6 +105,31 @@ def pipeline_metrics() -> PipelineMetrics:
 
 
 # =============================================================================
+# JSON Encoder for Numpy Types
+# =============================================================================
+
+class NumpyEncoder(json.JSONEncoder):
+    """JSON encoder that handles numpy types."""
+    
+    def default(self, obj):
+        import numpy as np
+        if isinstance(obj, np.bool_):
+            return bool(obj)
+        elif isinstance(obj, (np.integer, np.int64, np.int32)):
+            return int(obj)
+        elif isinstance(obj, (np.floating, np.float64, np.float32)):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return super().default(obj)
+
+
+def dump_json_with_numpy(obj):
+    """Dump object to JSON string, handling numpy types."""
+    return json.dumps(obj, cls=NumpyEncoder)
+
+
+# =============================================================================
 # Mock Services
 # =============================================================================
 
@@ -349,6 +374,51 @@ class MockPostgresPool:
         self._id_counter += 1
         return f"mock_id_{self._id_counter}"
     
+    def _parse_json(self, data):
+        """Parse JSON data, converting numpy types to Python native types."""
+        import numpy as np
+        
+        if isinstance(data, str):
+            parsed = json.loads(data)
+        else:
+            parsed = data
+        
+        # Recursively convert numpy types
+        def convert(obj):
+            if isinstance(obj, np.bool_):
+                return bool(obj)
+            elif isinstance(obj, np.integer):
+                return int(obj)
+            elif isinstance(obj, np.floating):
+                return float(obj)
+            elif isinstance(obj, np.ndarray):
+                return obj.tolist()
+            elif isinstance(obj, dict):
+                return {k: convert(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [convert(v) for v in obj]
+            return obj
+        
+        return convert(parsed)
+    
+    def _serialize_for_json(self, obj):
+        """Serialize object for JSON, handling numpy types."""
+        import numpy as np
+        
+        if isinstance(obj, np.bool_):
+            return bool(obj)
+        elif isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        elif isinstance(obj, dict):
+            return {k: self._serialize_for_json(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [self._serialize_for_json(v) for v in obj]
+        return obj
+    
     def acquire(self) -> MockPoolAcquireContext:
         """Acquire a connection from the pool."""
         return MockPoolAcquireContext(self)
@@ -406,12 +476,16 @@ class MockPostgresPool:
         
         return []
     
+    async def fetch(self, query: str, *args) -> List[Dict]:
+        """Public fetch method - for direct pool usage."""
+        return await self._fetch(query, *args)
+    
     async def fetchrow(self, query: str, *args) -> Optional[Dict]:
         """Mock fetchrow operation."""
         query_upper = query.upper()
         
-        if "SELECT * FROM TRENDS WHERE TYPE =" in query_upper:
-            # Get by platform_id lookup
+        if "SELECT * FROM TRENDS" in query_upper and "TYPE =" in query_upper and "PLATFORM_ID =" in query_upper:
+            # Get by platform_id lookup (get_by_platform_id)
             trend_type = args[0] if len(args) > 0 else None
             platform_id = args[1] if len(args) > 1 else None
             for trend in self._data["trends"]:
@@ -445,7 +519,7 @@ class MockPostgresPool:
                 "video_count_start": args[10] if len(args) > 10 else 1,
                 "video_count_current": args[11] if len(args) > 11 else 1,
                 "growth_rate": float(args[12]) if len(args) > 12 and args[12] else 0.0,
-                "metadata": json.loads(args[13]) if len(args) > 13 and args[13] else {},
+                "metadata": self._parse_json(args[13]) if len(args) > 13 and args[13] else {},
                 "created_at": args[14] if len(args) > 14 else datetime.now(timezone.utc),
                 "updated_at": args[15] if len(args) > 15 else datetime.now(timezone.utc),
             }
@@ -470,6 +544,10 @@ class MockPostgresPool:
         
         return None
     
+    async def _fetchrow(self, query: str, *args) -> Optional[Dict]:
+        """Internal fetchrow implementation."""
+        return await self.fetchrow(query, *args)
+    
     async def execute(self, query: str, *args) -> str:
         """Mock execute operation."""
         query_upper = query.upper()
@@ -491,6 +569,10 @@ class MockPostgresPool:
             return "DELETE 0"
         
         return "OK"
+    
+    async def _execute(self, query: str, *args) -> str:
+        """Internal execute implementation."""
+        return await self.execute(query, *args)
     
     async def close(self):
         """Close the mock pool."""
@@ -556,6 +638,32 @@ async def clean_redis(redis_client: FakeRedis) -> AsyncGenerator[FakeRedis, None
 # =============================================================================
 # Database Fixtures
 # =============================================================================
+
+@pytest.fixture(autouse=True, scope="session")
+def patch_json_encoder():
+    """
+    Patch json.dumps in persistence module to handle numpy types.
+    
+    This is needed because the TrendDetector creates metadata with numpy types
+    (e.g., np.bool_, np.float64) which are not JSON serializable by default.
+    """
+    import detection.persistence as persistence_module
+    
+    original_json_loads = persistence_module.json.loads
+    original_json_dumps = persistence_module.json.dumps
+    
+    def patched_dumps(obj, **kwargs):
+        """json.dumps that handles numpy types."""
+        return original_json_dumps(obj, cls=NumpyEncoder, **kwargs)
+    
+    # Patch the json module in persistence
+    persistence_module.json.dumps = patched_dumps
+    
+    yield
+    
+    # Restore original
+    persistence_module.json.dumps = original_json_dumps
+
 
 @pytest_asyncio.fixture
 async def db_pool() -> AsyncGenerator[MockPostgresPool, None]:
