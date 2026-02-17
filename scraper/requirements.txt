@@ -1,0 +1,34 @@
+# Trendscope Scraper Service - Python Dependencies
+#
+# Core scraping and processing
+TikTok-Api>=6.2.0
+playwright>=1.40.0
+
+# Async Redis client
+redis[hiredis]>=5.0.0
+
+# HTTP client (for health checks and external calls)
+httpx>=0.25.0
+
+# Data validation and settings
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# Retry logic
+tenacity>=8.2.0
+
+# Structured logging
+structlog>=23.2.0
+
+# Web framework for health endpoints
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Development dependencies (optional)
+# pytest>=7.4.0
+# pytest-asyncio>=0.21.0
+# mypy>=1.7.0
+# ruff>=0.1.0
