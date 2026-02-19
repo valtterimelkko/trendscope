@@ -13,10 +13,16 @@ function addSecurityHeaders(response: NextResponse): NextResponse {
   response.headers.set('X-XSS-Protection', '1; mode=block');
   // Control referrer information
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  // Basic CSP - can be expanded based on needs
+  // Strict CSP - removes unsafe-inline and unsafe-eval for better security
+  // Note: If Next.js requires these for development, they can be added conditionally
+  const isDev = process.env.NODE_ENV === 'development';
+  const scriptSrc = isDev 
+    ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'" 
+    : "script-src 'self'";
+  
   response.headers.set(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co https://api.stripe.com;"
+    `default-src 'self'; ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co https://api.stripe.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';`
   );
   // Prevent sending referrer to other origins
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');

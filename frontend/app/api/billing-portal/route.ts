@@ -3,6 +3,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@/lib/supabase/server';
+import { requireCsrfToken } from '@/lib/csrf';
 
 /**
  * Initialize Stripe client
@@ -32,6 +33,15 @@ const getStripe = () => {
  */
 export async function POST(request: NextRequest) {
   try {
+    // Validate CSRF token for state-changing operation
+    const csrfCheck = await requireCsrfToken(request);
+    if (!csrfCheck.valid) {
+      return NextResponse.json(
+        { error: csrfCheck.error || 'Invalid CSRF token' },
+        { status: 403 }
+      );
+    }
+
     // Get authenticated user
     const supabase = await createClient();
     const {
@@ -86,9 +96,9 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('[Billing Portal] Error:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    // Log detailed error server-side only, return generic message to client
     return NextResponse.json(
-      { error: 'Failed to create billing portal session', details: errorMessage },
+      { error: 'Failed to create billing portal session' },
       { status: 500 }
     );
   }

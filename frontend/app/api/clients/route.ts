@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { requireCsrfToken } from '@/lib/csrf';
 
 // Tier limits for client management
 const TIER_CLIENT_LIMITS: Record<string, number> = {
@@ -103,6 +104,15 @@ export async function GET(request: NextRequest) {
 // POST - Create a client workspace
 export async function POST(request: NextRequest) {
   try {
+    // Validate CSRF token for state-changing operation
+    const csrfCheck = await requireCsrfToken(request);
+    if (!csrfCheck.valid) {
+      return NextResponse.json(
+        { error: csrfCheck.error || 'Invalid CSRF token' },
+        { status: 403 }
+      );
+    }
+
     const supabase = await createClient();
 
     // Check authentication

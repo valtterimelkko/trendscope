@@ -24,8 +24,8 @@ class DetectionSettings(BaseSettings):
 
     # Database Configuration
     database_url: str = Field(
-        default="postgresql://postgres:postgres@localhost:5432/trendscope",
-        description="PostgreSQL connection URL for trend persistence"
+        default="postgresql://MUST_OVERRIDE:MUST_OVERRIDE@localhost:5432/trendscope",
+        description="PostgreSQL connection URL (MUST be overridden in production)"
     )
     database_pool_size: int = Field(
         default=10,

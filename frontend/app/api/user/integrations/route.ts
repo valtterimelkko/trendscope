@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { requireCsrfToken } from '@/lib/csrf';
 
 // GET - Fetch user's integrations
 export async function GET() {
@@ -42,6 +43,15 @@ export async function GET() {
 // POST - Create a new integration
 export async function POST(request: NextRequest) {
   try {
+    // Validate CSRF token for state-changing operation
+    const csrfCheck = await requireCsrfToken(request);
+    if (!csrfCheck.valid) {
+      return NextResponse.json(
+        { error: csrfCheck.error || 'Invalid CSRF token' },
+        { status: 403 }
+      );
+    }
+
     const supabase = await createClient();
 
     // Check authentication
@@ -151,6 +161,15 @@ export async function DELETE(request: NextRequest) {
 // PATCH - Update an integration
 export async function PATCH(request: NextRequest) {
   try {
+    // Validate CSRF token for state-changing operation
+    const csrfCheck = await requireCsrfToken(request);
+    if (!csrfCheck.valid) {
+      return NextResponse.json(
+        { error: csrfCheck.error || 'Invalid CSRF token' },
+        { status: 403 }
+      );
+    }
+
     const supabase = await createClient();
 
     // Check authentication

@@ -435,7 +435,7 @@ Manage preferences: {settings.tracking_base_url}/settings/alerts
             logger.error(
                 "email_resend_failed",
                 to=self._mask_email(to_email),
-                error=str(e)
+                error=self._sanitize_error(str(e))
             )
             return False
 
@@ -480,9 +480,34 @@ Manage preferences: {settings.tracking_base_url}/settings/alerts
             logger.error(
                 "email_sendgrid_failed",
                 to=self._mask_email(to_email),
-                error=str(e)
+                error=self._sanitize_error(str(e))
             )
             return False
+
+    def _sanitize_error(self, error: str) -> str:
+        """Sanitize error messages to remove potential API keys.
+        
+        Args:
+            error: Raw error message
+            
+        Returns:
+            Sanitized error message with API keys redacted
+        """
+        import re
+        
+        # Mask common API key patterns
+        patterns = [
+            (r'[a-zA-Z0-9]{32,64}', '***KEY_REDACTED***'),  # Generic long keys
+            (r'sk_[a-zA-Z0-9]{24,}', '***STRIPE_KEY_REDACTED***'),  # Stripe keys
+            (r'sg_[a-zA-Z0-9_-]{20,}', '***SENDGRID_KEY_REDACTED***'),  # SendGrid
+            (r're_[a-zA-Z0-9_-]{20,}', '***RESEND_KEY_REDACTED***'),  # Resend
+        ]
+        
+        sanitized = error
+        for pattern, replacement in patterns:
+            sanitized = re.sub(pattern, replacement, sanitized)
+        
+        return sanitized
 
     def _mask_email(self, email: str) -> str:
         """Mask email for privacy in logs.
@@ -498,8 +523,15 @@ Manage preferences: {settings.tracking_base_url}/settings/alerts
 
         local, domain = email.split("@", 1)
         masked_local = local[0] + "***" if len(local) > 1 else "***"
+        
+        # Also mask domain for additional privacy
+        domain_parts = domain.split(".")
+        if len(domain_parts) > 1:
+            masked_domain = f"***.{domain_parts[-1]}"
+        else:
+            masked_domain = "***"
 
-        return f"{masked_local}@{domain}"
+        return f"{masked_local}@{masked_domain}"
 
 
 # Singleton instance

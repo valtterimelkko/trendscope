@@ -3,6 +3,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@/lib/supabase/server';
+import { requireCsrfToken } from '@/lib/csrf';
 import { Tier } from '@/lib/billing/feature-gates';
 
 /**
@@ -40,6 +41,15 @@ const PRICE_MAP: Record<Tier, string | undefined> = {
  */
 export async function POST(request: NextRequest) {
   try {
+    // Validate CSRF token for state-changing operation
+    const csrfCheck = await requireCsrfToken(request);
+    if (!csrfCheck.valid) {
+      return NextResponse.json(
+        { error: csrfCheck.error || 'Invalid CSRF token' },
+        { status: 403 }
+      );
+    }
+
     // Parse request body
     const body = await request.json();
     const { tier } = body as { tier: Tier };

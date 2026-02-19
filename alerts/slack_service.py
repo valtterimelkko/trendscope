@@ -466,17 +466,18 @@ class SlackService:
             url: Full webhook URL
 
         Returns:
-            Masked URL string
+            Masked URL string with all sensitive parts hidden
         """
         if not url:
             return "<empty>"
 
-        # Show only the workspace part
-        parts = url.split("/")
-        if len(parts) >= 5:
-            return f".../{parts[4][:8]}***"
-
-        return "***masked***"
+        from urllib.parse import urlparse
+        try:
+            parsed = urlparse(url)
+            # Only show the service name (e.g., "hooks.slack.com")
+            return f"{parsed.scheme}://{parsed.netloc}/***"
+        except Exception:
+            return "***masked***"
 
 
 # Singleton instance

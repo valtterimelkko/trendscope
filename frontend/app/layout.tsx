@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { QueryProvider } from '@/components/providers/QueryProvider';
 import { Toaster } from '@/components/ui/sonner';
+import { CsrfProvider } from '@/components/csrf-provider';
 import './globals.css';
 
 const inter = Inter({
@@ -46,8 +47,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.variable}>
         <QueryProvider>
-          {children}
-          <Toaster />
+          <CsrfProvider>
+            {children}
+            <Toaster />
+          </CsrfProvider>
         </QueryProvider>
       </body>
     </html>
