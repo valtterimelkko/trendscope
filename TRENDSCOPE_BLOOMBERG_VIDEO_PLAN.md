@@ -742,47 +742,68 @@ While the current Trendscope logo (trend line icon + wordmark) works well for ap
 | "SaaS tool" vibe | "Financial terminal" authority |
 | Works well in navigation | Commands screen presence |
 
-### A1-ALT: Bloomberg-Style Trendscope Wordmark
+### A1-ALT: Bloomberg-Style Trendscope Wordmark (REVISED)
 
 **Prompt for Image Generation:**
 ```
-Create a professional, authoritative wordmark logo for "TRENDSCOPE" - styled as "The Bloomberg Terminal of Short-Form Video Trends."
+Create a professional, authoritative wordmark logo for "TRENDSCOPE" - styled as "The Bloomberg Terminal of Short-Form Video Trends." CRITICAL CONSTRAINTS BELOW.
+
+⚠️  CRITICAL CONSTRAINTS - MUST FOLLOW EXACTLY:
+1. UPRIGHT LETTERS ONLY - ZERO ITALIC, ZERO SLANT, NO ANGLE
+2. TIGHT LETTER-SPACING - letters almost touching, architectural density
+3. GEOMETRIC PRECISION - perfect circles for O, sharp angles for T and N
+4. NO DYNAMIC/FLOWING FEEL - static, grounded, authoritative
 
 DESIGN SPECIFICATIONS:
-- Text only: "TRENDSCOPE" in all capital letters
-- Font style: Geometric sans-serif with Bloomberg Terminal weight and authority
-  - Heavy/bold weight (700-800)
-  - Tight but readable letter-spacing (-0.02em to -0.04em)
-  - Clean, precise letterforms
-  - Suggesting: speed, data, precision, terminal-grade professionalism
-- Color: Pure white (#FFFFFF) on transparent background
-- No icon, no symbol - wordmark only (like Bloomberg)
+- Text: "TRENDSCOPE" in ALL CAPS
+- Font: Geometric sans-serif, BOLD/HEAVY weight (800-900)
+- Letter-spacing: VERY TIGHT (-0.04em), architectural, compact
+- Orientation: PERFECTLY UPRIGHT (0° angle), vertical strokes are 90° vertical
+- Color: Pure white (#FFFFFF)
+- Background: Transparent (PNG alpha)
+- NO icon, NO symbol - text-only wordmark
 
-TYPOGRAPHY DETAILS:
-- The "T" should have a strong, architectural presence
-- The "D" and "O" should be geometrically perfect circles/ovals
-- The "V" or a letter should subtly suggest upward velocity/momentum
-- Optional: The "O" could have a subtle trend-line cut or data-point suggestion
-- Overall feel: If Bloomberg made a terminal for TikTok trends
+TYPOGRAPHY - EXACT REQUIREMENTS:
+- "T" - Strong vertical stem, sharp right angles, no curves
+- "R" - Geometric leg, precise corner where bowl meets stem
+- "E" - Equal bar lengths, squared terminals
+- "N" - Sharp vertex, straight diagonal, no rounded joints
+- "D" - Perfect semicircle bowl meeting straight vertical stem
+- "S" - Symmetric, geometric curves (no calligraphic flow)
+- "C" - Perfect arc, geometric, no tapering
+- "O" - Perfect circle/oval, geometric precision
+- "P" - Bowl perfectly round, stem straight vertical
+- "E" - Same as first E, consistent
 
-MOOD & STYLE:
-- Authoritative, not playful
-- Precise, not casual
-- Terminal-grade, not app-store-friendly
-- Financial news gravitas meets creator economy speed
-- Timeless, not trendy
+MOOD - MUST CONVEY:
+- Financial terminal authority (think Bloomberg terminal screen)
+- News organization gravitas (Reuters, AP, Dow Jones)
+- Data infrastructure precision (AWS, Snowflake, Palantir)
+- ZERO marketing/creative agency feel
+- ZERO Nike/advertising dynamic energy
+- Static, grounded, institutional, serious
+
+NEGATIVE CONSTRAINTS (DO NOT INCLUDE):
+- NO italic or slanted text
+- NO forward lean or angle
+- NO loose spacing
+- NO flowing, script-like, or calligraphic curves
+- NO marketing/advertising agency aesthetic
+- NO "dynamic" or "energetic" feel
+- NO rounded, friendly terminals
+
+VISUAL REFERENCES:
+- Bloomberg terminal screen text
+- Reuters logo wordmark spacing
+- Financial Times masthead weight
+- IBM Plex Bold geometric precision
+- Terminal monospace authority but in geometric sans-serif
 
 TECHNICAL:
-- Transparent background (PNG alpha)
-- 1200px wide minimum for video use
-- Clean edges, no anti-aliasing artifacts
-- Works at small sizes (corner bug) and large (hero display)
-
-REFERENCE INSPIRATION:
-- Bloomberg logo wordmark
-- Reuters wordmark
-- Financial Times masthead
-- Terminal/command-line aesthetic
+- Transparent PNG, 2000px wide minimum
+- Pixel-perfect edges, no blur
+- High contrast white on transparent only
+- Works at 200px (small) and 2000px (hero)
 ```
 
 **Usage Strategy:**
