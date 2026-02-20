@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles for Remotion compositions */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom utilities for video compositions */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #0066FF 0%, #00D9FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .bg-gradient-brand {
+    background: linear-gradient(135deg, #0066FF 0%, #00D9FF 100%);
+  }
+  
+  .shadow-brand {
+    box-shadow: 0 20px 40px rgba(0, 102, 255, 0.3);
+  }
+}

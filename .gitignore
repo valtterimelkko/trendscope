@@ -200,3 +200,16 @@ build/
 !frontend-viewing-site/**/lib/
 !frontend-viewing-site/**/lib/**
 !frontend-viewing-site/**/.env.local
+
+# =============================================================================
+# Remotion (Video Generation)
+# =============================================================================
+remotion/node_modules/
+remotion/dist/
+remotion/out/
+remotion/.cache/
+
+# Generated videos (keep folder, ignore files - videos are generated on-demand)
+frontend/public/videos/*.mp4
+frontend/public/videos/*.webm
+frontend/public/videos/*.mov
