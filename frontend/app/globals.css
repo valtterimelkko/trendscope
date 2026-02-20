@@ -27,13 +27,13 @@
   --font-display: 'Clash Display', ui-sans-serif, system-ui, sans-serif;
 
   /* Spacing scale */
-  --spacing-xs: 8px;
-  --spacing-sm: 12px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-2xl: 48px;
-  --spacing-3xl: 64px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
 
   /* Border radius */
   --radius-xs: 4px;
@@ -180,7 +180,7 @@
     background-color: white;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
+    padding: var(--space-lg);
     box-shadow: var(--shadow-sm);
   }
 
@@ -193,7 +193,7 @@
   .stat-card {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
+    padding: var(--space-lg);
     background-color: white;
     transition: all 150ms ease-out;
   }
@@ -206,7 +206,7 @@
   .trend-card {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
+    padding: var(--space-lg);
     background-color: white;
     transition: all 150ms ease-out;
     cursor: pointer;
@@ -221,8 +221,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-xs);
-    padding: var(--spacing-md);
+    gap: var(--space-xs);
+    padding: var(--space-md);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     text-align: center;

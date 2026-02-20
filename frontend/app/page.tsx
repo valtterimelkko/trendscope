@@ -38,7 +38,7 @@ export default function LandingPage() {
           Professional-grade detection.<br />
           <span className="text-primary">Alerts before the mainstream knows.</span>
         </h1>
-        <p className="mx-auto mb-8 max-w-2xl text-xl text-muted-foreground">
+        <p className="mx-auto mb-8 max-w-4xl text-xl text-muted-foreground text-center">
           While you&apos;re sleeping, trends are born. By the time you check TikTok Creative Center, that sound already peaked. Trendscope detects trends at the micro-influencer layer—where viral content is born.
         </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
@@ -60,7 +60,7 @@ export default function LandingPage() {
           <h2 className="mb-6 text-center text-4xl font-bold">
             You&apos;re Not Missing Trends. You&apos;re Just Finding Them Too Late.
           </h2>
-          <p className="mx-auto mb-12 max-w-3xl text-center text-xl text-muted-foreground">
+          <p className="mx-auto mb-12 max-w-4xl text-center text-xl text-muted-foreground">
             The average creator spends 4 hours a day scrolling TikTok. That&apos;s not research. That&apos;s digital drift.
           </p>
 
@@ -111,7 +111,7 @@ export default function LandingPage() {
           <h2 className="mb-6 text-center text-4xl font-bold">
             The Trend Decay Dilemma: Why You&apos;re Always 24 Hours Behind
           </h2>
-          <p className="mx-auto mb-12 max-w-3xl text-center text-xl text-muted-foreground">
+          <p className="mx-auto mb-12 max-w-4xl text-center text-xl text-muted-foreground">
             Here&apos;s the brutal truth about TikTok trends: They don&apos;t build slowly. They explode overnight.
           </p>
 
@@ -146,7 +146,7 @@ export default function LandingPage() {
           <h2 className="mb-6 text-center text-4xl font-bold">
             Introducing Trendscope: Zero-Effort Trend Intelligence
           </h2>
-          <p className="mx-auto mb-12 max-w-3xl text-center text-xl text-white/90">
+          <p className="mx-auto mb-12 max-w-5xl text-center text-xl text-white/90">
             Set it up once. Get alerts forever.
           </p>
 
@@ -173,9 +173,11 @@ export default function LandingPage() {
                 description: 'Velocity data. Saturation scores. Example videos. Everything you need.',
               },
             ].map((item) => (
-              <div key={item.step} className="text-center">
-                <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-white text-2xl font-bold text-primary">
-                  {item.step}
+              <div key={item.step} className="w-full text-center">
+                <div className="mb-4 flex justify-center">
+                  <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white text-2xl font-bold text-primary">
+                    {item.step}
+                  </div>
                 </div>
                 <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
                 <p className="text-white/80">{item.description}</p>
@@ -427,7 +429,7 @@ export default function LandingPage() {
           <h2 className="mb-6 text-4xl font-bold md:text-5xl">
             Stop Scrolling. Start Creating.
           </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-xl text-white/90">
+          <p className="mx-auto mb-8 max-w-4xl text-xl text-white/90 text-center">
             The creators who &quot;always seem to know&quot; aren&apos;t psychic. They&apos;re just using Trendscope.
             Join 2,000+ creators and agencies who get alerts 6-24 hours before the mainstream.
           </p>
