@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alerts Page Wireframe - Trendscope</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .wireframe-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border: 3px solid #333;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    h1 {
+      background: #e0e0e0;
+      padding: 20px;
+      border-bottom: 3px solid #333;
+      font-size: 28px;
+    }
+    
+    .wireframe-layout {
+      display: flex;
+      min-height: 800px;
+    }
+    
+    .sidebar {
+      width: 240px;
+      background: #f5f5f5;
+      border-right: 2px solid #999;
+      padding: 20px;
+    }
+    
+    .logo-area {
+      padding: 15px;
+      border: 2px dashed #666;
+      margin-bottom: 30px;
+      text-align: center;
+      background: white;
+    }
+    
+    .nav-item {
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      border: 2px solid #666;
+      background: white;
+      cursor: pointer;
+    }
+    
+    .nav-item.active {
+      background: #ccc;
+      border-width: 3px;
+    }
+    
+    .main-content {
+      flex: 1;
+      padding: 30px;
+      overflow: hidden;
+    }
+    
+    .header-section {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      border: 2px solid #333;
+      background: white;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    
+    .btn-primary {
+      background: #ccc;
+      border-width: 3px;
+    }
+    
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .stat-card {
+      border: 2px solid #666;
+      padding: 15px;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stat-value {
+      font-size: 28px;
+      font-weight: bold;
+    }
+    
+    .stat-label {
+      font-size: 12px;
+      color: #666;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+    
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+    }
+    
+    .tab {
+      padding: 10px 20px;
+      border: 2px solid #666;
+      border-bottom: none;
+      background: white;
+      cursor: pointer;
+      position: relative;
+      bottom: -2px;
+    }
+    
+    .tab.active {
+      background: white;
+      border-width: 3px;
+      border-bottom: 3px solid white;
+    }
+    
+    .alert-item {
+      padding: 15px;
+      border: 2px solid #ccc;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+      background: white;
+    }
+    
+    .alert-item:hover {
+      border-color: #666;
+    }
+    
+    .alert-icon {
+      width: 48px;
+      height: 48px;
+      border: 2px dashed #999;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    
+    .alert-content {
+      flex: 1;
+    }
+    
+    .alert-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+    
+    .alert-meta {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    
+    .alert-trend {
+      padding: 8px 12px;
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      display: inline-block;
+    }
+    
+    .alert-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border: 1px solid #666;
+      font-size: 11px;
+      background: #eee;
+    }
+    
+    .component-tag {
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      z-index: 10;
+      color: white;
+      max-width: calc(100% - 20px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .component-tag.reuse {
+      background: #4CAF50;
+    }
+    
+    .component-tag.new {
+      background: #FF9800;
+    }
+    
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .filter-input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 2px solid #999;
+      font-family: inherit;
+    }
+    
+    .filter-dropdown {
+      padding: 8px 12px;
+      border: 2px solid #999;
+      background: white;
+      font-family: inherit;
+    }
+  </style>
+</head>
+<body>
+  <div class="wireframe-container">
+    <h1>🔔 Alerts Page - Trendscope</h1>
+    
+    <div class="wireframe-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar">
+        <div style="position: relative;">
+          <span class="component-tag reuse" title="components/common/Logo.tsx">[REUSE] Logo</span>
+          <div class="logo-area">
+            <div style="font-weight: bold; font-size: 18px;">📈 Trendscope</div>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <div style="font-size: 11px; color: #999; margin-bottom: 8px; text-transform: uppercase;">Main Menu</div>
+          <div class="nav-item">🏠 Dashboard</div>
+          <div class="nav-item">📊 Trends</div>
+          <div style="position: relative;">
+            <span class="component-tag reuse" title="components/ui/sidebar.tsx">[REUSE] SidebarMenuButton</span>
+            <div class="nav-item active">🔔 Alerts</div>
+          </div>
+          <div class="nav-item">👥 Clients</div>
+        </div>
+        
+        <div style="margin-top: auto; padding-top: 20px; border-top: 2px solid #ccc;">
+          <div style="font-size: 11px; color: #999; margin-bottom: 8px; text-transform: uppercase;">Account</div>
+          <div class="nav-item">⚙️ Settings</div>
+          <div class="nav-item">❓ Help</div>
+        </div>
+      </aside>
+      
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="header-section">
+          <div>
+            <h2 style="font-size: 32px; margin-bottom: 5px;">Alert Center</h2>
+            <p style="color: #666; font-size: 14px;">Manage your trend notifications and alert rules</p>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <div style="position: relative;">
+              <span class="component-tag reuse" title="components/ui/button.tsx">[REUSE] Button</span>
+              <button class="btn">⚙️ Alert Settings</button>
+            </div>
+            <button class="btn btn-primary">➕ New Alert Rule</button>
+          </div>
+        </div>
+        
+        <!-- Alert Stats -->
+        <div style="position: relative;">
+          <span class="component-tag reuse" title="components/ui/card.tsx">[REUSE] Card</span>
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="stat-value">28</div>
+              <div class="stat-label">This Week</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">5</div>
+              <div class="stat-label">Today</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">12</div>
+              <div class="stat-label">Active Rules</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">87%</div>
+              <div class="stat-label">Hit Rate</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tabs -->
+        <div style="position: relative;">
+          <span class="component-tag reuse" title="components/ui/tabs.tsx">[REUSE] Tabs</span>
+          <div class="tabs">
+            <div class="tab active">📬 All Alerts (28)</div>
+            <div class="tab">⭐ Important (5)</div>
+            <div class="tab">📋 Alert Rules (12)</div>
+          </div>
+        </div>
+        
+        <!-- Filter Bar -->
+        <div style="position: relative;">
+          <span class="component-tag new" title="To be created at components/alerts/AlertFilterBar.tsx">[NEW] AlertFilterBar</span>
+          <div class="filter-bar">
+            <input type="text" class="filter-input" placeholder="🔍 Search alerts..." />
+            <select class="filter-dropdown">
+              <option>All Types</option>
+              <option>Sound Alert</option>
+              <option>Hashtag Alert</option>
+              <option>Format Alert</option>
+            </select>
+            <select class="filter-dropdown">
+              <option>All Time</option>
+              <option>Last 24 hours</option>
+              <option>Last 7 days</option>
+            </select>
+            <button class="btn">Clear</button>
+          </div>
+        </div>
+        
+        <!-- Alerts List -->
+        <div>
+          <!-- Alert Item 1 -->
+          <div style="position: relative;">
+            <span class="component-tag new" title="To be created at components/alerts/AlertItem.tsx">[NEW] AlertItem</span>
+            <div class="alert-item">
+              <div class="alert-icon">🎵</div>
+              <div class="alert-content">
+                <div class="alert-title">Sound Alert: Audio trending in #beauty</div>
+                <div class="alert-meta">
+                  <span class="badge">beauty</span>
+                  <span>•</span>
+                  <span>2 hours ago</span>
+                  <span>•</span>
+                  <span>Rule: Sound Detection</span>
+                </div>
+                <div class="alert-trend">
+                  📊 <strong>Soft Glam Transformation</strong> - 2,891 videos, +89% velocity
+                </div>
+              </div>
+              <div class="alert-actions">
+                <button class="btn" style="padding: 6px 12px; font-size: 12px;">View Trend →</button>
+                <button class="btn" style="padding: 6px 12px; font-size: 12px;">⭐ Mark</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Alert Item 2 -->
+          <div class="alert-item">
+            <div class="alert-icon">📌</div>
+            <div class="alert-content">
+              <div class="alert-title">Hashtag Alert: #MoneyTips gaining traction</div>
+              <div class="alert-meta">
+                <span class="badge">finance</span>
+                <span>•</span>
+                <span>5 hours ago</span>
+                <span>•</span>
+                <span>Rule: Hashtag Monitor</span>
+              </div>
+              <div class="alert-trend">
+                📊 <strong>#MoneyTips</strong> - 1,234 videos, +78% velocity
+              </div>
+            </div>
+            <div class="alert-actions">
+              <button class="btn" style="padding: 6px 12px; font-size: 12px;">View Trend →</button>
+              <button class="btn" style="padding: 6px 12px; font-size: 12px;">⭐ Mark</button>
+            </div>
+          </div>
+          
+          <!-- Alert Item 3 -->
+          <div class="alert-item">
+            <div class="alert-icon">🎬</div>
+            <div class="alert-content">
+              <div class="alert-title">Format Alert: New video format emerging</div>
+              <div class="alert-meta">
+                <span class="badge">fashion</span>
+                <span>•</span>
+                <span>8 hours ago</span>
+                <span>•</span>
+                <span>Rule: Format Detection</span>
+              </div>
+              <div class="alert-trend">
+                📊 <strong>Get Ready With Me</strong> - 847 videos, +65% velocity
+              </div>
+            </div>
+            <div class="alert-actions">
+              <button class="btn" style="padding: 6px 12px; font-size: 12px;">View Trend →</button>
+              <button class="btn" style="padding: 6px 12px; font-size: 12px;">⭐ Mark</button>
+            </div>
+          </div>
+          
+          <!-- More alerts placeholder -->
+          <div style="padding: 40px; text-align: center; border: 2px dashed #ccc; margin-top: 15px; color: #999;">
+            [More alerts display here - total 28 alerts]
+          </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div style="position: relative; margin-top: 30px;">
+          <span class="component-tag reuse" title="components/ui/pagination.tsx">[REUSE] Pagination</span>
+          <div style="display: flex; justify-content: center; gap: 8px; padding-top: 20px; border-top: 2px solid #ccc;">
+            <button class="btn" style="padding: 8px 12px;">← Prev</button>
+            <button class="btn" style="padding: 8px 12px; background: #ccc; border-width: 3px;">1</button>
+            <button class="btn" style="padding: 8px 12px;">2</button>
+            <button class="btn" style="padding: 8px 12px;">3</button>
+            <button class="btn" style="padding: 8px 12px;">Next →</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

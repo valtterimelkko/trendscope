@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trend Detail Page Wireframe - Trendscope</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .wireframe-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border: 3px solid #333;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    h1 {
+      background: #e0e0e0;
+      padding: 20px;
+      border-bottom: 3px solid #333;
+      font-size: 28px;
+    }
+    
+    .wireframe-layout {
+      display: flex;
+      min-height: 800px;
+    }
+    
+    .sidebar {
+      width: 240px;
+      background: #f5f5f5;
+      border-right: 2px solid #999;
+      padding: 20px;
+    }
+    
+    .logo-area {
+      padding: 15px;
+      border: 2px dashed #666;
+      margin-bottom: 30px;
+      text-align: center;
+      background: white;
+    }
+    
+    .nav-item {
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      border: 2px solid #666;
+      background: white;
+      cursor: pointer;
+    }
+    
+    .nav-item.active {
+      background: #ccc;
+      border-width: 3px;
+    }
+    
+    .main-content {
+      flex: 1;
+      padding: 30px;
+      overflow: hidden;
+    }
+    
+    .breadcrumb {
+      display: flex;
+      gap: 8px;
+      font-size: 13px;
+      margin-bottom: 20px;
+      color: #666;
+    }
+    
+    .trend-header {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+    }
+    
+    .trend-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    
+    .trend-title {
+      font-size: 36px;
+      font-weight: bold;
+    }
+    
+    .trend-meta {
+      display: flex;
+      gap: 15px;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .velocity-display {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      padding: 20px;
+      border: 3px solid #666;
+      background: #f9f9f9;
+      min-width: 150px;
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      border: 2px solid #333;
+      background: white;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    
+    .btn-primary {
+      background: #ccc;
+      border-width: 3px;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .stat-box {
+      border: 2px solid #666;
+      padding: 20px;
+      background: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stat-value {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    
+    .stat-label {
+      font-size: 12px;
+      color: #666;
+      text-transform: uppercase;
+    }
+    
+    .chart-section {
+      border: 2px solid #666;
+      padding: 20px;
+      margin-bottom: 20px;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .chart-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    
+    .chart-placeholder {
+      height: 300px;
+      border: 2px dashed #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 14px;
+    }
+    
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+    
+    .panel {
+      border: 2px solid #666;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .panel-header {
+      padding: 15px 20px;
+      border-bottom: 2px solid #ccc;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    .panel-body {
+      padding: 20px;
+    }
+    
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    
+    .video-thumbnail {
+      aspect-ratio: 9/16;
+      border: 2px dashed #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #999;
+      background: #fafafa;
+    }
+    
+    .insight-item {
+      padding: 12px;
+      border: 2px solid #eee;
+      margin-bottom: 10px;
+      background: #fafafa;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border: 1px solid #666;
+      font-size: 11px;
+      background: #eee;
+    }
+    
+    .component-tag {
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      z-index: 10;
+      color: white;
+      max-width: calc(100% - 20px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .component-tag.reuse {
+      background: #4CAF50;
+    }
+    
+    .component-tag.new {
+      background: #FF9800;
+    }
+  </style>
+</head>
+<body>
+  <div class="wireframe-container">
+    <h1>📊 Trend Detail Page - Trendscope</h1>
+    
+    <div class="wireframe-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar">
+        <div style="position: relative;">
+          <span class="component-tag reuse" title="components/common/Logo.tsx">[REUSE] Logo</span>
+          <div class="logo-area">
+            <div style="font-weight: bold; font-size: 18px;">📈 Trendscope</div>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <div style="font-size: 11px; color: #999; margin-bottom: 8px; text-transform: uppercase;">Main Menu</div>
+          <div class="nav-item">🏠 Dashboard</div>
+          <div style="position: relative;">
+            <span class="component-tag reuse" title="components/ui/sidebar.tsx">[REUSE] SidebarMenuButton</span>
+            <div class="nav-item active">📊 Trends</div>
+          </div>
+          <div class="nav-item">🔔 Alerts</div>
+          <div class="nav-item">👥 Clients</div>
+        </div>
+        
+        <div style="margin-top: auto; padding-top: 20px; border-top: 2px solid #ccc;">
+          <div style="font-size: 11px; color: #999; margin-bottom: 8px; text-transform: uppercase;">Account</div>
+          <div class="nav-item">⚙️ Settings</div>
+          <div class="nav-item">❓ Help</div>
+        </div>
+      </aside>
+      
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+          <span>Trends</span>
+          <span>→</span>
+          <span>Beauty</span>
+          <span>→</span>
+          <span style="font-weight: bold; color: #333;">Soft Glam Transformation</span>
+        </div>
+        
+        <!-- Trend Header -->
+        <div class="trend-header">
+          <div class="trend-title-row">
+            <div style="flex: 1;">
+              <div class="trend-title">Soft Glam Transformation</div>
+              <div class="trend-meta">
+                <span class="badge">beauty</span>
+                <span>•</span>
+                <span>⏰ Detected 2 hours ago</span>
+                <span>•</span>
+                <span>🕐 6 hrs detection window</span>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
+              <div class="velocity-display">+89%</div>
+              <div style="display: flex; gap: 8px;">
+                <div style="position: relative;">
+                  <span class="component-tag reuse" title="components/ui/button.tsx">[REUSE] Button</span>
+                  <button class="btn">⭐ Bookmark</button>
+                </div>
+                <button class="btn btn-primary">🔔 Create Alert</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Stats Overview -->
+        <div style="position: relative;">
+          <span class="component-tag reuse" title="components/ui/card.tsx">[REUSE] Card</span>
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="stat-value">2,891</div>
+              <div class="stat-label">Total Videos</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value">45.2M</div>
+              <div class="stat-label">Total Views</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value">87%</div>
+              <div class="stat-label">Engagement Rate</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value">156K</div>
+              <div class="stat-label">Avg Views/Video</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Velocity Chart -->
+        <div style="position: relative;">
+          <span class="component-tag new" title="Use components/ui/chart.tsx with recharts">[NEW] VelocityChart</span>
+          <div class="chart-section">
+            <div class="chart-title">📈 Velocity Over Time</div>
+            <div class="chart-placeholder">
+              [Line chart showing velocity trend over last 48 hours with annotations]
+            </div>
+          </div>
+        </div>
+        
+        <!-- Content Grid -->
+        <div class="content-grid">
+          <!-- Top Videos Panel -->
+          <div class="panel">
+            <div style="position: relative;">
+              <span class="component-tag new" title="To be created at components/trends/TopVideosPanel.tsx">[NEW] TopVideosPanel</span>
+              <div class="panel-header">🎬 Top Performing Videos</div>
+            </div>
+            <div class="panel-body">
+              <div class="video-grid">
+                <div class="video-thumbnail">
+                  [Video<br/>Thumbnail<br/>9:16]
+                </div>
+                <div class="video-thumbnail">
+                  [Video<br/>Thumbnail<br/>9:16]
+                </div>
+                <div class="video-thumbnail">
+                  [Video<br/>Thumbnail<br/>9:16]
+                </div>
+                <div class="video-thumbnail">
+                  [Video<br/>Thumbnail<br/>9:16]
+                </div>
+                <div class="video-thumbnail">
+                  [Video<br/>Thumbnail<br/>9:16]
+                </div>
+                <div class="video-thumbnail">
+                  [Video<br/>Thumbnail<br/>9:16]
+                </div>
+              </div>
+              <div style="margin-top: 15px; text-align: center;">
+                <button class="btn">View All Videos →</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Insights Sidebar -->
+          <div>
+            <!-- Key Insights -->
+            <div class="panel" style="margin-bottom: 20px;">
+              <div style="position: relative;">
+                <span class="component-tag new" title="To be created at components/trends/TrendInsights.tsx">[NEW] TrendInsights</span>
+                <div class="panel-header">💡 Key Insights</div>
+              </div>
+              <div class="panel-body">
+                <div class="insight-item">
+                  <div style="font-weight: bold; margin-bottom: 5px;">Peak Activity</div>
+                  <div style="font-size: 13px; color: #666;">Most videos posted between 6-10 PM EST</div>
+                </div>
+                <div class="insight-item">
+                  <div style="font-weight: bold; margin-bottom: 5px;">Creator Demographics</div>
+                  <div style="font-size: 13px; color: #666;">78% female creators, ages 18-34</div>
+                </div>
+                <div class="insight-item">
+                  <div style="font-weight: bold; margin-bottom: 5px;">Top Sounds</div>
+                  <div style="font-size: 13px; color: #666;">"Calm Vibes" audio (45% of videos)</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Related Trends -->
+            <div class="panel">
+              <div class="panel-header">🔗 Related Trends</div>
+              <div class="panel-body">
+                <div style="padding: 10px; border: 2px solid #eee; margin-bottom: 8px; cursor: pointer;">
+                  <div style="font-weight: bold; margin-bottom: 3px;">#CleanGirlAesthetic</div>
+                  <div style="font-size: 12px; color: #666;">+65% velocity</div>
+                </div>
+                <div style="padding: 10px; border: 2px solid #eee; margin-bottom: 8px; cursor: pointer;">
+                  <div style="font-weight: bold; margin-bottom: 3px;">Makeup Tutorial</div>
+                  <div style="font-size: 12px; color: #666;">+54% velocity</div>
+                </div>
+                <div style="padding: 10px; border: 2px solid #eee; cursor: pointer;">
+                  <div style="font-weight: bold; margin-bottom: 3px;">Natural Beauty</div>
+                  <div style="font-size: 12px; color: #666;">+48% velocity</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

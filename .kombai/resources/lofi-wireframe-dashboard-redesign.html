@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Redesign Wireframe - Trendscope</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .wireframe-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border: 3px solid #333;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    h1 {
+      background: #e0e0e0;
+      padding: 20px;
+      border-bottom: 3px solid #333;
+      font-size: 28px;
+    }
+    
+    .wireframe-layout {
+      display: flex;
+      min-height: 800px;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #f5f5f5;
+      border-right: 2px solid #999;
+      padding: 20px;
+    }
+    
+    .logo-area {
+      padding: 15px;
+      border: 2px dashed #666;
+      margin-bottom: 30px;
+      text-align: center;
+      background: white;
+    }
+    
+    .nav-item {
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      border: 2px solid #666;
+      background: white;
+      cursor: pointer;
+    }
+    
+    .nav-item.active {
+      background: #ccc;
+      border-width: 3px;
+    }
+    
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      padding: 30px;
+    }
+    
+    .header-section {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .header-left h2 {
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+    
+    .header-left p {
+      color: #666;
+      font-size: 14px;
+    }
+    
+    .header-right {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      border: 2px solid #333;
+      background: white;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    
+    .btn-primary {
+      background: #ccc;
+      border-width: 3px;
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .stat-card {
+      border: 2px solid #666;
+      padding: 20px;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stat-card h4 {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    
+    .stat-value {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .stat-change {
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .stat-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border: 2px dashed #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+    
+    /* Quick Actions */
+    .quick-actions {
+      margin-bottom: 30px;
+      padding: 20px;
+      border: 2px solid #666;
+      background: #f9f9f9;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .quick-actions h3 {
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+    }
+    
+    /* Content Grid */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .panel {
+      border: 2px solid #666;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .panel-header {
+      padding: 15px 20px;
+      border-bottom: 2px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .panel-header h3 {
+      font-size: 18px;
+    }
+    
+    .panel-body {
+      padding: 20px;
+    }
+    
+    /* Trend Card */
+    .trend-item {
+      padding: 15px;
+      border: 2px solid #ccc;
+      margin-bottom: 12px;
+      background: #fafafa;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    
+    .trend-info h4 {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    
+    .trend-meta {
+      font-size: 12px;
+      color: #666;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .trend-stats {
+      text-align: right;
+    }
+    
+    .velocity {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .velocity-bar {
+      width: 80px;
+      height: 6px;
+      background: #999;
+      border: 1px solid #666;
+    }
+    
+    /* Alert Item */
+    .alert-item {
+      padding: 12px;
+      border: 2px solid #ccc;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    
+    .alert-icon {
+      width: 32px;
+      height: 32px;
+      border: 2px dashed #999;
+      flex-shrink: 0;
+    }
+    
+    .alert-content {
+      flex: 1;
+    }
+    
+    .alert-time {
+      font-size: 12px;
+      color: #999;
+      flex-shrink: 0;
+    }
+    
+    /* Chart Placeholder */
+    .chart-placeholder {
+      height: 200px;
+      border: 2px dashed #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 14px;
+      margin-top: 15px;
+    }
+    
+    /* Badge */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border: 1px solid #666;
+      font-size: 11px;
+      background: #eee;
+    }
+    
+    /* Component Tag Badges */
+    .component-tag {
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      z-index: 10;
+      color: white;
+      max-width: calc(100% - 20px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .component-tag.reuse {
+      background: #4CAF50;
+    }
+    
+    .component-tag.new {
+      background: #FF9800;
+    }
+    
+    /* Empty state */
+    .empty-state {
+      padding: 40px;
+      text-align: center;
+      border: 2px dashed #ccc;
+      color: #999;
+    }
+    
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .filter-input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 2px solid #999;
+      font-family: inherit;
+    }
+    
+    .filter-dropdown {
+      padding: 8px 12px;
+      border: 2px solid #999;
+      background: white;
+      font-family: inherit;
+    }
+  </style>
+</head>
+<body>
+  <div class="wireframe-container">
+    <h1>📱 Redesigned Dashboard - Trendscope (Option: Improved UX/Usability)</h1>
+    
+    <div class="wireframe-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar">
+        <!-- REUSABLE: Logo from components/common/Logo.tsx -->
+        <div style="position: relative;">
+          <span class="component-tag reuse" title="components/common/Logo.tsx">[REUSE] Logo</span>
+          <div class="logo-area">
+            <div style="font-weight: bold; font-size: 18px;">📈 Trendscope</div>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <div style="font-size: 11px; color: #999; margin-bottom: 8px; text-transform: uppercase;">Main Menu</div>
+          <!-- REUSABLE: SidebarMenuButton from components/ui/sidebar.tsx -->
+          <div style="position: relative;">
+            <span class="component-tag reuse" title="components/ui/sidebar.tsx">[REUSE] SidebarMenuButton</span>
+            <div class="nav-item active">🏠 Dashboard</div>
+          </div>
+          <div class="nav-item">📊 Trends</div>
+          <div class="nav-item">🔔 Alerts</div>
+          <div class="nav-item">👥 Clients</div>
+        </div>
+        
+        <div style="margin-top: auto; padding-top: 20px; border-top: 2px solid #ccc;">
+          <div style="font-size: 11px; color: #999; margin-bottom: 8px; text-transform: uppercase;">Account</div>
+          <div class="nav-item">⚙️ Settings</div>
+          <div class="nav-item">❓ Help</div>
+        </div>
+      </aside>
+      
+      <!-- Main Content Area -->
+      <main class="main-content">
+        <!-- Header with Actions -->
+        <div class="header-section">
+          <div class="header-left">
+            <h2>Welcome back, Sarah 👋</h2>
+            <p>Here's your trend intelligence dashboard for today</p>
+          </div>
+          <div class="header-right">
+            <!-- REUSABLE: Button from components/ui/button.tsx -->
+            <div style="position: relative;">
+              <span class="component-tag reuse" title="components/ui/button.tsx">[REUSE] Button</span>
+              <button class="btn">🔍 Search Trends</button>
+            </div>
+            <button class="btn btn-primary">➕ Create Alert</button>
+          </div>
+        </div>
+        
+        <!-- Key Metrics - 4 Column Grid -->
+        <div class="stats-grid">
+          <!-- REUSABLE: Card from components/ui/card.tsx -->
+          <div style="position: relative;">
+            <span class="component-tag reuse" title="components/ui/card.tsx">[REUSE] Card</span>
+            <div class="stat-card">
+              <div class="stat-icon">[📈]</div>
+              <h4>Active Trends</h4>
+              <div class="stat-value">12</div>
+              <div class="stat-change">+3 from yesterday</div>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">[⚡]</div>
+            <h4>Detected Today</h4>
+            <div class="stat-value">3</div>
+            <div class="stat-change">6 hrs avg detection</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">[🔔]</div>
+            <h4>Alerts Sent</h4>
+            <div class="stat-value">28</div>
+            <div class="stat-change">This week</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">[🎯]</div>
+            <h4>Hit Rate</h4>
+            <div class="stat-value">87%</div>
+            <div class="stat-change">+5% vs last week</div>
+          </div>
+        </div>
+        
+        <!-- Quick Actions Panel (NEW) -->
+        <!-- NEW COMPONENT: QuickActionsPanel (to be created) -->
+        <div style="position: relative;">
+          <span class="component-tag new" title="To be created at components/dashboard/QuickActionsPanel.tsx">[NEW] QuickActionsPanel</span>
+          <div class="quick-actions">
+            <h3>⚡ Quick Actions</h3>
+            <div class="action-buttons">
+              <button class="btn">📊 View All Trends</button>
+              <button class="btn">🔔 Configure Alerts</button>
+              <button class="btn">👥 Manage Clients</button>
+              <button class="btn">📥 Export Report</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+          <!-- Trending Now Panel -->
+          <div class="panel">
+            <!-- REUSABLE: Card from components/ui/card.tsx -->
+            <div style="position: relative;">
+              <span class="component-tag reuse" title="components/ui/card.tsx">[REUSE] Card</span>
+              <div class="panel-header">
+                <h3>🔥 Trending Now</h3>
+                <div style="display: flex; gap: 8px;">
+                  <!-- REUSABLE: Badge from components/ui/badge.tsx -->
+                  <span class="badge">Last 24 hours</span>
+                  <button class="btn" style="padding: 4px 12px; font-size: 12px;">↻ Refresh</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="panel-body">
+              <!-- Filter Bar (NEW) -->
+              <div style="position: relative;">
+                <span class="component-tag new" title="To be created at components/dashboard/TrendFilterBar.tsx">[NEW] TrendFilterBar</span>
+                <div class="filter-bar">
+                  <input type="text" class="filter-input" placeholder="🔍 Search trends..." />
+                  <select class="filter-dropdown">
+                    <option>All Niches</option>
+                    <option>Beauty</option>
+                    <option>Fashion</option>
+                    <option>Finance</option>
+                  </select>
+                  <select class="filter-dropdown">
+                    <option>All Velocities</option>
+                    <option>High (&gt;70%)</option>
+                    <option>Medium (40-70%)</option>
+                    <option>Low (&lt;40%)</option>
+                  </select>
+                </div>
+              </div>
+              
+              <!-- Trend Items -->
+              <!-- NEW COMPONENT: TrendCard (enhanced version) -->
+              <div style="position: relative;">
+                <span class="component-tag new" title="To be created at components/dashboard/TrendCard.tsx">[NEW] TrendCard</span>
+                <div class="trend-item">
+                  <div class="trend-info">
+                    <h4>Soft Glam Transformation</h4>
+                    <div class="trend-meta">
+                      <span class="badge">beauty</span>
+                      <span>2,891 videos</span>
+                      <span>⏰ 6 hrs window</span>
+                    </div>
+                  </div>
+                  <div class="trend-stats">
+                    <div class="velocity">+89%</div>
+                    <div class="velocity-bar"></div>
+                    <button class="btn" style="padding: 4px 12px; margin-top: 8px; font-size: 11px;">View Details →</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="trend-item">
+                <div class="trend-info">
+                  <h4>#QuietLuxury</h4>
+                  <div class="trend-meta">
+                    <span class="badge">fashion</span>
+                    <span>1,234 videos</span>
+                    <span>⏰ 12 hrs window</span>
+                  </div>
+                </div>
+                <div class="trend-stats">
+                  <div class="velocity">+78%</div>
+                  <div class="velocity-bar"></div>
+                  <button class="btn" style="padding: 4px 12px; margin-top: 8px; font-size: 11px;">View Details →</button>
+                </div>
+              </div>
+              
+              <div class="trend-item">
+                <div class="trend-info">
+                  <h4>Finance Advice Format</h4>
+                  <div class="trend-meta">
+                    <span class="badge">finance</span>
+                    <span>847 videos</span>
+                    <span>⏰ 18 hrs window</span>
+                  </div>
+                </div>
+                <div class="trend-stats">
+                  <div class="velocity">+65%</div>
+                  <div class="velocity-bar"></div>
+                  <button class="btn" style="padding: 4px 12px; margin-top: 8px; font-size: 11px;">View Details →</button>
+                </div>
+              </div>
+              
+              <!-- Velocity Chart (NEW) -->
+              <div style="position: relative;">
+                <span class="component-tag new" title="Use components/ui/chart.tsx with recharts">[NEW] VelocityChart</span>
+                <div class="chart-placeholder">
+                  [📊 Velocity Trend Chart - Line graph showing trend velocity over last 48 hours]
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Activity Feed Sidebar -->
+          <div>
+            <!-- Recent Alerts -->
+            <div class="panel" style="margin-bottom: 20px;">
+              <div style="position: relative;">
+                <span class="component-tag reuse" title="components/ui/card.tsx">[REUSE] Card</span>
+                <div class="panel-header">
+                  <h3>🔔 Recent Alerts</h3>
+                  <button class="btn" style="padding: 4px 8px; font-size: 11px;">View All</button>
+                </div>
+              </div>
+              
+              <div class="panel-body">
+                <!-- Alert Items -->
+              <!-- NEW COMPONENT: AlertItem (extract from page.tsx) -->
+                <div style="position: relative;">
+                  <span class="component-tag new" title="Extract to components/dashboard/AlertItem.tsx">[NEW] AlertItem</span>
+                  <div class="alert-item" style="position: relative;">
+                    <div class="alert-icon">[🔔]</div>
+                    <div class="alert-content">
+                      <div style="font-weight: bold; margin-bottom: 4px;">Sound alert in #beauty</div>
+                      <div style="font-size: 12px; color: #666;">Soft Glam Transformation</div>
+                    </div>
+                    <div class="alert-time">2h ago</div>
+                  </div>
+                </div>
+                
+                <div class="alert-item">
+                  <div class="alert-icon">[📌]</div>
+                  <div class="alert-content">
+                    <div style="font-weight: bold; margin-bottom: 4px;">Hashtag alert in #finance</div>
+                    <div style="font-size: 12px; color: #666;">#MoneyTips</div>
+                  </div>
+                  <div class="alert-time">5h ago</div>
+                </div>
+                
+                <div class="alert-item">
+                  <div class="alert-icon">[🎬]</div>
+                  <div class="alert-content">
+                    <div style="font-weight: bold; margin-bottom: 4px;">Format alert in #fashion</div>
+                    <div style="font-size: 12px; color: #666;">Get Ready With Me</div>
+                  </div>
+                  <div class="alert-time">8h ago</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Recommended Actions (NEW) -->
+            <div class="panel">
+              <div style="position: relative;">
+                <span class="component-tag new" title="To be created at components/dashboard/RecommendedActionsPanel.tsx">[NEW] RecommendedActions</span>
+                <div class="panel-header">
+                  <h3>💡 Recommended</h3>
+                </div>
+                <div class="panel-body">
+                  <div style="padding: 15px; border: 2px dashed #999; margin-bottom: 12px;">
+                    <div style="font-weight: bold; margin-bottom: 5px;">🎯 Set up niche alerts</div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Get instant notifications for beauty trends</div>
+                    <button class="btn" style="padding: 4px 12px; font-size: 11px;">Configure →</button>
+                  </div>
+                  
+                  <div style="padding: 15px; border: 2px dashed #999;">
+                    <div style="font-weight: bold; margin-bottom: 5px;">📊 Export weekly report</div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Share insights with your team</div>
+                    <button class="btn" style="padding: 4px 12px; font-size: 11px;">Export →</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  
+  <div style="max-width: 1400px; margin: 20px auto; padding: 20px; background: white; border: 3px solid #333;">
+    <h2 style="margin-bottom: 15px; font-size: 20px;">📋 Key UX Improvements in This Redesign</h2>
+    <ul style="list-style-position: inside; line-height: 2;">
+      <li><strong>Clear Call-to-Actions:</strong> Prominent "Create Alert" and "Search Trends" buttons in header</li>
+      <li><strong>Quick Actions Panel:</strong> One-click access to common tasks without navigation</li>
+      <li><strong>Enhanced Filtering:</strong> Search and filter controls for trends (niche, velocity)</li>
+      <li><strong>Actionable Trend Cards:</strong> "View Details" button on each trend for deeper exploration</li>
+      <li><strong>Data Visualization:</strong> Added velocity trend chart to show temporal patterns</li>
+      <li><strong>Hit Rate Metric:</strong> New stat showing alert success rate for performance tracking</li>
+      <li><strong>Recommended Actions:</strong> Contextual suggestions to drive user engagement</li>
+      <li><strong>Improved Information Hierarchy:</strong> Organized into logical sections with clear visual separation</li>
+      <li><strong>Better Navigation Grouping:</strong> Main menu vs Account section in sidebar</li>
+      <li><strong>Refresh Controls:</strong> Manual refresh button for trends panel</li>
+    </ul>
+  </div>
+</body>
+</html>

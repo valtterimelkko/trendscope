@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clients Page Wireframe - Trendscope</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .wireframe-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border: 3px solid #333;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    h1 {
+      background: #e0e0e0;
+      padding: 20px;
+      border-bottom: 3px solid #333;
+      font-size: 28px;
+    }
+    
+    .wireframe-layout {
+      display: flex;
+      min-height: 800px;
+    }
+    
+    .sidebar {
+      width: 240px;
+      background: #f5f5f5;
+      border-right: 2px solid #999;
+      padding: 20px;
+    }
+    
+    .logo-area {
+      padding: 15px;
+      border: 2px dashed #666;
+      margin-bottom: 30px;
+      text-align: center;
+      background: white;
+    }
+    
+    .nav-item {
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      border: 2px solid #666;
+      background: white;
+      cursor: pointer;
+    }
+    
+    .nav-item.active {
+      background: #ccc;
+      border-width: 3px;
+    }
+    
+    .main-content {
+      flex: 1;
+      padding: 30px;
+      overflow: hidden;
+    }
+    
+    .header-section {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      border: 2px solid #333;
+      background: white;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    
+    .btn-primary {
+      background: #ccc;
+      border-width: 3px;
+    }
+    
+    .client-card {
+      border: 2px solid #666;
+      padding: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .client-card:hover {
+      border-width: 3px;
+    }
+    
+    .client-avatar {
+      width: 80px;
+      height: 80px;
+      border: 2px dashed #999;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+    
+    .client-info {
+      flex: 1;
+    }
+    
+    .client-name {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .client-meta {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    
+    .client-stats {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .client-stat {
+      font-size: 12px;
+    }
+    
+    .client-stat-value {
+      font-weight: bold;
+      margin-right: 4px;
+    }
+    
+    .client-actions {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border: 1px solid #666;
+      font-size: 11px;
+      background: #eee;
+    }
+    
+    .component-tag {
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      z-index: 10;
+      color: white;
+      max-width: calc(100% - 20px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .component-tag.reuse {
+      background: #4CAF50;
+    }
+    
+    .component-tag.new {
+      background: #FF9800;
+    }
+    
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .filter-input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 2px solid #999;
+      font-family: inherit;
+    }
+    
+    .filter-dropdown {
+      padding: 8px 12px;
+      border: 2px solid #999;
+      background: white;
+      font-family: inherit;
+    }
+  </style>
+</head>
+<body>
+  <div class="wireframe-container">
+    <h1>👥 Clients Page - Trendscope</h1>
+    
+    <div class="wireframe-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar">
+        <div style="position: relative;">
+          <span class="component-tag reuse" title="components/common/Logo.tsx">[REUSE] Logo</span>
+          <div class="logo-area">
+            <div style="font-weight: bold; font-size: 18px;">📈 Trendscope</div>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <div style="font-size: 11px; color: #999; margin-bottom: 8px; text-transform: uppercase;">Main Menu</div>
+          <div class="nav-item">🏠 Dashboard</div>
+          <div class="nav-item">📊 Trends</div>
+          <div class="nav-item">🔔 Alerts</div>
+          <div style="position: relative;">
+            <span class="component-tag reuse" title="components/ui/sidebar.tsx">[REUSE] SidebarMenuButton</span>
+            <div class="nav-item active">👥 Clients</div>
+          </div>
+        </div>
+        
+        <div style="margin-top: auto; padding-top: 20px; border-top: 2px solid #ccc;">
+          <div style="font-size: 11px; color: #999; margin-bottom: 8px; text-transform: uppercase;">Account</div>
+          <div class="nav-item">⚙️ Settings</div>
+          <div class="nav-item">❓ Help</div>
+        </div>
+      </aside>
+      
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="header-section">
+          <div>
+            <h2 style="font-size: 32px; margin-bottom: 5px;">Client Management</h2>
+            <p style="color: #666; font-size: 14px;">Manage trend monitoring for your agency clients</p>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <div style="position: relative;">
+              <span class="component-tag reuse" title="components/ui/button.tsx">[REUSE] Button</span>
+              <button class="btn">📥 Export List</button>
+            </div>
+            <button class="btn btn-primary">➕ Add Client</button>
+          </div>
+        </div>
+        
+        <!-- Filter Bar -->
+        <div style="position: relative;">
+          <span class="component-tag new" title="To be created at components/clients/ClientFilterBar.tsx">[NEW] ClientFilterBar</span>
+          <div class="filter-bar">
+            <input type="text" class="filter-input" placeholder="🔍 Search clients by name or niche..." />
+            <select class="filter-dropdown">
+              <option>All Statuses</option>
+              <option>Active</option>
+              <option>Paused</option>
+            </select>
+            <select class="filter-dropdown">
+              <option>All Niches</option>
+              <option>Beauty</option>
+              <option>Fashion</option>
+              <option>Finance</option>
+            </select>
+            <button class="btn">Clear</button>
+          </div>
+        </div>
+        
+        <!-- Clients List -->
+        <div>
+          <!-- Client Card 1 -->
+          <div style="position: relative;">
+            <span class="component-tag new" title="To be created at components/clients/ClientCard.tsx">[NEW] ClientCard</span>
+            <div class="client-card">
+              <div class="client-avatar">👤</div>
+              <div class="client-info">
+                <div class="client-name">Beauty Brand Co.</div>
+                <div class="client-meta">
+                  <span class="badge">Active</span>
+                  <span class="badge">beauty</span>
+                  <span>•</span>
+                  <span>Member since Jan 2026</span>
+                </div>
+                <div class="client-stats">
+                  <div class="client-stat">
+                    <span class="client-stat-value">5</span> niches monitored
+                  </div>
+                  <div class="client-stat">
+                    <span class="client-stat-value">23</span> alerts this week
+                  </div>
+                  <div class="client-stat">
+                    <span class="client-stat-value">89%</span> engagement rate
+                  </div>
+                </div>
+              </div>
+              <div class="client-actions">
+                <button class="btn" style="padding: 8px 16px; font-size: 12px;">View Dashboard →</button>
+                <button class="btn" style="padding: 8px 16px; font-size: 12px;">⚙️ Settings</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Client Card 2 -->
+          <div class="client-card">
+            <div class="client-avatar">👤</div>
+            <div class="client-info">
+              <div class="client-name">Fashion Forward Agency</div>
+              <div class="client-meta">
+                <span class="badge">Active</span>
+                <span class="badge">fashion</span>
+                <span>•</span>
+                <span>Member since Dec 2025</span>
+              </div>
+              <div class="client-stats">
+                <div class="client-stat">
+                  <span class="client-stat-value">8</span> niches monitored
+                </div>
+                <div class="client-stat">
+                  <span class="client-stat-value">41</span> alerts this week
+                </div>
+                <div class="client-stat">
+                  <span class="client-stat-value">92%</span> engagement rate
+                </div>
+              </div>
+            </div>
+            <div class="client-actions">
+              <button class="btn" style="padding: 8px 16px; font-size: 12px;">View Dashboard →</button>
+              <button class="btn" style="padding: 8px 16px; font-size: 12px;">⚙️ Settings</button>
+            </div>
+          </div>
+          
+          <!-- Client Card 3 -->
+          <div class="client-card">
+            <div class="client-avatar">👤</div>
+            <div class="client-info">
+              <div class="client-name">Finance Influencer Network</div>
+              <div class="client-meta">
+                <span class="badge">Active</span>
+                <span class="badge">finance</span>
+                <span>•</span>
+                <span>Member since Nov 2025</span>
+              </div>
+              <div class="client-stats">
+                <div class="client-stat">
+                  <span class="client-stat-value">3</span> niches monitored
+                </div>
+                <div class="client-stat">
+                  <span class="client-stat-value">15</span> alerts this week
+                </div>
+                <div class="client-stat">
+                  <span class="client-stat-value">85%</span> engagement rate
+                </div>
+              </div>
+            </div>
+            <div class="client-actions">
+              <button class="btn" style="padding: 8px 16px; font-size: 12px;">View Dashboard →</button>
+              <button class="btn" style="padding: 8px 16px; font-size: 12px;">⚙️ Settings</button>
+            </div>
+          </div>
+          
+          <!-- More clients placeholder -->
+          <div style="padding: 40px; text-align: center; border: 2px dashed #ccc; margin-top: 15px; color: #999;">
+            [More client cards display here]
+          </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div style="position: relative; margin-top: 30px;">
+          <span class="component-tag reuse" title="components/ui/pagination.tsx">[REUSE] Pagination</span>
+          <div style="display: flex; justify-content: center; gap: 8px; padding-top: 20px; border-top: 2px solid #ccc;">
+            <button class="btn" style="padding: 8px 12px;">← Prev</button>
+            <button class="btn" style="padding: 8px 12px; background: #ccc; border-width: 3px;">1</button>
+            <button class="btn" style="padding: 8px 12px;">2</button>
+            <button class="btn" style="padding: 8px 12px;">Next →</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

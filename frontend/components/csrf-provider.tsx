@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
-import { getClientCsrfToken } from '@/lib/csrf';
+import { getClientCsrfToken } from '@/lib/csrf-client';
 
 interface CsrfContextType {
   token: string | null;

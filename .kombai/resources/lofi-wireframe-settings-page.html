@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings Page Wireframe - Trendscope</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .wireframe-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border: 3px solid #333;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    h1 {
+      background: #e0e0e0;
+      padding: 20px;
+      border-bottom: 3px solid #333;
+      font-size: 28px;
+    }
+    
+    .wireframe-layout {
+      display: flex;
+      min-height: 800px;
+    }
+    
+    .sidebar {
+      width: 240px;
+      background: #f5f5f5;
+      border-right: 2px solid #999;
+      padding: 20px;
+    }
+    
+    .logo-area {
+      padding: 15px;
+      border: 2px dashed #666;
+      margin-bottom: 30px;
+      text-align: center;
+      background: white;
+    }
+    
+    .nav-item {
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      border: 2px solid #666;
+      background: white;
+      cursor: pointer;
+    }
+    
+    .nav-item.active {
+      background: #ccc;
+      border-width: 3px;
+    }
+    
+    .main-content {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    
+    .settings-sidebar {
+      width: 220px;
+      background: #fafafa;
+      border-right: 2px solid #ccc;
+      padding: 30px 20px;
+    }
+    
+    .settings-nav-item {
+      padding: 10px 12px;
+      margin-bottom: 6px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .settings-nav-item.active {
+      border-color: #666;
+      background: white;
+    }
+    
+    .settings-content {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+    
+    .header-section {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+    }
+    
+    .section {
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #eee;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #999;
+      font-family: inherit;
+    }
+    
+    .form-select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #999;
+      background: white;
+      font-family: inherit;
+    }
+    
+    .form-textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #999;
+      font-family: inherit;
+      min-height: 100px;
+    }
+    
+    .form-help {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      border: 2px solid #333;
+      background: white;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    
+    .btn-primary {
+      background: #ccc;
+      border-width: 3px;
+    }
+    
+    .btn-danger {
+      border-color: #c00;
+      color: #c00;
+    }
+    
+    .switch-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border: 2px solid #ccc;
+      margin-bottom: 12px;
+      background: white;
+    }
+    
+    .switch-label {
+      flex: 1;
+    }
+    
+    .switch-title {
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+    
+    .switch-desc {
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .switch {
+      width: 50px;
+      height: 26px;
+      border: 2px solid #666;
+      background: #eee;
+      position: relative;
+    }
+    
+    .switch.on {
+      background: #ccc;
+    }
+    
+    .switch-handle {
+      width: 18px;
+      height: 18px;
+      background: #333;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+    }
+    
+    .switch.on .switch-handle {
+      left: 26px;
+    }
+    
+    .component-tag {
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      z-index: 10;
+      color: white;
+      max-width: calc(100% - 20px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .component-tag.reuse {
+      background: #4CAF50;
+    }
+    
+    .component-tag.new {
+      background: #FF9800;
+    }
+  </style>
+</head>
+<body>
+  <div class="wireframe-container">
+    <h1>⚙️ Settings Page - Trendscope</h1>
+    
+    <div class="wireframe-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar">
+        <div style="position: relative;">
+          <span class="component-tag reuse" title="components/common/Logo.tsx">[REUSE] Logo</span>
+          <div class="logo-area">
+            <div style="font-weight: bold; font-size: 18px;">📈 Trendscope</div>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <div style="font-size: 11px; color: #999; margin-bottom: 8px; text-transform: uppercase;">Main Menu</div>
+          <div class="nav-item">🏠 Dashboard</div>
+          <div class="nav-item">📊 Trends</div>
+          <div class="nav-item">🔔 Alerts</div>
+          <div class="nav-item">👥 Clients</div>
+        </div>
+        
+        <div style="margin-top: auto; padding-top: 20px; border-top: 2px solid #ccc;">
+          <div style="font-size: 11px; color: #999; margin-bottom: 8px; text-transform: uppercase;">Account</div>
+          <div style="position: relative;">
+            <span class="component-tag reuse" title="components/ui/sidebar.tsx">[REUSE] SidebarMenuButton</span>
+            <div class="nav-item active">⚙️ Settings</div>
+          </div>
+          <div class="nav-item">❓ Help</div>
+        </div>
+      </aside>
+      
+      <!-- Settings Layout -->
+      <div class="main-content">
+        <!-- Settings Sidebar -->
+        <aside class="settings-sidebar">
+          <div style="font-size: 12px; color: #999; margin-bottom: 12px; text-transform: uppercase;">Settings</div>
+          <div class="settings-nav-item active">👤 Profile</div>
+          <div class="settings-nav-item">🔔 Notifications</div>
+          <div class="settings-nav-item">🔗 Integrations</div>
+          <div class="settings-nav-item">🎯 Niches</div>
+          <div class="settings-nav-item">💳 Billing</div>
+          <div class="settings-nav-item">🔒 Security</div>
+        </aside>
+        
+        <!-- Settings Content -->
+        <main class="settings-content">
+          <div class="header-section">
+            <h2 style="font-size: 28px; margin-bottom: 5px;">Profile Settings</h2>
+            <p style="color: #666; font-size: 14px;">Manage your account information and preferences</p>
+          </div>
+          
+          <!-- Profile Section -->
+          <div style="position: relative;">
+            <span class="component-tag reuse" title="components/ui/form.tsx">[REUSE] Form</span>
+            <div class="section">
+              <div class="section-title">Personal Information</div>
+              
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-input" value="Sarah Johnson" />
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" value="sarah@example.com" />
+                <div class="form-help">Your email is used for notifications and account recovery</div>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Company / Brand Name</label>
+                <input type="text" class="form-input" value="Beauty Brand Co." />
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Role</label>
+                <select class="form-select">
+                  <option>Content Creator</option>
+                  <option>Agency Manager</option>
+                  <option>Brand Manager</option>
+                  <option>Marketing Professional</option>
+                </select>
+              </div>
+              
+              <div style="display: flex; gap: 10px;">
+                <button class="btn btn-primary">Save Changes</button>
+                <button class="btn">Cancel</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Notification Preferences -->
+          <div style="position: relative;">
+            <span class="component-tag reuse" title="components/ui/switch.tsx">[REUSE] Switch</span>
+            <div class="section">
+              <div class="section-title">Notification Preferences</div>
+              
+              <div class="switch-row">
+                <div class="switch-label">
+                  <div class="switch-title">Email Notifications</div>
+                  <div class="switch-desc">Receive trend alerts via email</div>
+                </div>
+                <div class="switch on">
+                  <div class="switch-handle"></div>
+                </div>
+              </div>
+              
+              <div class="switch-row">
+                <div class="switch-label">
+                  <div class="switch-title">Slack Notifications</div>
+                  <div class="switch-desc">Send alerts to your Slack workspace</div>
+                </div>
+                <div class="switch on">
+                  <div class="switch-handle"></div>
+                </div>
+              </div>
+              
+              <div class="switch-row">
+                <div class="switch-label">
+                  <div class="switch-title">Webhook Notifications</div>
+                  <div class="switch-desc">Send alerts to your custom webhook</div>
+                </div>
+                <div class="switch">
+                  <div class="switch-handle"></div>
+                </div>
+              </div>
+              
+              <div class="switch-row">
+                <div class="switch-label">
+                  <div class="switch-title">Weekly Reports</div>
+                  <div class="switch-desc">Get a weekly summary of trends and alerts</div>
+                </div>
+                <div class="switch on">
+                  <div class="switch-handle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Danger Zone -->
+          <div class="section">
+            <div class="section-title" style="color: #c00;">⚠️ Danger Zone</div>
+            
+            <div style="padding: 20px; border: 2px solid #c00; background: #fff5f5;">
+              <div style="font-weight: bold; margin-bottom: 8px;">Delete Account</div>
+              <div style="font-size: 13px; color: #666; margin-bottom: 15px;">
+                Once you delete your account, there is no going back. All your data, trends, and alerts will be permanently deleted.
+              </div>
+              <button class="btn btn-danger">Delete My Account</button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
