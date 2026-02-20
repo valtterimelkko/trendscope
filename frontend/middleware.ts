@@ -33,7 +33,8 @@ function addSecurityHeaders(response: NextResponse): NextResponse {
 export async function middleware(request: NextRequest) {
   // TEMPORARY: Allow all access without authentication for preview/demo
   // This bypasses Supabase auth checks since backend is not yet set up
-  const bypassAuth = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  // DEV MODE: Always bypass auth for development
+  const bypassAuth = true;
   
   if (bypassAuth) {
     const response = NextResponse.next();
