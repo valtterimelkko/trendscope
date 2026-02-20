@@ -53,7 +53,7 @@ This document outlines the recommended approach for integrating [Remotion](https
 
 ## Key Decisions
 
-### 1. Location: `/root/trendscope/remotion/`
+### 1. Location: `remotion/` folder
 
 **Rationale:**
 - Videos are part of the project, version controlled together
@@ -111,7 +111,7 @@ Remotion works best with React 18. Since the frontend uses React 19, **Remotion 
 
 | Decision | Choice |
 |----------|--------|
-| Location | `/root/trendscope/remotion/` |
+| Location | `remotion/` |
 | React Version | 18 (separate from frontend's React 19) |
 | Video Output | `frontend/public/videos/` |
 | Tailwind | Copy config from frontend |
@@ -136,7 +136,7 @@ Recommended for high-volume or long-running renders.
 
 To proceed with installation:
 
-1. Scaffold the Remotion project at `/root/trendscope/remotion/`
+1. Scaffold the Remotion project at `remotion/`
 2. Configure Tailwind to match the frontend
 3. Set up the output directory to `frontend/public/videos/`
 4. Create a sample marketing animation composition
