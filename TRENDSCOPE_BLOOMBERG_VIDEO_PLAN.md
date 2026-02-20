@@ -312,6 +312,10 @@ const holdOpacity = interpolate(
 
 #### A1: Trendscope Logo (White on Transparent)
 
+> ✅ **SELECTED LOGO FILE:** `video_assets/logo/_SELECTED_trendscope-logo-runware.png`
+> 
+> Use this file for Scene 1 logo reveal. Copy to `remotion/assets/scene1/trendscope-logo-white.png` before rendering.
+
 **Prompt:**
 ```
 Create a professional, modern wordmark logo for "TRENDSCOPE" on a transparent background. 
