@@ -124,6 +124,10 @@ const logoScale = interpolate(
 **Required Assets:**
 - `assets/scene1/trendscope-logo-white.png` - White logo on transparent background
 
+> ✅ **SELECTED LOGO FILE:** `video_assets/logo/_SELECTED_trendscope-logo-runware.png`
+> 
+> Use this file for Scene 1 logo reveal. Copy to `remotion/assets/scene1/trendscope-logo-white.png` before rendering.
+
 ---
 
 ### Scene 2: Montage (0:03 - 0:11 | Frames 90-330)
@@ -186,6 +190,14 @@ const textOpacity = interpolate(
 - `assets/scene2/data-dashboard.jpg` - Analytics dashboard visualization
 - `assets/scene2/viral-explosion.jpg` - Abstract viral/fire visual
 - `assets/scene2/alert-phone.jpg` - Phone showing notification
+
+> ✅ **SELECTED ASSETS:**
+> - **Creator Filming:** `video_assets/scene2_creator_filming/_SELECTED_creator_filming.jpg`
+> - **Data Dashboard:** `video_assets/scene2_data_dashboard/_SELECTED_data_dashboard.jpg`
+> - **Viral Explosion:** `video_assets/scene2_viral_explosion/_SELECTED_viral_explosion.jpg`
+> - **Alert Phone:** `video_assets/scene2_alert_phone/_SELECTED_alert_phone.jpg`
+> 
+> Copy these files to `remotion/assets/scene2/` folder before rendering.
 
 ---
 
@@ -275,6 +287,10 @@ const holdOpacity = interpolate(
 
 **Required Assets:**
 - `assets/scene3/digital-globe.png` - Wireframe globe graphic
+
+> ✅ **SELECTED ASSET:** `video_assets/scene3_digital_globe/_SELECTED_digital_globe.jpg`
+> 
+> Use this file for Scene 3 digital globe. Copy to `remotion/assets/scene3/digital-globe.png` before rendering.
 
 ---
 
