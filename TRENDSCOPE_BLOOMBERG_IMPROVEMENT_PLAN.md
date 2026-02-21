@@ -17,11 +17,13 @@ This document provides two implementation paths for improving the Trendscope int
 | **Asset Count** | 3-5 new images | 8-10 new images + 3D globe |
 
 **Reference Materials:**
-- Current Video: `frontend/public/videos/trendscope-intro-v6.mp4`
+- **Baseline Video (START HERE):** `frontend/public/videos/trendscope-intro-v8.mp4`
+- Previous Version: `frontend/public/videos/trendscope-intro-v7.mp4`
 - Bloomberg Reference: `bloomberg_brief_30s.webm`
 - Original Plan: `TRENDSCOPE_BLOOMBERG_VIDEO_PLAN.md`
 - Remotion Docs: `remotion/README_remotion.md`
 - Remotion Skills: `/root/.claude/skills/remotion/`
+- **Base Composition:** `BloombergIntroV8.tsx`
 
 ---
 
@@ -35,7 +37,7 @@ This document provides two implementation paths for improving the Trendscope int
 |-----------|--------------|
 | **Source File** | `logo/trendscope-logo-transparent.png` |
 | **Destination** | `remotion/public/assets/scene1/trendscope-logo-transparent.png` |
-| **Display Size** | 500px width (same as version 6) |
+| **Display Size** | 1000px width (V8 standard - doubled from V6/V7) |
 | **Format** | PNG with transparency |
 | **Quality** | High-resolution (1536x1024 original) |
 
@@ -52,7 +54,7 @@ The previous logo (`trendscope-logo-white.png`) had background removal artifacts
 When implementing either Option A or B:
 1. Copy `logo/trendscope-logo-transparent.png` to `remotion/public/assets/scene1/`
 2. In the composition props, use: `logoUrl: 'assets/scene1/trendscope-logo-transparent.png'`
-3. Maintain the same 500px display width as in version 6
+3. Use 1000px display width (V8 standard - see `BloombergIntroV8.tsx`)
 4. Keep the same drop-shadow effect: `filter: 'drop-shadow(0 0 40px rgba(255,255,255,0.3))'`
 
 ---
@@ -61,9 +63,17 @@ When implementing either Option A or B:
 
 ### Overview
 
-Enhance the existing video structure with broadcast-quality effects while keeping the current scene organization. Focus on **glow effects, sliding transitions, and improved text animations**.
+Enhance **Version 8** with broadcast-quality effects while keeping the current scene organization and timing. Focus on **glow effects, sliding transitions, and improved text animations**.
 
-### Scene Structure (Retained from v6)
+### Baseline
+
+**Start from:** `BloombergIntroV8.tsx`
+- 37-second duration (1110 frames @ 30fps)
+- 1000px logo width
+- High-quality transparent logo
+- Extended scene timings from V3/V7
+
+### Scene Structure (Retained from V8)
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -209,7 +219,15 @@ const globeRotation = interpolate(frame, [0, 180], [0, 120]);
 
 ### Overview
 
-A complete rebuild using advanced Remotion features including **Three.js 3D globe**, **TransitionSeries**, **light leak overlays**, and **broadcast-style motion graphics**.
+A complete rebuild **starting from V8** using advanced Remotion features including **Three.js 3D globe**, **TransitionSeries**, **light leak overlays**, and **broadcast-style motion graphics**.
+
+### Baseline
+
+**Start from:** `BloombergIntroV8.tsx` (copy to `BloombergIntroV9.tsx` or new version)
+- Use V8's scene timing (37 seconds) as foundation
+- 1000px logo width
+- High-quality transparent logo
+- Build upon and enhance each scene
 
 ### Scene Structure (Enhanced)
 
@@ -809,6 +827,7 @@ STYLE: Bloomberg Terminal text, Reuters wordmark, IBM Plex Bold precision
 
 NO: Rounded friendly terminals, script elements, icons, symbols
 NOTE: This is text-only wordmark, no graphic icon
+NOTE: Video uses 1000px width (V8 standard)
 ```
 
 ---
