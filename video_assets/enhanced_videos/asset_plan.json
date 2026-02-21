@@ -1,0 +1,124 @@
+{
+  "assets": [
+    {
+      "id": "wireframe-globe",
+      "folder": "01-wireframe-globe",
+      "filename": "wireframe-globe-enhanced",
+      "for": "Both",
+      "purpose": "abstract_art",
+      "model": "runware:101@1",
+      "width": 2000,
+      "height": 2000,
+      "format": "png",
+      "prompt": "High-resolution digital wireframe globe for video animation, transparent background. Perfect sphere with latitude and longitude lines, 15-degree grid intervals. Line weight 2-3px for primary lines, 1px for secondary. Primary lines cyan #00D9FF with soft glow, secondary lines blue #3B82F6. Small glowing data points at major cities. Bloomberg Terminal meets futuristic tech UI style. Clean, precise, professional, slight transparency/ghostly quality. NO surface textures, clouds, terrain, or photographic elements."
+    },
+    {
+      "id": "creator-filming",
+      "folder": "02-creator-filming",
+      "filename": "creator-filming-enhanced",
+      "for": "Both",
+      "purpose": "photorealistic",
+      "model": "runware:101@1",
+      "width": 1920,
+      "height": 1088,
+      "format": "jpg",
+      "prompt": "Professional cinematic photograph of content creator filming TikTok/short-form video. Bloomberg Brief-inspired aesthetic. Young professional creator 25-35 years old in modern studio. Ring light visible and illuminated creating professional cyan/teal glow. Holding smartphone on gimbal actively filming, confident focused expression. Modern clean background with soft bokeh, slight haze/atmospheric depth. Cool blues #0F172A #1E293B dominant, cyan #00D9FF and teal #14B8A6 accents, warm skin tones balanced with cool environment, subtle orange rim light. Professional cinematic lighting with rim light, shallow depth of field f/1.8 style blur, high production value. Sharp focus on subject's face and phone."
+    },
+    {
+      "id": "data-dashboard",
+      "folder": "03-data-dashboard",
+      "filename": "data-dashboard-enhanced",
+      "for": "Both",
+      "purpose": "ui_mockup",
+      "model": "runware:101@1",
+      "width": 1920,
+      "height": 1088,
+      "format": "jpg",
+      "prompt": "Abstract data visualization dashboard showing trend velocity metrics. Bloomberg Terminal meets modern SaaS dashboard. Multiple trend line charts showing exponential growth, candlestick-style charts with cyan/teal positive indicators. Velocity indicators showing 89/100, numerical displays +340% 2.4M views trending upward, volume bar charts at bottom. Grid layout like professional trading terminal 2x2 or 3x2 grid. Dark background #020617 to #0F172A gradient, bright cyan #00D9FF and teal #14B8A6 accent lines, green #00C853 for positive indicators. Glowing data points, subtle grid overlay, glassmorphism effect. Modern high-tech financial terminal look. NO light mode elements, cluttered layout, or amateur chart design."
+    },
+    {
+      "id": "viral-explosion",
+      "folder": "04-viral-explosion",
+      "filename": "viral-explosion-enhanced",
+      "for": "Both",
+      "purpose": "abstract_art",
+      "model": "runware:101@1",
+      "width": 1920,
+      "height": 1088,
+      "format": "jpg",
+      "prompt": "Abstract visualization of viral trend exploding, moment trend catches fire. Dynamic energetic motion-blur aesthetic with depth. Central burst point with radiating energy, particle explosion emanating from center, sound wave ripples spreading outward, abstract light trails suggesting rapid movement. Deep space background #020617 fading to black, cyan #00D9FF energy bursts primary, orange/amber #F59E0B heat at center/core, blue #3B82F6 secondary energy lines. Motion blur and streak effects, high contrast dynamic composition suggesting exponential growth and speed. Central bright burst point slightly off-center, radiating energy lines all directions, foreground particles larger background smaller, sense of depth and rapid expansion. NO real objects, people, literal fire, text, or UI elements."
+    },
+    {
+      "id": "phone-alert",
+      "folder": "05-phone-alert",
+      "filename": "phone-alert-enhanced",
+      "for": "Both",
+      "purpose": "product_shot",
+      "model": "runware:101@1",
+      "width": 1920,
+      "height": 1088,
+      "format": "jpg",
+      "prompt": "Close-up of hands holding smartphone displaying trend alert notification. Professional product photography with Bloomberg Terminal-inspired UI. Modern smartphone iPhone 15 Pro at 3/4 angle, screen showing TREND ALERT notification card with details trending sound velocity percentage category. Professional hands holding phone naturally, soft cinematic lighting with subtle cyan accent, clean minimal dark background. Dark mode interface #0F172A card on #020617 background, cyan #00D9FF accent for urgency, teal #14B8A6 for trend name, green #00C853 for positive metrics. Clean typography Bloomberg Terminal-inspired, subtle glassmorphism effect. High-end product photography, shallow depth of field phone sharp background blur, slight reflection on phone screen, premium exclusive feel."
+    },
+    {
+      "id": "wordmark-logo",
+      "folder": "06-wordmark-logo",
+      "filename": "trendscope-wordmark-enhanced",
+      "for": "Both",
+      "purpose": "logo_graphic",
+      "model": "runware:101@1",
+      "width": 2000,
+      "height": 1088,
+      "format": "png",
+      "prompt": "Professional wordmark logo for TRENDSCOPE text in ALL CAPS, transparent background PNG. Geometric sans-serif font BOLD weight 700-900, tight letter-spacing -0.02em architectural density, perfectly upright 0 degrees no italic. Pure white #FFFFFF with subtle cyan glow effect, sharp terminal-grade precision. Bloomberg Terminal text style, Reuters wordmark, IBM Plex Bold precision. Financial terminal authority, news organization gravitas, data precision aesthetic. NO rounded friendly terminals, script elements, icons, or symbols. Text-only wordmark no graphic icon."
+    },
+    {
+      "id": "city-skyline",
+      "folder": "07-city-skyline",
+      "filename": "city-skyline-abstract",
+      "for": "Option B Only",
+      "purpose": "photorealistic",
+      "model": "runware:101@1",
+      "width": 1920,
+      "height": 1088,
+      "format": "jpg",
+      "prompt": "Abstract aerial view of modern city skyline at dusk. Inspired by Bloomberg's city footage stylized for brand consistency. Modern financial district with iconic skyscrapers, aerial perspective looking down at angle. Dusk/blue hour lighting not night not day, city lights beginning to illuminate, slight atmospheric haze/fog for depth. Cool color palette blues #1E293B #334155 cyan tints, warm accent lights amber/orange #F59E0B window lights. Cinematic color grading, slight desaturation for sophisticated look, high contrast between buildings and sky, subtle vignette. Rule of thirds placement of key buildings, leading lines from streets, layered depth. Global connected professional authoritative urban energy."
+    },
+    {
+      "id": "trading-floor",
+      "folder": "08-trading-floor",
+      "filename": "trading-floor-terminal",
+      "for": "Option B Only",
+      "purpose": "photorealistic",
+      "model": "runware:101@1",
+      "width": 1920,
+      "height": 1088,
+      "format": "jpg",
+      "prompt": "Professional photograph of modern trading floor or data center. Rows of screens showing financial data, Bloomberg Terminal aesthetic. Multiple traders/analysts at workstations 3-4 people visible, wall of monitors showing charts and data. Modern office environment clean organized, screens glow with cyan/teal data visualizations, slight motion blur on people suggesting activity, professional attire focused work. Cool ambient lighting with screen glow, dark environment illuminated by monitors. Cyan #00D9FF and green #00C853 screen accents, blue ambient #0F172A #1E293B. High-tech professional atmosphere, slight grain for cinematic texture. Depth layers foreground screens midground workers background monitors, leading lines from desk rows. Serious professional data-driven high-stakes focused energy."
+    },
+    {
+      "id": "global-network",
+      "folder": "09-global-network",
+      "filename": "global-network-nodes",
+      "for": "Option B Only",
+      "purpose": "abstract_art",
+      "model": "runware:101@1",
+      "width": 1920,
+      "height": 1088,
+      "format": "jpg",
+      "prompt": "Abstract visualization of global data network and connectivity. Represents worldwide trend spread and data flow. World map or abstract representation of global connectivity, network nodes at major cities glowing dots, connection lines between nodes arcs not straight, data flow visualization. Dark background #020617 fading to #0F172A, cyan #00D9FF primary nodes and connections, blue #3B82F6 secondary nodes, orange #F59E0B accent highlights. Glowing effects on all nodes, subtle grid or tech pattern overlay, digital futuristic clean. Centered or slightly offset globe/map, nodes distributed across major continents, connection lines create visual flow, depth layers foreground glow midground connections background nodes. Global reach connected world data flow international expansive. NO literal map details country borders text labels or photographic elements."
+    },
+    {
+      "id": "light-leak-overlay",
+      "folder": "10-light-leak-overlay",
+      "filename": "light-leak-overlay",
+      "for": "Option B Only",
+      "purpose": "abstract_art",
+      "model": "runware:101@1",
+      "width": 1920,
+      "height": 1088,
+      "format": "png",
+      "prompt": "Abstract light leak and lens flare overlay for video transitions. Designed to be composited over footage with screen or add blend mode. Warm lens flare orange/amber #F59E0B to yellow #FCD34D, soft light leak from edge/corner, anamorphic streak effect, organic film light leak shapes. Transparent background PNG with alpha, soft edges for seamless blending, multiple intensity zones. Analog film light leak aesthetic, warm tones amber gold orange, soft diffused glow, cinematic quality, professional broadcast transition feel. Cinematic transition warmth premium quality analog film nostalgia."
+    }
+  ]
+}
