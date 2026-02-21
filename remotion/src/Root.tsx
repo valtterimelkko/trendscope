@@ -5,6 +5,7 @@ import { MarketingHeroVideo } from './compositions/MarketingHero';
 import { BloombergIntro } from './compositions/BloombergIntro';
 import { BloombergIntroV2 } from './compositions/BloombergIntroV2';
 import { BloombergIntroV3 } from './compositions/BloombergIntroV3';
+import { BloombergIntroV7 } from './compositions/BloombergIntroV7';
 
 // Default video dimensions
 const WIDTH = 1920;
@@ -15,6 +16,25 @@ export const Root: React.FC = () => {
   return (
     <>
       <Folder name="marketing-videos">
+        <Composition
+          id="TrendscopeBloombergIntroV7"
+          component={BloombergIntroV7}
+          durationInFrames={1110} // 37 seconds @ 30fps
+          fps={FPS}
+          width={WIDTH}
+          height={HEIGHT}
+          defaultProps={{
+            logoUrl: 'assets/scene1/trendscope-logo-transparent.png',
+            montageImages: [
+              'assets/scene2/creator-filming.jpg',
+              'assets/scene2/data-dashboard.jpg',
+              'assets/scene2/viral-explosion.jpg',
+              'assets/scene2/alert-phone.jpg',
+            ],
+            globeUrl: 'assets/scene3/digital-globe.jpg',
+          }}
+        />
+
         <Composition
           id="TrendscopeBloombergIntroV3"
           component={BloombergIntroV3}

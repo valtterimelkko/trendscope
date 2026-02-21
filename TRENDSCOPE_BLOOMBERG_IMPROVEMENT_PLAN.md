@@ -25,6 +25,38 @@ This document provides two implementation paths for improving the Trendscope int
 
 ---
 
+## LOGO SPECIFICATION (Applies to Both Options A & B)
+
+### Logo Asset Change
+
+**CRITICAL:** Both Option A and Option B MUST use the new high-quality logo:
+
+| Attribute | Specification |
+|-----------|--------------|
+| **Source File** | `logo/trendscope-logo-transparent.png` |
+| **Destination** | `remotion/public/assets/scene1/trendscope-logo-transparent.png` |
+| **Display Size** | 500px width (same as version 6) |
+| **Format** | PNG with transparency |
+| **Quality** | High-resolution (1536x1024 original) |
+
+### Why the Change?
+
+The previous logo (`trendscope-logo-white.png`) had background removal artifacts and inconsistent edges. The new logo has:
+- Clean, crisp edges
+- Proper transparency
+- Professional white text on transparent background
+- Consistent with Bloomberg Terminal aesthetic
+
+### Implementation Note
+
+When implementing either Option A or B:
+1. Copy `logo/trendscope-logo-transparent.png` to `remotion/public/assets/scene1/`
+2. In the composition props, use: `logoUrl: 'assets/scene1/trendscope-logo-transparent.png'`
+3. Maintain the same 500px display width as in version 6
+4. Keep the same drop-shadow effect: `filter: 'drop-shadow(0 0 40px rgba(255,255,255,0.3))'`
+
+---
+
 ## PART 1: OPTION A - INCREMENTAL IMPROVEMENT
 
 ### Overview
