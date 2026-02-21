@@ -18,17 +18,15 @@ export default function DashboardLayout({
 }) {
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen w-full">
-        <DashboardSidebar />
-        <SidebarInset className="flex flex-1 flex-col">
-          <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-6">
-            <SidebarTrigger />
-            <div className="flex-1" />
-            <UserMenu />
-          </header>
-          <main className="flex-1 p-6">{children}</main>
-        </SidebarInset>
-      </div>
+      <DashboardSidebar />
+      <SidebarInset className="w-full">
+        <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-6">
+          <SidebarTrigger />
+          <div className="flex-1" />
+          <UserMenu />
+        </header>
+        <main className="flex-1 p-6">{children}</main>
+      </SidebarInset>
     </SidebarProvider>
   );
 }
@@ -47,7 +45,7 @@ function DashboardSidebar() {
   ];
 
   return (
-    <Sidebar>
+    <Sidebar collapsible="none">
       <SidebarHeader className="border-b p-6">
         <Logo />
       </SidebarHeader>
