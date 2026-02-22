@@ -3,7 +3,6 @@ node_modules/
 
 # Build outputs
 dist/
-out/
 build/
 
 # Remotion cache
@@ -27,8 +26,4 @@ Thumbs.db
 .env
 .env.local
 
-# Video outputs (when rendered locally for testing)
-*.mp4
-*.webm
-*.mov
-*.gif
+
