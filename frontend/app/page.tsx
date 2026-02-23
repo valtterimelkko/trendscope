@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CheckCircle2, TrendingUp, Zap, Target, Bell, Users, FileText } from 'lucide-react';
+import { Logo } from '@/components/common/Logo';
 
 /* ─── Small reusable pieces ───────────────────────────────────────────── */
 
@@ -48,14 +49,9 @@ export default function LandingPage() {
 
         {/* ── Navigation ─────────────────────────────────────────────── */}
         <nav className="fixed top-0 z-50 w-full">
-          <div className="container mx-auto flex h-14 items-center justify-between px-6">
+          <div className="container mx-auto flex h-20 items-center justify-between px-6">
             {/* Logo */}
-            <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#00D9FF]">
-                <TrendingUp className="h-4 w-4 text-[#080808]" />
-              </div>
-              <span className="text-sm font-semibold text-white">Trendscope</span>
-            </div>
+            <Logo width={260} height={72} showText={false} />
 
             {/* Nav links */}
             <div className="hidden md:flex items-center gap-7">
@@ -75,7 +71,7 @@ export default function LandingPage() {
         </nav>
 
         {/* ── Hero ────────────────────────────────────────────────────── */}
-        <section className="relative min-h-[90vh] flex items-center pt-14 overflow-hidden">
+        <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
           {/* Subtle glow behind floating cards */}
           <div
             aria-hidden
@@ -664,12 +660,7 @@ export default function LandingPage() {
           <div className="container mx-auto px-6">
             <div className="grid gap-10 md:grid-cols-4 mb-12">
               <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#00D9FF]">
-                    <TrendingUp className="h-4 w-4 text-[#080808]" />
-                  </div>
-                  <span className="text-sm font-semibold text-white">Trendscope</span>
-                </div>
+                <Logo width={260} height={72} showText={false} className="mb-4" />
                 <p className="text-sm text-white/40 leading-relaxed">
                   The Bloomberg Terminal for Short-Form Video Trends
                 </p>
