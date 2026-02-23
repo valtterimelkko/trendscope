@@ -73,7 +73,7 @@ export default function LandingPage() {
         {/* ── Hero ────────────────────────────────────────────────────── */}
         <section className="relative min-h-screen overflow-hidden pt-20 bg-gradient-to-b from-[#080808] to-[#050505]">
 
-          {/* Video background — very faded, right-aligned */}
+          {/* Video background — faded, right-aligned */}
           <video
             aria-hidden
             autoPlay
@@ -81,7 +81,7 @@ export default function LandingPage() {
             loop
             playsInline
             className="pointer-events-none absolute inset-0 w-full h-full object-contain"
-            style={{ opacity: 0.15 }}
+            style={{ opacity: 0.35 }}
           >
             <source src="/videos/trendscope-intro-semicomplex-final.mp4" type="video/mp4" />
           </video>
