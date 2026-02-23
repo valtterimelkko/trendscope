@@ -71,7 +71,7 @@ export default function LandingPage() {
         </nav>
 
         {/* ── Hero ────────────────────────────────────────────────────── */}
-        <section className="relative min-h-screen overflow-hidden pt-20 bg-gradient-to-b from-[#080808] to-[#050505]">
+        <section className="relative min-h-screen overflow-hidden pt-40 bg-gradient-to-b from-[#080808] to-[#050505]">
 
           {/* Video background — faded, right-aligned */}
           <video
