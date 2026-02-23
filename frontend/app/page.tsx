@@ -71,7 +71,7 @@ export default function LandingPage() {
         </nav>
 
         {/* ── Hero ────────────────────────────────────────────────────── */}
-        <section className="relative min-h-screen overflow-hidden pt-40 bg-gradient-to-b from-[#080808] to-[#050505]">
+        <section className="relative min-h-[85vh] overflow-hidden pt-40 bg-gradient-to-b from-[#080808] to-[#050505]">
 
           {/* Video background — faded, right-aligned */}
           <video
@@ -175,7 +175,7 @@ export default function LandingPage() {
         </section>
 
         {/* ── Trend Intelligence feature section ─────────────────────── */}
-        <section id="how-it-works" className="py-28 border-t border-white/[0.05]">
+        <section id="how-it-works" className="py-2 border-t border-white/[0.05]">
           <div className="container mx-auto px-6">
 
             {/* Section header — Gitness-style */}
