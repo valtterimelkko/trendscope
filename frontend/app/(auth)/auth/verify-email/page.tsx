@@ -8,8 +8,8 @@ export default function VerifyEmailPage() {
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
       <Card className="w-full max-w-md text-center">
         <CardHeader className="space-y-4">
-          <div className="flex justify-center">
-            <Logo />
+          <div className="flex justify-center mb-6">
+            <Logo variant="black" width={260} height={72} showText={false} />
           </div>
           <div className="flex justify-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
