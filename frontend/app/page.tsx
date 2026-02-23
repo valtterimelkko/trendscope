@@ -106,46 +106,46 @@ export default function LandingPage() {
 
           {/* Left text — upper-left, Gitness-style */}
           <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-[500px] pt-8 pb-16">
-              <h1 className="text-4xl font-bold leading-[1.1] tracking-tight mb-5 md:text-5xl">
+             <div className="max-w-[280px] pt-4 pb-8">
+               <h1 className="text-2xl font-bold leading-[1.1] tracking-tight mb-3 md:text-3xl">
                 Real-time trend&nbsp;intelligence.<br />
                 Professional-grade&nbsp;detection.<br />
                 <span className="text-[#00D9FF]">Alerts before the mainstream&nbsp;knows.</span>
               </h1>
-              <p className="text-white/50 text-base leading-relaxed mb-7 max-w-sm">
-                While you&apos;re sleeping, trends are born. Trendscope detects trends at the
-                  micro-influencer layer—where viral content is born.
-              </p>
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <Button
-                  size="lg"
-                  asChild
-                  className="rounded-full bg-white text-[#080808] hover:bg-white/90 font-semibold px-8"
-                >
-                  <a href="/auth/signup">Start Free →</a>
-                </Button>
-                <Button
-                  size="lg"
-                  asChild
-                  className="rounded-full border border-white/20 bg-transparent text-white hover:bg-white/10 px-8"
+               <p className="text-white/50 text-sm leading-relaxed mb-4 max-w-xs">
+                 While you&apos;re sleeping, trends are born. Trendscope detects trends at the
+                   micro-influencer layer—where viral content is born.
+               </p>
+               <div className="flex flex-col gap-2 sm:flex-row">
+                 <Button
+                   size="sm"
+                   asChild
+                   className="rounded-full bg-white text-[#080808] hover:bg-white/90 font-semibold px-6"
+                 >
+                   <a href="/auth/signup">Start Free →</a>
+                 </Button>
+                 <Button
+                   size="sm"
+                   asChild
+                   className="rounded-full border border-white/20 bg-transparent text-white hover:bg-white/10 px-6"
                 >
                   <a href="#how-it-works">See How It Works ↓</a>
                 </Button>
               </div>
-              <p className="mt-4 text-xs text-white/30">No credit card required. 14-day free trial.</p>
+               <p className="mt-2 text-xs text-white/30">No credit card required. 14-day free trial.</p>
 
-              {/* Trust bar */}
-              <div className="mt-14">
-                <p className="text-xs text-white/30 mb-4">
-                  Trusted by creators and agencies who treat content like a business
-                </p>
-                <div className="flex items-center gap-8 text-white/25 text-sm font-semibold tracking-wide">
-                  <span>CREATORS</span>
-                  <span>AGENCIES</span>
-                  <span>BRANDS</span>
-                  <span>STUDIOS</span>
-                </div>
-              </div>
+               {/* Trust bar */}
+               <div className="mt-6">
+                 <p className="text-xs text-white/30 mb-2">
+                   Trusted by creators and agencies who treat content like a business
+                 </p>
+                 <div className="flex items-center gap-4 text-white/25 text-xs font-semibold tracking-wide">
+                   <span>CREATORS</span>
+                   <span>AGENCIES</span>
+                   <span>BRANDS</span>
+                   <span>STUDIOS</span>
+                 </div>
+               </div>
             </div>
           </div>
 
