@@ -71,31 +71,29 @@ export default function LandingPage() {
         </nav>
 
         {/* ── Hero ────────────────────────────────────────────────────── */}
-        <section className="relative min-h-screen overflow-hidden pt-20">
+        <section className="relative min-h-screen overflow-hidden pt-20 bg-gradient-to-b from-[#080808] to-[#050505]">
 
-          {/* Right-side video panel — fills ~55% from the right, full height */}
-          <div aria-hidden className="pointer-events-none absolute right-0 top-0 w-[55%] h-full">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-              style={{ opacity: 0.72 }}
-            >
-              <source src="/videos/trendscope-intro-semicomplex-final.mp4" type="video/mp4" />
-            </video>
-            {/* Left-edge fade — blends video into the dark background */}
-            <div
-              className="absolute inset-y-0 left-0 w-64"
-              style={{ background: 'linear-gradient(to right, #080808 30%, transparent)' }}
-            />
-            {/* Bottom-edge fade */}
-            <div
-              className="absolute inset-x-0 bottom-0 h-48"
-              style={{ background: 'linear-gradient(to top, #080808, transparent)' }}
-            />
-          </div>
+          {/* Video background — very faded, right-aligned */}
+          <video
+            aria-hidden
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="pointer-events-none absolute inset-0 w-full h-full object-cover"
+            style={{ opacity: 0.15 }}
+          >
+            <source src="/videos/trendscope-intro-semicomplex-final.mp4" type="video/mp4" />
+          </video>
+
+          {/* Overlay fade — gradient from dark on left to transparent on right */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background: 'linear-gradient(to right, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.7) 40%, transparent 80%)',
+            }}
+          />
 
           {/* Subtle cyan glow over video */}
           <div
