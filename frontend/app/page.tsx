@@ -80,7 +80,7 @@ export default function LandingPage() {
             muted
             loop
             playsInline
-            className="pointer-events-none absolute inset-0 w-full h-full object-cover"
+            className="pointer-events-none absolute inset-0 w-full h-full object-contain"
             style={{ opacity: 0.15 }}
           >
             <source src="/videos/trendscope-intro-semicomplex-final.mp4" type="video/mp4" />
