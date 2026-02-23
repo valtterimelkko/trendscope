@@ -71,87 +71,109 @@ export default function LandingPage() {
         </nav>
 
         {/* ── Hero ────────────────────────────────────────────────────── */}
-        <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
-          {/* Subtle glow behind floating cards */}
+        <section className="relative min-h-screen overflow-hidden pt-20">
+
+          {/* Right-side video panel — fills ~55% from the right, full height */}
+          <div aria-hidden className="pointer-events-none absolute right-0 top-0 w-[55%] h-full">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+              style={{ opacity: 0.72 }}
+            >
+              <source src="/videos/trendscope-intro-semicomplex-final.mp4" type="video/mp4" />
+            </video>
+            {/* Left-edge fade — blends video into the dark background */}
+            <div
+              className="absolute inset-y-0 left-0 w-64"
+              style={{ background: 'linear-gradient(to right, #080808 30%, transparent)' }}
+            />
+            {/* Bottom-edge fade */}
+            <div
+              className="absolute inset-x-0 bottom-0 h-48"
+              style={{ background: 'linear-gradient(to top, #080808, transparent)' }}
+            />
+          </div>
+
+          {/* Subtle cyan glow over video */}
           <div
             aria-hidden
-            className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
-            style={{ background: 'radial-gradient(circle, rgba(0,217,255,0.06) 0%, transparent 70%)' }}
+            className="pointer-events-none absolute right-[25%] top-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(0,217,255,0.07) 0%, transparent 70%)' }}
           />
 
-          <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-20 items-center">
-
-              {/* Left ── text */}
-              <div>
-                <h1 className="text-5xl font-bold leading-[1.08] tracking-tight mb-6 md:text-6xl lg:text-7xl">
-                  Real-time trend&nbsp;intelligence.<br />
-                  Professional-grade&nbsp;detection.<br />
-                  <span className="text-[#00D9FF]">Alerts before the mainstream&nbsp;knows.</span>
-                </h1>
-                <p className="text-white/50 text-lg leading-relaxed mb-8 max-w-xl">
-                  While you&apos;re sleeping, trends are born. By the time you check TikTok Creative
-                  Center, that sound already peaked. Trendscope detects trends at the micro-influencer
-                  layer—where viral content is born.
-                </p>
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <Button
-                    size="lg"
-                    asChild
-                    className="rounded-full bg-white text-[#080808] hover:bg-white/90 font-semibold px-8"
-                  >
-                    <a href="/auth/signup">Start Free →</a>
-                  </Button>
-                  <Button
-                    size="lg"
-                    asChild
-                    className="rounded-full border border-white/20 bg-transparent text-white hover:bg-white/10 px-8"
-                  >
-                    <a href="#how-it-works">See How It Works ↓</a>
-                  </Button>
-                </div>
-                <p className="mt-4 text-xs text-white/30">No credit card required. 14-day free trial.</p>
-
-                {/* Trust bar */}
-                <div className="mt-14">
-                  <p className="text-xs text-white/30 mb-4">
-                    Trusted by creators and agencies who treat content like a business
-                  </p>
-                  <div className="flex items-center gap-8 text-white/25 text-sm font-semibold tracking-wide">
-                    <span>CREATORS</span>
-                    <span>AGENCIES</span>
-                    <span>BRANDS</span>
-                    <span>STUDIOS</span>
-                  </div>
-                </div>
+          {/* Left text — upper-left, Gitness-style */}
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-[500px] pt-8 pb-16">
+              <h1 className="text-4xl font-bold leading-[1.1] tracking-tight mb-5 md:text-5xl">
+                Real-time trend&nbsp;intelligence.<br />
+                Professional-grade&nbsp;detection.<br />
+                <span className="text-[#00D9FF]">Alerts before the mainstream&nbsp;knows.</span>
+              </h1>
+              <p className="text-white/50 text-base leading-relaxed mb-7 max-w-sm">
+                While you&apos;re sleeping, trends are born. Trendscope detects trends at the
+                  micro-influencer layer—where viral content is born.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button
+                  size="lg"
+                  asChild
+                  className="rounded-full bg-white text-[#080808] hover:bg-white/90 font-semibold px-8"
+                >
+                  <a href="/auth/signup">Start Free →</a>
+                </Button>
+                <Button
+                  size="lg"
+                  asChild
+                  className="rounded-full border border-white/20 bg-transparent text-white hover:bg-white/10 px-8"
+                >
+                  <a href="#how-it-works">See How It Works ↓</a>
+                </Button>
               </div>
+              <p className="mt-4 text-xs text-white/30">No credit card required. 14-day free trial.</p>
 
-              {/* Right ── floating alert cards */}
-              <div className="hidden lg:flex flex-col gap-4 items-start py-8">
-                <AlertCard
-                  className="animate-float-a"
-                  icon={<span className="text-[#00C853] text-base">✓</span>}
-                  text="trend alert delivered"
-                />
-                <AlertCard
-                  className="ml-20 animate-float-b"
-                  icon={
-                    <img
-                      src="https://i.pravatar.cc/20?u=sarah-k"
-                      className="w-5 h-5 rounded-full"
-                      alt="creator avatar"
-                    />
-                  }
-                  text="sarah caught trend +340%"
-                />
-                <AlertCard
-                  className="ml-8 animate-float-c"
-                  icon={<Zap className="w-4 h-4 text-[#FFC107]" />}
-                  text="velocity surge detected"
-                />
+              {/* Trust bar */}
+              <div className="mt-14">
+                <p className="text-xs text-white/30 mb-4">
+                  Trusted by creators and agencies who treat content like a business
+                </p>
+                <div className="flex items-center gap-8 text-white/25 text-sm font-semibold tracking-wide">
+                  <span>CREATORS</span>
+                  <span>AGENCIES</span>
+                  <span>BRANDS</span>
+                  <span>STUDIOS</span>
+                </div>
               </div>
             </div>
           </div>
+
+          {/* Alert cards — floating over the video, right side */}
+          <div className="absolute hidden lg:flex flex-col gap-5 z-10 top-[22%] right-[8%]">
+            <AlertCard
+              className="animate-float-a"
+              icon={<span className="text-[#00C853] text-base">✓</span>}
+              text="trend alert delivered"
+            />
+            <AlertCard
+              className="ml-16 animate-float-b"
+              icon={
+                <img
+                  src="https://i.pravatar.cc/20?u=sarah-k"
+                  className="w-5 h-5 rounded-full"
+                  alt="creator avatar"
+                />
+              }
+              text="sarah caught trend +340%"
+            />
+            <AlertCard
+              className="ml-6 animate-float-c"
+              icon={<Zap className="w-4 h-4 text-[#FFC107]" />}
+              text="velocity surge detected"
+            />
+          </div>
+
         </section>
 
         {/* ── Trend Intelligence feature section ─────────────────────── */}
