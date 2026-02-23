@@ -105,6 +105,32 @@
   }
 }
 
+/* Float animations for hero notification cards */
+@keyframes float-a {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes float-b {
+  0%, 100% { transform: translateY(-5px); }
+  50% { transform: translateY(5px); }
+}
+@keyframes float-c {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+}
+
+@utility animate-float-a {
+  animation: float-a 4s ease-in-out infinite;
+}
+@utility animate-float-b {
+  animation: float-b 5.5s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+@utility animate-float-c {
+  animation: float-c 4.8s ease-in-out infinite;
+  animation-delay: 1.6s;
+}
+
 /* Custom Utilities */
 @utility text-heading-1 {
   font-size: 48px;
