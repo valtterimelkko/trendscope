@@ -66,10 +66,10 @@ export default function SignupPage() {
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-4 text-center">
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center">
             <Logo variant="black" width={260} height={72} showText={false} />
           </div>
-          <div>
+          <div className="-mt-4">
             <CardTitle className="text-2xl">Create your account</CardTitle>
             <CardDescription>
               Start detecting trends before they peak
