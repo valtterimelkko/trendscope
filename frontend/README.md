@@ -1,6 +1,8 @@
 # Trendscope Frontend
 
-The Bloomberg Terminal for Short-Form Video Trends - A real-time TikTok trend intelligence platform.
+The Bloomberg Terminal for Short-Form Video Trends - a real-time TikTok trend intelligence frontend prototype.
+
+> This frontend belongs to a broader unfinished product experiment. Start with the root [`../README.md`](../README.md) for project status, adoption caveats, and story.
 
 ## Tech Stack
 
@@ -128,4 +130,4 @@ Required environment variables (see `.env.example`):
 
 ## License
 
-Proprietary - All rights reserved
+MIT - see the root [`../LICENSE`](../LICENSE).

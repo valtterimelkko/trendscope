@@ -119,6 +119,10 @@ secrets/
 config.conf
 projects.json
 env.conf
+/docs/api-keys-verified.json
+/docs/supabase-project.json
+/.claude/scripts/benchmarking/4th_template/productmotion/cloudconvert/cloudconvert_cookies.json
+/.glm5/scripts/benchmarking/4th_template/productmotion/cloudconvert/cloudconvert_cookies.json
 
 # =============================================================================
 # Local Development / Temporary Files
